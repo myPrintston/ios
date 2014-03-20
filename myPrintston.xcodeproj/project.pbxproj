@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C13168CF18DA75290034F142 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168CE18DA75290034F142 /* Foundation.framework */; };
+		C13168D118DA75290034F142 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168D018DA75290034F142 /* CoreGraphics.framework */; };
+		C13168D318DA75290034F142 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168D218DA75290034F142 /* UIKit.framework */; };
+		C13168D918DA75290034F142 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13168D718DA75290034F142 /* InfoPlist.strings */; };
+		C13168DB18DA75290034F142 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168DA18DA75290034F142 /* main.m */; };
+		C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168DE18DA75290034F142 /* MPSAppDelegate.m */; };
+		C13168E218DA75290034F142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C13168E018DA75290034F142 /* Main.storyboard */; };
+		C13168E518DA75290034F142 /* MPSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168E418DA75290034F142 /* MPSFirstViewController.m */; };
+		C13168E818DA75290034F142 /* MPSSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168E718DA75290034F142 /* MPSSecondViewController.m */; };
+		C13168EA18DA75290034F142 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C13168E918DA75290034F142 /* Images.xcassets */; };
+		C13168F118DA75290034F142 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168F018DA75290034F142 /* XCTest.framework */; };
+		C13168F218DA75290034F142 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168CE18DA75290034F142 /* Foundation.framework */; };
+		C13168F318DA75290034F142 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168D218DA75290034F142 /* UIKit.framework */; };
+		C13168FB18DA75290034F142 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13168F918DA75290034F142 /* InfoPlist.strings */; };
+		C13168FD18DA75290034F142 /* myPrintstonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168FC18DA75290034F142 /* myPrintstonTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C13168F418DA75290034F142 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C13168C318DA75290034F142 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C13168CA18DA75290034F142;
+			remoteInfo = myPrintston;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C13168CB18DA75290034F142 /* myPrintston.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myPrintston.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C13168CE18DA75290034F142 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C13168D018DA75290034F142 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C13168D218DA75290034F142 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C13168D618DA75290034F142 /* myPrintston-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myPrintston-Info.plist"; sourceTree = "<group>"; };
+		C13168D818DA75290034F142 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C13168DA18DA75290034F142 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C13168DC18DA75290034F142 /* myPrintston-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myPrintston-Prefix.pch"; sourceTree = "<group>"; };
+		C13168DD18DA75290034F142 /* MPSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPSAppDelegate.h; sourceTree = "<group>"; };
+		C13168DE18DA75290034F142 /* MPSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSAppDelegate.m; sourceTree = "<group>"; };
+		C13168E118DA75290034F142 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C13168E318DA75290034F142 /* MPSFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPSFirstViewController.h; sourceTree = "<group>"; };
+		C13168E418DA75290034F142 /* MPSFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSFirstViewController.m; sourceTree = "<group>"; };
+		C13168E618DA75290034F142 /* MPSSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPSSecondViewController.h; sourceTree = "<group>"; };
+		C13168E718DA75290034F142 /* MPSSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSSecondViewController.m; sourceTree = "<group>"; };
+		C13168E918DA75290034F142 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C13168EF18DA75290034F142 /* myPrintstonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myPrintstonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C13168F018DA75290034F142 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C13168F818DA75290034F142 /* myPrintstonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myPrintstonTests-Info.plist"; sourceTree = "<group>"; };
+		C13168FA18DA75290034F142 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C13168FC18DA75290034F142 /* myPrintstonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myPrintstonTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C13168C818DA75290034F142 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C13168D118DA75290034F142 /* CoreGraphics.framework in Frameworks */,
+				C13168D318DA75290034F142 /* UIKit.framework in Frameworks */,
+				C13168CF18DA75290034F142 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C13168EC18DA75290034F142 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C13168F118DA75290034F142 /* XCTest.framework in Frameworks */,
+				C13168F318DA75290034F142 /* UIKit.framework in Frameworks */,
+				C13168F218DA75290034F142 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C13168C218DA75290034F142 = {
+			isa = PBXGroup;
+			children = (
+				C13168D418DA75290034F142 /* myPrintston */,
+				C13168F618DA75290034F142 /* myPrintstonTests */,
+				C13168CD18DA75290034F142 /* Frameworks */,
+				C13168CC18DA75290034F142 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C13168CC18DA75290034F142 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C13168CB18DA75290034F142 /* myPrintston.app */,
+				C13168EF18DA75290034F142 /* myPrintstonTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C13168CD18DA75290034F142 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C13168CE18DA75290034F142 /* Foundation.framework */,
+				C13168D018DA75290034F142 /* CoreGraphics.framework */,
+				C13168D218DA75290034F142 /* UIKit.framework */,
+				C13168F018DA75290034F142 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C13168D418DA75290034F142 /* myPrintston */ = {
+			isa = PBXGroup;
+			children = (
+				C13168DD18DA75290034F142 /* MPSAppDelegate.h */,
+				C13168DE18DA75290034F142 /* MPSAppDelegate.m */,
+				C13168E018DA75290034F142 /* Main.storyboard */,
+				C13168E318DA75290034F142 /* MPSFirstViewController.h */,
+				C13168E418DA75290034F142 /* MPSFirstViewController.m */,
+				C13168E618DA75290034F142 /* MPSSecondViewController.h */,
+				C13168E718DA75290034F142 /* MPSSecondViewController.m */,
+				C13168E918DA75290034F142 /* Images.xcassets */,
+				C13168D518DA75290034F142 /* Supporting Files */,
+			);
+			path = myPrintston;
+			sourceTree = "<group>";
+		};
+		C13168D518DA75290034F142 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C13168D618DA75290034F142 /* myPrintston-Info.plist */,
+				C13168D718DA75290034F142 /* InfoPlist.strings */,
+				C13168DA18DA75290034F142 /* main.m */,
+				C13168DC18DA75290034F142 /* myPrintston-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C13168F618DA75290034F142 /* myPrintstonTests */ = {
+			isa = PBXGroup;
+			children = (
+				C13168FC18DA75290034F142 /* myPrintstonTests.m */,
+				C13168F718DA75290034F142 /* Supporting Files */,
+			);
+			path = myPrintstonTests;
+			sourceTree = "<group>";
+		};
+		C13168F718DA75290034F142 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C13168F818DA75290034F142 /* myPrintstonTests-Info.plist */,
+				C13168F918DA75290034F142 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C13168CA18DA75290034F142 /* myPrintston */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C131690018DA75290034F142 /* Build configuration list for PBXNativeTarget "myPrintston" */;
+			buildPhases = (
+				C13168C718DA75290034F142 /* Sources */,
+				C13168C818DA75290034F142 /* Frameworks */,
+				C13168C918DA75290034F142 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myPrintston;
+			productName = myPrintston;
+			productReference = C13168CB18DA75290034F142 /* myPrintston.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C13168EE18DA75290034F142 /* myPrintstonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C131690318DA75290034F142 /* Build configuration list for PBXNativeTarget "myPrintstonTests" */;
+			buildPhases = (
+				C13168EB18DA75290034F142 /* Sources */,
+				C13168EC18DA75290034F142 /* Frameworks */,
+				C13168ED18DA75290034F142 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C13168F518DA75290034F142 /* PBXTargetDependency */,
+			);
+			name = myPrintstonTests;
+			productName = myPrintstonTests;
+			productReference = C13168EF18DA75290034F142 /* myPrintstonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C13168C318DA75290034F142 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MPS;
+				LastUpgradeCheck = 0510;
+				TargetAttributes = {
+					C13168EE18DA75290034F142 = {
+						TestTargetID = C13168CA18DA75290034F142;
+					};
+				};
+			};
+			buildConfigurationList = C13168C618DA75290034F142 /* Build configuration list for PBXProject "myPrintston" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C13168C218DA75290034F142;
+			productRefGroup = C13168CC18DA75290034F142 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C13168CA18DA75290034F142 /* myPrintston */,
+				C13168EE18DA75290034F142 /* myPrintstonTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C13168C918DA75290034F142 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C13168EA18DA75290034F142 /* Images.xcassets in Resources */,
+				C13168D918DA75290034F142 /* InfoPlist.strings in Resources */,
+				C13168E218DA75290034F142 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C13168ED18DA75290034F142 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C13168FB18DA75290034F142 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C13168C718DA75290034F142 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C13168E518DA75290034F142 /* MPSFirstViewController.m in Sources */,
+				C13168DB18DA75290034F142 /* main.m in Sources */,
+				C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */,
+				C13168E818DA75290034F142 /* MPSSecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C13168EB18DA75290034F142 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C13168FD18DA75290034F142 /* myPrintstonTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C13168F518DA75290034F142 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C13168CA18DA75290034F142 /* myPrintston */;
+			targetProxy = C13168F418DA75290034F142 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C13168D718DA75290034F142 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C13168D818DA75290034F142 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C13168E018DA75290034F142 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C13168E118DA75290034F142 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C13168F918DA75290034F142 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C13168FA18DA75290034F142 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C13168FE18DA75290034F142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C13168FF18DA75290034F142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C131690118DA75290034F142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myPrintston/myPrintston-Prefix.pch";
+				INFOPLIST_FILE = "myPrintston/myPrintston-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C131690218DA75290034F142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myPrintston/myPrintston-Prefix.pch";
+				INFOPLIST_FILE = "myPrintston/myPrintston-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C131690418DA75290034F142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/myPrintston.app/myPrintston";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myPrintston/myPrintston-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "myPrintstonTests/myPrintstonTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		C131690518DA75290034F142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/myPrintston.app/myPrintston";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myPrintston/myPrintston-Prefix.pch";
+				INFOPLIST_FILE = "myPrintstonTests/myPrintstonTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C13168C618DA75290034F142 /* Build configuration list for PBXProject "myPrintston" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C13168FE18DA75290034F142 /* Debug */,
+				C13168FF18DA75290034F142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C131690018DA75290034F142 /* Build configuration list for PBXNativeTarget "myPrintston" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C131690118DA75290034F142 /* Debug */,
+				C131690218DA75290034F142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C131690318DA75290034F142 /* Build configuration list for PBXNativeTarget "myPrintstonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C131690418DA75290034F142 /* Debug */,
+				C131690518DA75290034F142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C13168C318DA75290034F142 /* Project object */;
+}
