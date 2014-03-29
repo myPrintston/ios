@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface MPSPrinter : NSObject {
-    int count;
+    
+    int printerid;
 }
+
++ (int) count;
+
 @end
