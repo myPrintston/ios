@@ -1,20 +1,27 @@
 //
-//  MPSTableViewController.m
+//  MPSListViewController.m
 //  myPrintston
 //
 //  Created by Michael J Kim on 3/28/14.
 //
 //
 
-#import "MPSTableViewController.h"
+#import "MPSListViewController.h"
 
-@interface MPSTableViewController ()
+@interface MPSListViewController ()
 
 @end
 
-@implementation MPSTableViewController
+@implementation MPSListViewController
 
-int sections = 0;
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -39,7 +46,7 @@ int sections = 0;
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return sections;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -99,19 +106,13 @@ int sections = 0;
 */
 
 /*
-#pragma mark - Table view delegate
+#pragma mark - Navigation
 
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
+    // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 */
 
