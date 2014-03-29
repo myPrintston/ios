@@ -22,6 +22,9 @@
 		C13168F318DA75290034F142 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168D218DA75290034F142 /* UIKit.framework */; };
 		C13168FB18DA75290034F142 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13168F918DA75290034F142 /* InfoPlist.strings */; };
 		C13168FD18DA75290034F142 /* myPrintstonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168FC18DA75290034F142 /* myPrintstonTests.m */; };
+		C1FB68EB18E61F7000376EBC /* MPSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FB68E918E61F7000376EBC /* MPSTableViewController.m */; };
+		C1FB68EC18E61F7000376EBC /* MPSTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FB68EA18E61F7000376EBC /* MPSTableViewController.xib */; };
+		C1FB68EF18E6216000376EBC /* MPSPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FB68EE18E6216000376EBC /* MPSPrinter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,11 @@
 		C13168F818DA75290034F142 /* myPrintstonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myPrintstonTests-Info.plist"; sourceTree = "<group>"; };
 		C13168FA18DA75290034F142 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C13168FC18DA75290034F142 /* myPrintstonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myPrintstonTests.m; sourceTree = "<group>"; };
+		C1FB68E818E61F7000376EBC /* MPSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSTableViewController.h; sourceTree = "<group>"; };
+		C1FB68E918E61F7000376EBC /* MPSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSTableViewController.m; sourceTree = "<group>"; };
+		C1FB68EA18E61F7000376EBC /* MPSTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPSTableViewController.xib; sourceTree = "<group>"; };
+		C1FB68ED18E6216000376EBC /* MPSPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSPrinter.h; sourceTree = "<group>"; };
+		C1FB68EE18E6216000376EBC /* MPSPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSPrinter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +126,11 @@
 				C13168DD18DA75290034F142 /* MPSAppDelegate.h */,
 				C13168DE18DA75290034F142 /* MPSAppDelegate.m */,
 				C13168E018DA75290034F142 /* Main.storyboard */,
+				C1FB68E818E61F7000376EBC /* MPSTableViewController.h */,
+				C1FB68E918E61F7000376EBC /* MPSTableViewController.m */,
+				C1FB68ED18E6216000376EBC /* MPSPrinter.h */,
+				C1FB68EE18E6216000376EBC /* MPSPrinter.m */,
+				C1FB68EA18E61F7000376EBC /* MPSTableViewController.xib */,
 				C13168E318DA75290034F142 /* MPSFirstViewController.h */,
 				C13168E418DA75290034F142 /* MPSFirstViewController.m */,
 				C13168E618DA75290034F142 /* MPSSecondViewController.h */,
@@ -235,6 +248,7 @@
 			files = (
 				C13168EA18DA75290034F142 /* Images.xcassets in Resources */,
 				C13168D918DA75290034F142 /* InfoPlist.strings in Resources */,
+				C1FB68EC18E61F7000376EBC /* MPSTableViewController.xib in Resources */,
 				C13168E218DA75290034F142 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,8 +270,10 @@
 			files = (
 				C13168E518DA75290034F142 /* MPSFirstViewController.m in Sources */,
 				C13168DB18DA75290034F142 /* main.m in Sources */,
+				C1FB68EB18E61F7000376EBC /* MPSTableViewController.m in Sources */,
 				C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */,
 				C13168E818DA75290034F142 /* MPSSecondViewController.m in Sources */,
+				C1FB68EF18E6216000376EBC /* MPSPrinter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +478,7 @@
 				C131690218DA75290034F142 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C131690318DA75290034F142 /* Build configuration list for PBXNativeTarget "myPrintstonTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +487,7 @@
 				C131690518DA75290034F142 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
