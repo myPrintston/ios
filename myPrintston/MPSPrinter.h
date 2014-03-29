@@ -11,6 +11,9 @@
 @interface MPSPrinter : NSObject {
     
     int printerid;
+    double longitude;
+    double latitude;
+    NSString* error;
 }
 
 + (int) count;
