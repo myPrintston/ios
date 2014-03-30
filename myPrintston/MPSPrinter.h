@@ -18,4 +18,12 @@
 
 + (int) count;
 
+- (int) printerid;
+- (double) longitude;
+- (double) latitude;
+
+- (void) setPrinterId: (int) printerid;
+- (void) setLongitude: (double) new_longitude;
+- (void) setLatitude:  (double) new_latitude;
+
 @end
