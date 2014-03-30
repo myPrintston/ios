@@ -209,6 +209,9 @@
 				CLASSPREFIX = MPS;
 				LastUpgradeCheck = 0510;
 				TargetAttributes = {
+					C13168CA18DA75290034F142 = {
+						DevelopmentTeam = WKRZ8G7B5R;
+					};
 					C13168EE18DA75290034F142 = {
 						TestTargetID = C13168CA18DA75290034F142;
 					};
@@ -388,10 +391,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myPrintston/myPrintston-Prefix.pch";
 				INFOPLIST_FILE = "myPrintston/myPrintston-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -401,10 +407,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myPrintston/myPrintston-Prefix.pch";
 				INFOPLIST_FILE = "myPrintston/myPrintston-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
