@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "tableofcontents.png"
+      "filename" : "List_bullets.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "text-align-justify.png"
     }
   ],
   "info" : {
