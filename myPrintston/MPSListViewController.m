@@ -7,9 +7,13 @@
 //
 
 #import "MPSListViewController.h"
+#import "MPSPrinter.h"
 
-@interface MPSListViewController ()
+@interface MPSListViewController() {
 
+    NSMutableArray *printers;
+    //NSInteger num_printers;
+}
 @end
 
 @implementation MPSListViewController
@@ -19,6 +23,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        // num_printers = 0;
+        // printers = [NSMutableArray array];
     }
     return self;
 }
@@ -32,6 +38,14 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    
+    MPSPrinter *printer1 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
+    MPSPrinter *printer2 = [[MPSPrinter alloc] initWithName:@"Icahn"];
+    MPSPrinter *printer3 = [[MPSPrinter alloc] initWithName:@"McCarter"];
+    
+    self->printers = [NSMutableArray arrayWithObjects:printer1,printer2,printer3,nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,20 +65,25 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    extern int printer_count;
-    return printer_count;
+    return [self->printers count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"PrinterCell";
+    
+    MPSPrinter *currentPrinter = [self->printers objectAtIndex:indexPath.row];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    cell.textLabel.text = currentPrinter.name;
     
     // Configure the cell...
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
