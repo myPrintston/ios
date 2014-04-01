@@ -13,10 +13,12 @@
     int printerid;
     double longitude;
     double latitude;
-    NSString* error;
+    NSString* name;
 }
 
-+ (int) count;
+@property NSString *name;
+
+- (id)initWithName:(NSString *)new_name;
 
 - (int) printerid;
 - (double) longitude;
