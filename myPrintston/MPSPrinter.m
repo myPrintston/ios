@@ -20,7 +20,7 @@
     
     if (self)
     {
-        name = new_name;
+        _name = new_name;
     }
     
     return self;
@@ -29,37 +29,5 @@
 - (void) dealloc {
 }
 
-// Getter Functions
-- (int) printerid {
-    return printerid;
-}
-
-- (double) longitude {
-    return longitude;
-}
-- (double) latitude {
-    return latitude;
-}
-
-- (NSString*) name {
-    return name;
-}
-
-// Setter Functions
-- (void) setPrinterId: (int) new_printerid {
-    self->printerid = new_printerid;
-}
-
-- (void) setLongitude:(double)new_longitude {
-    self->longitude = new_longitude;
-}
-
-- (void) setLatitude:(double)new_latitude {
-    self->latitude = new_latitude;
-}
-
-- (void) setName:(NSString*)new_name{
-    self->name = new_name;
-}
 
 @end

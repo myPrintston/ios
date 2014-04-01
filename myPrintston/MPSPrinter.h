@@ -8,24 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MPSPrinter : NSObject {
-    
-    int printerid;
-    double longitude;
-    double latitude;
-    NSString* name;
-}
+@interface MPSPrinter : NSObject
 
-@property NSString *name;
+@property (nonatomic) int printerid;
+@property (nonatomic) double longitude;
+@property (nonatomic) double latitude;
+@property (nonatomic) NSString *name;
 
 - (id)initWithName:(NSString *)new_name;
-
-- (int) printerid;
-- (double) longitude;
-- (double) latitude;
-
-- (void) setPrinterId: (int) printerid;
-- (void) setLongitude: (double) new_longitude;
-- (void) setLatitude:  (double) new_latitude;
 
 @end
