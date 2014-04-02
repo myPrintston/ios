@@ -12,7 +12,6 @@
 @interface MPSListViewController() {
 
     NSMutableArray *printers;
-    //NSInteger num_printers;
 }
 @end
 
