@@ -39,7 +39,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
-    
 
     self->printers = self.loadPrinters;
 }
@@ -88,14 +87,23 @@
 - (NSMutableArray*) loadPrinters
 {
     MPSPrinter *printer1 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
+    printer1.status = YES;
     MPSPrinter *printer2 = [[MPSPrinter alloc] initWithName:@"Icahn"];
+    printer2.status = NO;
     MPSPrinter *printer3 = [[MPSPrinter alloc] initWithName:@"McCarter"];
+    printer3.status = NO;
     MPSPrinter *printer4 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
+    printer4.status = YES;
     MPSPrinter *printer5 = [[MPSPrinter alloc] initWithName:@"Icahn"];
+    printer5.status = NO;
     MPSPrinter *printer6 = [[MPSPrinter alloc] initWithName:@"McCarter"];
+    printer6.status = YES;
     MPSPrinter *printer7 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
+    printer7.status = YES;
     MPSPrinter *printer8 = [[MPSPrinter alloc] initWithName:@"Icahn"];
+    printer8.status = NO;
     MPSPrinter *printer9 = [[MPSPrinter alloc] initWithName:@"McCarter"];
+    printer9.status = YES;
     
     return [NSMutableArray arrayWithObjects:printer1,printer2,printer3,printer4,printer5,printer6,printer7,printer8,printer9,nil];
 }
@@ -147,6 +155,7 @@
     MPSPrinterViewController *detailController =segue.destinationViewController;
     MPSPrinter *printer = [self->printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     detailController.printer = printer;
+    detailController.title = printer.name;
 }
 
 @end

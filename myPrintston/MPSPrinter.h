@@ -14,6 +14,7 @@
 @property (nonatomic) double longitude;
 @property (nonatomic) double latitude;
 @property (nonatomic) NSString *name;
+@property (nonatomic) BOOL status;
 
 - (id)initWithName:(NSString *)new_name;
 
