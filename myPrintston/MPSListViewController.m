@@ -24,8 +24,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        // num_printers = 0;
-        // printers = [NSMutableArray array];
+        
     }
     return self;
 }
@@ -80,6 +79,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = currentPrinter.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", [currentPrinter distance]];
     
     // Configure the cell...
     
@@ -108,7 +108,7 @@
     MPSPrinter *printer9 = [[MPSPrinter alloc] initWithName:@"McCarter"];
     printer9.status = YES;
     
-    return [NSMutableArray arrayWithObjects:printer1,printer2,printer3,printer4,printer5,printer6,printer7,printer8,printer9,nil];
+    return [NSMutableArray arrayWithObjects:printer1,printer2,printer3,printer4,printer5,printer6,printer7,printer8,printer9, nil];
 }
 
 /*

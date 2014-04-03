@@ -17,5 +17,5 @@
 @property (nonatomic) BOOL status;
 
 - (id)initWithName:(NSString *)new_name;
-
+- (double) distance;
 @end
