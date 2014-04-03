@@ -36,7 +36,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253" y="405"/>
+            <point key="canvasLocation" x="79" y="415"/>
         </scene>
         <!--List View Controller - Table-->
         <scene sceneID="8b6-Eb-M4K">
@@ -46,19 +46,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="aup-td-e71">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PrinterCell" id="RCt-xC-moj">
-                                <rect key="frame" x="0.0" y="42" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RCt-xC-moj" id="DAb-Qx-K6i">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="s46-Mj-Y5b" kind="push" id="rFU-dH-dJ7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -66,14 +64,21 @@
                             <outlet property="delegate" destination="Pqy-MP-Tk9" id="Yrs-VB-DyK"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="list" id="Azl-CI-9Lp">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="pTK-Wv-Tdy"/>
+                    <navigationItem key="navigationItem" title="Printers" id="0Dw-5f-X3g"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWw-Qz-znP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="295" y="-285"/>
+            <point key="canvasLocation" x="605" y="-301"/>
+        </scene>
+        <!--Printer View Controller - Title-->
+        <scene sceneID="UgK-Cw-Ib1">
+            <objects>
+                <viewController id="s46-Mj-Y5b" customClass="MPSPrinterViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Title" id="eam-wb-Hqa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hGK-ri-8FL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1008" y="-299"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -88,13 +93,34 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Pqy-MP-Tk9" kind="relationship" relationship="viewControllers" id="raS-WH-pgq"/>
+                        <segue destination="p9v-qa-PD4" kind="relationship" relationship="viewControllers" id="raS-WH-pgq"/>
                         <segue destination="QUy-BD-bpt" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-505" y="87"/>
+            <point key="canvasLocation" x="-519" y="415"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4Dk-kb-yQq">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ug3-KZ-bv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p9v-qa-PD4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="list" id="Azl-CI-9Lp">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DYo-hF-7W2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Pqy-MP-Tk9" kind="relationship" relationship="rootViewController" id="Y4H-sp-K8A"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="79" y="-301"/>
         </scene>
     </scenes>
     <resources>
