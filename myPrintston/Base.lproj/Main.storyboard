@@ -74,11 +74,54 @@
         <scene sceneID="UgK-Cw-Ib1">
             <objects>
                 <viewController id="s46-Mj-Y5b" customClass="MPSPrinterViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Title" id="eam-wb-Hqa"/>
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="76b-f2-E60"/>
+                        <viewControllerLayoutGuide type="bottom" id="eZW-YH-d7Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b1a-bm-y7W">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idO-ZK-0Od">
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ros-SG-h4e">
+                                        <rect key="frame" x="0.0" y="390" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="5VZ-IY-xaU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Report Error">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ros-SG-h4e" secondAttribute="width" id="60h-GI-QfE"/>
+                                    <constraint firstAttribute="bottom" secondItem="ros-SG-h4e" secondAttribute="bottom" constant="20" id="MkU-iP-jGC"/>
+                                    <constraint firstAttribute="centerX" secondItem="ros-SG-h4e" secondAttribute="centerX" id="dW4-j8-bWc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eZW-YH-d7Y" firstAttribute="top" secondItem="idO-ZK-0Od" secondAttribute="bottom" id="GIO-HD-zRz"/>
+                            <constraint firstAttribute="trailing" secondItem="idO-ZK-0Od" secondAttribute="trailing" id="Ire-SK-ODJ"/>
+                            <constraint firstItem="idO-ZK-0Od" firstAttribute="top" secondItem="76b-f2-E60" secondAttribute="bottom" id="lHc-6c-FdO"/>
+                            <constraint firstItem="idO-ZK-0Od" firstAttribute="leading" secondItem="b1a-bm-y7W" secondAttribute="leading" id="rZp-4c-fJB"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="tkV-A3-Wja"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGK-ri-8FL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1008" y="-299"/>
+            <point key="canvasLocation" x="1043" y="-243"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -104,7 +147,6 @@
         <!--Navigation Controller-->
         <scene sceneID="4Dk-kb-yQq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ug3-KZ-bv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p9v-qa-PD4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="list" id="Azl-CI-9Lp">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -119,6 +161,7 @@
                         <segue destination="Pqy-MP-Tk9" kind="relationship" relationship="rootViewController" id="Y4H-sp-K8A"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ug3-KZ-bv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="79" y="-301"/>
         </scene>

@@ -12,5 +12,6 @@
 @interface MPSPrinterViewController : UIViewController
 
 @property (nonatomic) MPSPrinter *printer;
+@property (weak, nonatomic) IBOutlet UIButton *errorButton;
 
 @end
