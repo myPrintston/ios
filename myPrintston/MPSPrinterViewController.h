@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MPSPrinter.h"
 
 @interface MPSPrinterViewController : UIViewController
+
+@property (nonatomic) MPSPrinter *printer;
 
 @end

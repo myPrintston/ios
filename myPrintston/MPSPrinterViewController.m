@@ -7,6 +7,7 @@
 //
 
 #import "MPSPrinterViewController.h"
+#import "MPSPrinter.h"
 
 @interface MPSPrinterViewController ()
 
