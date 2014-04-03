@@ -11,7 +11,6 @@
 #import "MPSPrinter.h"
 
 @interface MPSListViewController() {
-
     NSMutableArray *printers;
 }
 @end
@@ -141,7 +140,6 @@
 
 
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 // Modify the prepareForSegue method by
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
