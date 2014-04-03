@@ -9,9 +9,11 @@
 #import "MPSListViewController.h"
 #import "MPSPrinterViewController.h"
 #import "MPSPrinter.h"
+#import <CoreLocation/Corelocation.h>
 
 @interface MPSListViewController() {
     NSMutableArray *printers;
+    CLLocationManager *locationManager;
 }
 @end
 
@@ -39,6 +41,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    locationManager = [[CLLocationManager alloc] init];
 
     self->printers = self.loadPrinters;
 }
