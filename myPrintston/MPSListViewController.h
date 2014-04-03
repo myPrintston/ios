@@ -10,4 +10,6 @@
 
 @interface MPSListViewController : UITableViewController
 
+- (NSMutableArray*) loadPrinters;
+
 @end

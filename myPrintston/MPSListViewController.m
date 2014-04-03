@@ -7,6 +7,7 @@
 //
 
 #import "MPSListViewController.h"
+#import "MPSPrinterViewController.h"
 #import "MPSPrinter.h"
 
 @interface MPSListViewController() {
@@ -40,17 +41,18 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    MPSPrinter *printer1 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
-    MPSPrinter *printer2 = [[MPSPrinter alloc] initWithName:@"Icahn"];
-    MPSPrinter *printer3 = [[MPSPrinter alloc] initWithName:@"McCarter"];
-    
-    self->printers = [NSMutableArray arrayWithObjects:printer1,printer2,printer3,nil];
+
+    self->printers = self.loadPrinters;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)didMoveToParentViewController:(UIViewController *)parent{
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -83,6 +85,21 @@
     return cell;
 }
 
+
+- (NSMutableArray*) loadPrinters
+{
+    MPSPrinter *printer1 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
+    MPSPrinter *printer2 = [[MPSPrinter alloc] initWithName:@"Icahn"];
+    MPSPrinter *printer3 = [[MPSPrinter alloc] initWithName:@"McCarter"];
+    MPSPrinter *printer4 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
+    MPSPrinter *printer5 = [[MPSPrinter alloc] initWithName:@"Icahn"];
+    MPSPrinter *printer6 = [[MPSPrinter alloc] initWithName:@"McCarter"];
+    MPSPrinter *printer7 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
+    MPSPrinter *printer8 = [[MPSPrinter alloc] initWithName:@"Icahn"];
+    MPSPrinter *printer9 = [[MPSPrinter alloc] initWithName:@"McCarter"];
+    
+    return [NSMutableArray arrayWithObjects:printer1,printer2,printer3,printer4,printer5,printer6,printer7,printer8,printer9,nil];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -122,15 +139,16 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
+// Modify the prepareForSegue method by
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    MPSPrinterViewController *detailController =segue.destinationViewController;
+    MPSPrinter *printer = [self->printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    detailController.printer = printer;
 }
-*/
 
 @end
