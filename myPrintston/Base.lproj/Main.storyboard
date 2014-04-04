@@ -103,23 +103,33 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ros-SG-h4e">
-                                        <rect key="frame" x="0.0" y="390" width="320" height="50"/>
+                                        <rect key="frame" x="20" y="390" width="280" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="5VZ-IY-xaU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="Report Error">
+                                        <state key="normal" title="REPORT ISSUE">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="3eS-uH-UYn" kind="push" id="VfU-dI-hZH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ros-SG-h4e" secondAttribute="width" id="60h-GI-QfE"/>
+                                    <constraint firstItem="ros-SG-h4e" firstAttribute="leading" secondItem="idO-ZK-0Od" secondAttribute="leading" constant="20" id="Cu0-La-vuP"/>
                                     <constraint firstAttribute="bottom" secondItem="ros-SG-h4e" secondAttribute="bottom" constant="20" id="MkU-iP-jGC"/>
-                                    <constraint firstAttribute="centerX" secondItem="ros-SG-h4e" secondAttribute="centerX" id="dW4-j8-bWc"/>
+                                    <constraint firstAttribute="trailing" secondItem="ros-SG-h4e" secondAttribute="trailing" constant="20" id="hih-Le-WB4"/>
+                                    <constraint firstAttribute="trailing" secondItem="ros-SG-h4e" secondAttribute="trailing" constant="20" id="u04-kL-RVN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -137,7 +147,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGK-ri-8FL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097" y="-301"/>
+            <point key="canvasLocation" x="1053" y="-301"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2en-qC-nre">
+            <objects>
+                <viewController id="3eS-uH-UYn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AP0-4F-hAv"/>
+                        <viewControllerLayoutGuide type="bottom" id="bKd-TR-KNz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P1F-d4-yP8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2a-OR-6Cm">
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1m-bS-Btg">
+                                        <rect key="frame" x="20" y="390" width="280" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="1hY-6U-ebX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="SUBMIT">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="b1m-bS-Btg" firstAttribute="leading" secondItem="a2a-OR-6Cm" secondAttribute="leading" constant="20" id="9Dh-IB-Zrq"/>
+                                    <constraint firstAttribute="bottom" secondItem="b1m-bS-Btg" secondAttribute="bottom" constant="20" id="JXa-Mo-c1b"/>
+                                    <constraint firstAttribute="trailing" secondItem="b1m-bS-Btg" secondAttribute="trailing" constant="20" id="mkY-gf-OfJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="a2a-OR-6Cm" secondAttribute="trailing" id="NKD-6h-v3h"/>
+                            <constraint firstItem="a2a-OR-6Cm" firstAttribute="top" secondItem="AP0-4F-hAv" secondAttribute="bottom" id="Qke-WV-PVP"/>
+                            <constraint firstItem="a2a-OR-6Cm" firstAttribute="leading" secondItem="P1F-d4-yP8" secondAttribute="leading" id="eGR-Jx-Ogb"/>
+                            <constraint firstItem="bKd-TR-KNz" firstAttribute="top" secondItem="a2a-OR-6Cm" secondAttribute="bottom" id="gTx-N8-4N7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="w3z-lh-UdG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V4c-4c-nml" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1514" y="-301"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
