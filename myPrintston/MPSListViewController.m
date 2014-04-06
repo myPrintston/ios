@@ -80,7 +80,7 @@
     
     cell.textLabel.text = currentPrinter.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", [currentPrinter distance]];
-    
+
     // Configure the cell...
     
     return cell;
