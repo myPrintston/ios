@@ -134,21 +134,11 @@
 		C13168D418DA75290034F142 /* myPrintston */ = {
 			isa = PBXGroup;
 			children = (
-				C1DDFC9718F1D67C00014413 /* MPSErrorListView.h */,
-				C1DDFC9818F1D67C00014413 /* MPSErrorListView.m */,
-				C1633A2518E66E1700419AA1 /* MPSListViewController.h */,
-				C1633A2618E66E1700419AA1 /* MPSListViewController.m */,
+				C1E3635018F46D2000A6486B /* model */,
+				C1E3635118F46D8F00A6486B /* views */,
+				C13168E018DA75290034F142 /* Main.storyboard */,
 				C13168DD18DA75290034F142 /* MPSAppDelegate.h */,
 				C13168DE18DA75290034F142 /* MPSAppDelegate.m */,
-				C13168E018DA75290034F142 /* Main.storyboard */,
-				C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */,
-				C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */,
-				C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */,
-				C1DDFC9A18F3B59600014413 /* Reachability.h */,
-				C1DDFC9B18F3B59600014413 /* Reachability.m */,
-				C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */,
-				C1FB68ED18E6216000376EBC /* MPSPrinter.h */,
-				C1FB68EE18E6216000376EBC /* MPSPrinter.m */,
 				C13168E618DA75290034F142 /* MPSSecondViewController.h */,
 				C13168E718DA75290034F142 /* MPSSecondViewController.m */,
 				C13168E918DA75290034F142 /* Images.xcassets */,
@@ -184,6 +174,32 @@
 				C13168F918DA75290034F142 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C1E3635018F46D2000A6486B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				C1DDFC9A18F3B59600014413 /* Reachability.h */,
+				C1DDFC9B18F3B59600014413 /* Reachability.m */,
+				C1FB68ED18E6216000376EBC /* MPSPrinter.h */,
+				C1FB68EE18E6216000376EBC /* MPSPrinter.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		C1E3635118F46D8F00A6486B /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C1DDFC9718F1D67C00014413 /* MPSErrorListView.h */,
+				C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */,
+				C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */,
+				C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */,
+				C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */,
+				C1DDFC9818F1D67C00014413 /* MPSErrorListView.m */,
+				C1633A2518E66E1700419AA1 /* MPSListViewController.h */,
+				C1633A2618E66E1700419AA1 /* MPSListViewController.m */,
+			);
+			name = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
