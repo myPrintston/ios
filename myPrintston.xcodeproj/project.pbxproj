@@ -191,13 +191,13 @@
 			isa = PBXGroup;
 			children = (
 				C1DDFC9718F1D67C00014413 /* MPSErrorListView.h */,
+				C1DDFC9818F1D67C00014413 /* MPSErrorListView.m */,
 				C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */,
 				C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */,
-				C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */,
-				C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */,
-				C1DDFC9818F1D67C00014413 /* MPSErrorListView.m */,
 				C1633A2518E66E1700419AA1 /* MPSListViewController.h */,
 				C1633A2618E66E1700419AA1 /* MPSListViewController.m */,
+				C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */,
+				C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
