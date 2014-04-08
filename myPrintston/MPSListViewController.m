@@ -84,7 +84,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = currentPrinter.name;
-    cell.textLabel.textColor = (currentPrinter.status ? [UIColor greenColor] : [UIColor redColor]);
+    
+    if (currentPrinter.status == 0) cell.textLabel.textColor = [UIColor greenColor];
+    if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
+    if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor redColor];
+    
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", [currentPrinter distance]];
     
     return cell;
@@ -128,25 +132,25 @@
     
     
     MPSPrinter *printer1 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
-    printer1.status = YES;
+    printer1.status = 0;
     MPSPrinter *printer2 = [[MPSPrinter alloc] initWithName:@"Icahn"];
-    printer2.status = NO;
+    printer2.status = 1;
     MPSPrinter *printer3 = [[MPSPrinter alloc] initWithName:@"McCarter"];
-    printer3.status = NO;
+    printer3.status = 2;
     MPSPrinter *printer4 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
-    printer4.status = YES;
+    printer4.status = 1;
     MPSPrinter *printer5 = [[MPSPrinter alloc] initWithName:@"Icahn"];
-    printer5.status = NO;
+    printer5.status = 0;
     MPSPrinter *printer6 = [[MPSPrinter alloc] initWithName:@"McCarter"];
-    printer6.status = YES;
+    printer6.status = 0;
     MPSPrinter *printer7 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
-    printer7.status = YES;
+    printer7.status = 2;
     MPSPrinter *printer8 = [[MPSPrinter alloc] initWithName:@"Icahn"];
-    printer8.status = NO;
+    printer8.status = 2;
     MPSPrinter *printer9 = [[MPSPrinter alloc] initWithName:@"McCarter"];
-    printer9.status = YES;
+    printer9.status = 1;
     MPSPrinter *printer10 = [[MPSPrinter alloc] initWithName:@"1901"];
-    printer10.status = YES;
+    printer10.status = 1;
     
     return [NSMutableArray arrayWithObjects:printer1,printer2,printer3,printer4,printer5,printer6,printer7,printer8,printer9,printer10, nil];
 }
