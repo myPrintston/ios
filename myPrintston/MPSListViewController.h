@@ -11,5 +11,5 @@
 @interface MPSListViewController : UITableViewController
 
 - (NSMutableArray*) loadPrinters;
-
+- (BOOL)canConnect;
 @end
