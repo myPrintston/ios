@@ -18,4 +18,6 @@
 
 - (id)initWithName:(NSString *)new_name;
 - (double) distance;
+- (id)initWithJSONDictionary:(NSDictionary *)jsonDictionary;
+
 @end
