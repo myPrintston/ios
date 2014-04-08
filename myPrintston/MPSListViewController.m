@@ -73,6 +73,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //UIColor *red   = [UIColor colorWithRed:255.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f];
+    //UIColor *green = [UIColor colorWithRed:0.0f/255.0f green:255.0f/255.0f blue:0.0f/255.0f alpha:1.0f];
+    
     // Configure the cell...
     static NSString *CellIdentifier = @"PrinterCell";
     
@@ -81,6 +84,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = currentPrinter.name;
+    cell.textLabel.textColor = (currentPrinter.status ? [UIColor greenColor] : [UIColor redColor]);
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", [currentPrinter distance]];
     
     return cell;
@@ -89,14 +93,7 @@
 
 - (NSMutableArray*) loadPrinters
 {
-    /*
-    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/333"];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    NSString *ret = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"ret=%@", ret); */
-    
-    if ([self canConnect])
-        NSLog(@"HIHIHI");
+    // if ([self canConnect]) NSLog(@"HIHIHI");
     
     NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/?fromios"];
     NSData *data = [NSData dataWithContentsOfURL:url];
@@ -117,7 +114,6 @@
      {
          if (connectionError == nil)
          {
-             
              NSString *result = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
              NSLog(@"ret=%@", result);
          } else {
