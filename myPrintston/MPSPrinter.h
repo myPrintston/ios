@@ -14,10 +14,10 @@
 @property (nonatomic) double longitude;
 @property (nonatomic) double latitude;
 @property (nonatomic) NSString *name;
-@property (nonatomic) BOOL status;
+@property (nonatomic) int status;
 
 - (id)initWithName:(NSString *)new_name;
 - (double) distance;
-- (id)initWithJSONDictionary:(NSDictionary *)jsonDictionary;
+- (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

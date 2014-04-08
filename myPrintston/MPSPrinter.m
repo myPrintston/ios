@@ -27,10 +27,10 @@
     return self;
 }
 
-- (id)initWithJSONDictionary:(NSDictionary *)jsonDictionary {
+- (id)initWithDictionary:(NSDictionary *)dictionary {
     if(self = [self init]) {
         // Assign all properties with keyed values from the dictionary
-        _name = [jsonDictionary objectForKey:@"name"];
+        _name = [dictionary objectForKey:@"name"];
     }
     
     return self;
