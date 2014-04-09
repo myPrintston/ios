@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MPSErrorViewController : UIViewController
+@interface MPSErrorViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *errorList;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
