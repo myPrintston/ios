@@ -125,9 +125,7 @@
     [request setHTTPBody:postData];
     NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
     
-    if(conn)
-        NSLog(@"Connection Successful");
-    else
+    if(!conn)
         NSLog(@"Connection could not be made");
     
     
