@@ -25,7 +25,6 @@
 		C1633A2718E66E1700419AA1 /* MPSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1633A2618E66E1700419AA1 /* MPSListViewController.m */; };
 		C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */; };
 		C1A5F63618EDC17100FA1DFC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A5F63518EDC17100FA1DFC /* CoreLocation.framework */; };
-		C1DDFC9918F1D67C00014413 /* MPSErrorListView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DDFC9818F1D67C00014413 /* MPSErrorListView.m */; };
 		C1DDFC9C18F3B59600014413 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DDFC9B18F3B59600014413 /* Reachability.m */; };
 		C1FB68EF18E6216000376EBC /* MPSPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FB68EE18E6216000376EBC /* MPSPrinter.m */; };
 /* End PBXBuildFile section */
@@ -67,8 +66,6 @@
 		C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSPrinterViewController.h; sourceTree = "<group>"; };
 		C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSPrinterViewController.m; sourceTree = "<group>"; };
 		C1A5F63518EDC17100FA1DFC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C1DDFC9718F1D67C00014413 /* MPSErrorListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSErrorListView.h; sourceTree = "<group>"; };
-		C1DDFC9818F1D67C00014413 /* MPSErrorListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSErrorListView.m; sourceTree = "<group>"; };
 		C1DDFC9A18F3B59600014413 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		C1DDFC9B18F3B59600014413 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		C1FB68ED18E6216000376EBC /* MPSPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSPrinter.h; sourceTree = "<group>"; };
@@ -190,8 +187,6 @@
 		C1E3635118F46D8F00A6486B /* views */ = {
 			isa = PBXGroup;
 			children = (
-				C1DDFC9718F1D67C00014413 /* MPSErrorListView.h */,
-				C1DDFC9818F1D67C00014413 /* MPSErrorListView.m */,
 				C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */,
 				C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */,
 				C1633A2518E66E1700419AA1 /* MPSListViewController.h */,
@@ -308,7 +303,6 @@
 				C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */,
 				C13168E818DA75290034F142 /* MPSSecondViewController.m in Sources */,
 				C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */,
-				C1DDFC9918F1D67C00014413 /* MPSErrorListView.m in Sources */,
 				C1DDFC9C18F3B59600014413 /* Reachability.m in Sources */,
 				C1FB68EF18E6216000376EBC /* MPSPrinter.m in Sources */,
 			);
