@@ -96,8 +96,6 @@
 
 - (NSMutableArray*) loadPrinters
 {
-    // if ([self canConnect]) NSLog(@"HIHIHI");
-    
     NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/?fromios"];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
