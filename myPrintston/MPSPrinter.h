@@ -13,11 +13,13 @@
 @property (nonatomic) int printerid;
 @property (nonatomic) double longitude;
 @property (nonatomic) double latitude;
-@property (nonatomic) NSString *name;
+@property (nonatomic) NSString *building;
+@property (nonatomic) NSString *room;
 @property (nonatomic) int status;
+@property (nonatomic) NSString *statusMsg;
 
 - (id)initWithName:(NSString *)new_name;
 - (double) distance;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
-
+- (NSString*)name;
 @end

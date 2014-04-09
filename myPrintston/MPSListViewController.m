@@ -26,6 +26,7 @@
         // Custom initialization
         
     }
+    
     return self;
 }
 
@@ -82,7 +83,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = currentPrinter.name;
+    cell.textLabel.text = [currentPrinter name];
     
     if (currentPrinter.status == 0) cell.textLabel.textColor = [UIColor greenColor];
     if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
@@ -96,12 +97,20 @@
 
 - (NSMutableArray*) loadPrinters
 {
+    
     NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/?fromios"];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
-    NSLog(@"%@", jsonArray[0]);
+    NSMutableArray *urlprinters = [[NSMutableArray alloc] init];
+    for (NSDictionary *printerInfo in jsonArray) {
+        MPSPrinter *printer = [[MPSPrinter alloc] initWithDictionary:printerInfo];
+        [urlprinters addObject:printer];
+    }
+    
+    return urlprinters;
+    
     
     /*
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -126,7 +135,7 @@
              NSLog(@"Error : %@", [connectionError localizedFailureReason]);
          }
      }]; */
-    
+    /*
     
     MPSPrinter *printer1 = [[MPSPrinter alloc] initWithName:@"Witherspoon"];
     printer1.status = 0;
@@ -149,7 +158,7 @@
     MPSPrinter *printer10 = [[MPSPrinter alloc] initWithName:@"1901"];
     printer10.status = 1;
     
-    return [NSMutableArray arrayWithObjects:printer1,printer2,printer3,printer4,printer5,printer6,printer7,printer8,printer9,printer10, nil];
+    return [NSMutableArray arrayWithObjects:printer1,printer2,printer3,printer4,printer5,printer6,printer7,printer8,printer9,printer10, nil]; */
 }
 
 /*
@@ -198,7 +207,7 @@
     MPSPrinterViewController *detailController =segue.destinationViewController;
     MPSPrinter *printer = [self->printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     detailController.printer = printer;
-    detailController.title = printer.name;
+    detailController.title = [printer name];
 }
 
 @end

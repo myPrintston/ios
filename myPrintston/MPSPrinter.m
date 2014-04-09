@@ -21,16 +21,23 @@
     
     if (self)
     {
-        _name = new_name;
     }
     
     return self;
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary {
+    NSDictionary *fields = [dictionary objectForKey:@"fields"];
+    
     if(self = [self init]) {
         // Assign all properties with keyed values from the dictionary
-        _name = [dictionary objectForKey:@"name"];
+        self.printerid = [dictionary[@"pk"] intValue];
+        self.building  = [fields objectForKey:@"buildingName"];
+        self.room      = [fields objectForKey:@"roomNumber"];
+        //self.status    = [fields[@"status"] intValue];
+        self.status = 1;
+        self.statusMsg = [fields objectForKey:@"statusMsg"];
+        
     }
     
     return self;
@@ -42,4 +49,9 @@
 - (double) distance {
     return 3.1415926535;
 }
+
+- (NSString*) name {
+    return [NSString stringWithFormat:@"%@ - %@", self.building, self.room];
+}
+
 @end
