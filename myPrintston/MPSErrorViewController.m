@@ -12,6 +12,7 @@
     NSMutableArray *possibleErrors;
 }
 
+
 @end
 
 @implementation MPSErrorViewController
@@ -22,6 +23,7 @@
     if (self) {
         // Custom initialization
     }
+    
     return self;
 }
 
@@ -58,6 +60,9 @@
 
 - (NSInteger)tableView:(UITableView *)errorList numberOfRowsInSection:(NSInteger)section
 {
+    if (!self.errorList)
+        self.errorList = errorList;
+    
     // Return the number of rows in the section.
     return [self->possibleErrors count];
 }
@@ -70,6 +75,9 @@
     NSString *currentError = [self->possibleErrors objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [errorList dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (!cell)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    
     cell.textLabel.text = currentError;
     
     return cell;
@@ -95,5 +103,35 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (IBAction)submit {
+    for (int i = 0; i < [possibleErrors count]; i++) {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
+        UITableViewCell *cell = [self.errorList cellForRowAtIndexPath:path];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        if (cell == nil)
+            NSLog(@"hi");
+    }
+    
+    NSString *post = [NSString stringWithFormat:@"&Username=%@&Password=%@",@"username",@"password"];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://54.186.188.121:2016/?fromios"]]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    
+    if(conn)
+        NSLog(@"Connection Successful");
+    else
+        NSLog(@"Connection could not be made");
+    
+    
+    
+}
 
 @end

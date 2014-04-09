@@ -191,6 +191,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="submit" destination="3eS-uH-UYn" eventType="touchUpInside" id="iwH-HC-sKd"/>
+                                        </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="q7o-Db-ME6">
                                         <rect key="frame" x="20" y="20" width="280" height="350"/>
@@ -207,7 +210,7 @@
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
-                                            <outlet property="dataSource" destination="3eS-uH-UYn" id="psh-Qf-RZZ"/>
+                                            <outlet property="dataSource" destination="3eS-uH-UYn" id="hof-OH-Yh4"/>
                                             <outlet property="delegate" destination="3eS-uH-UYn" id="MBT-0l-g3U"/>
                                         </connections>
                                     </tableView>
@@ -233,9 +236,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w3z-lh-UdG"/>
-                    <connections>
-                        <outlet property="submitButton" destination="b1m-bS-Btg" id="Iba-py-8gl"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4c-4c-nml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

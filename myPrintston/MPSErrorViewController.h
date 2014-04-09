@@ -10,7 +10,7 @@
 
 @interface MPSErrorViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *errorList;
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (retain, nonatomic) IBOutlet UITableView *errorList;
+- (IBAction)submit;
 
 @end
