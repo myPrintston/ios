@@ -10,7 +10,6 @@
 #import "MPSPrinterViewController.h"
 #import "MPSPrinter.h"
 #import <CoreLocation/Corelocation.h>
-#import "Reachability.h"
 
 @interface MPSListViewController() {
     NSMutableArray *printers;
@@ -192,25 +191,6 @@
     return YES;
 }
 */
-
-- (BOOL)canConnect {
-    Reachability *r = [Reachability reachabilityWithHostName:@"http://54.186.188.121:2016/?json"];
-    NetworkStatus internetStatus = [r currentReachabilityStatus];
-    if (internetStatus == NotReachable) {
-        NSLog(@"Not Reachable");
-    }
-    if (internetStatus == ReachableViaWiFi) {
-        NSLog(@"Reachable Via Wifi");
-    }
-    if (internetStatus == ReachableViaWWAN) {
-        NSLog(@"Reachable Via WWAN");
-    }
-    if ((internetStatus == ReachableViaWiFi) || (internetStatus == ReachableViaWWAN)) {
-        NSLog(@"Reachable");
-    }
-    
-    return ((internetStatus == ReachableViaWiFi) || (internetStatus == ReachableViaWWAN));
-}
 
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
