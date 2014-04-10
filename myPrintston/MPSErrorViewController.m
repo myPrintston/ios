@@ -32,6 +32,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.errorList.delegate = self;
+    self.errorList.dataSource = self;
+    
     [self.errorList registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Error"];
     self.errorList.separatorColor = [UIColor clearColor];
     self.errorList.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -92,7 +95,6 @@
     
     [errorList deselectRowAtIndexPath:indexPath animated:NO];
 }
-
 /*
 #pragma mark - Navigation
 
@@ -114,15 +116,15 @@
             NSLog(@"hi");
     }
     
-    NSString *post = [NSString stringWithFormat:@"&Username=%@&Password=%@",@"username",@"password"];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
+    NSDictionary *json = @{@"hi":@"doug"};
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json options:0 error:&error];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://54.186.188.121:2016/?fromios"]]];
     [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
+    [request setHTTPBody:jsonData];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-Length"];
     NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
     
     if(!conn)
