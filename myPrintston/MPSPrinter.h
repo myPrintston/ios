@@ -19,7 +19,13 @@
 @property (nonatomic) NSString *statusMsg;
 
 - (id)initWithName:(NSString *)new_name;
-- (double) distance;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
+
 - (NSString*)name;
+
+
+- (double) distance;
+- (double) dist:(double)userLongitude :(double)userLatitude;
+- (double) dist2:(double)userLongitude :(double)userLatitude;
+
 @end

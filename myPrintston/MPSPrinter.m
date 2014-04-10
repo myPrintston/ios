@@ -46,6 +46,24 @@
 - (void) dealloc {
 }
 
+
+- (double) dist2:(double) userLongitude :(double)userLatitude {
+    /*
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = (sin(dlat/2))^2 + cos(lat1) * cos(lat2) * (sin(dlon/2))^2
+    c = 2 * atan2( sqrt(a), sqrt(1-a) )
+    d = R * c (where R is the radius of the Earth)
+    */
+    
+    return (self.longitude - userLongitude) * (self.longitude - userLongitude) +
+           (self.latitude  - userLatitude ) * (self.latitude  - userLatitude );
+}
+
+- (double) dist:(double)userLongitude :(double)userLatitude {
+    return sqrt([self dist2: userLongitude :userLatitude]);
+}
+
 - (double) distance {
     return 3.1415926535;
 }
