@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/Corelocation.h>
 
-@interface MPSListViewController : UITableViewController
+@interface MPSListViewController : UITableViewController <CLLocationManagerDelegate>
 
 - (NSMutableArray*) loadPrinters;
 

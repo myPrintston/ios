@@ -14,6 +14,8 @@
 @interface MPSListViewController() {
     NSMutableArray *printers;
     CLLocationManager *locationManager;
+    double userLongitude;
+    double userLatitude;
 }
 @end
 
@@ -42,6 +44,7 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     locationManager = [[CLLocationManager alloc] init];
+    [self getCurrentLocation];
 
     self->printers = self.loadPrinters;
 }
@@ -83,13 +86,13 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [currentPrinter name];
+    cell.textLabel.text = currentPrinter.building;
     
     if (currentPrinter.status == 0) cell.textLabel.textColor = [UIColor greenColor];
     if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
     if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor redColor];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%f", [currentPrinter distance]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%3dm) %@", (int)[currentPrinter distance], currentPrinter.room];
     
     return cell;
 }
@@ -135,6 +138,7 @@
              NSLog(@"Error : %@", [connectionError localizedFailureReason]);
          }
      }]; */
+    
 }
 
 /*
@@ -159,12 +163,7 @@
 }
 */
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+
 
 /*
 // Override to support conditional rearranging of the table view.
@@ -174,6 +173,38 @@
     return YES;
 }
 */
+
+- (void)getCurrentLocation {
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    [locationManager startUpdatingLocation];
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    //NSLog(@"didUpdateToLocation: %@", newLocation);
+    CLLocation *currentLocation = newLocation;
+    
+    if (currentLocation != nil) {
+        userLongitude = currentLocation.coordinate.longitude;
+        userLatitude  = currentLocation.coordinate.latitude;
+        [self.tableView reloadData];
+    }
+    
+    userLongitude = 40.345;
+    userLatitude  = -74.6552;
+}
 
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
