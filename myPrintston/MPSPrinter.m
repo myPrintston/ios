@@ -38,10 +38,6 @@
         self.latitude  = [fields[@"latitude"]  doubleValue];
         self.status    = [fields[@"status"] intValue];
         self.statusMsg = [fields objectForKey:@"statusMsg"];
-        
-        NSLog(@"%@", self.building);
-        NSLog(@"%f", self.longitude);
-        NSLog(@"%f\n\n", self.latitude);
     }
     
     return self;
@@ -52,27 +48,9 @@
 
 
 - (double) dist2:(double) userLongitude :(double)userLatitude {
-    /*
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
-    a = (sin(dlat/2))^2 + cos(lat1) * cos(lat2) * (sin(dlon/2))^2
-    c = 2 * atan2( sqrt(a), sqrt(1-a) )
-    d = R * c (where R is the radius of the Earth)
-    */
-    /*
-    double dlon = self.longitude - userLongitude;
-    double dlat = self.latitude  - userLatitude;
     
-    double sindlat = sin(dlat/2);
-    double sindlon = sin(dlon/2);
-    
-    double a= sindlat*sindlat + cos(self.longitude) * cos(self.latitude) * sindlon*sindlon;
-    double c= 2 * atan2 (sqrt(a), sqrt(1-a));
-    
-    return 6373000 * c;*/
-    
-    double dlong = 111200 * fabs((self.longitude - userLongitude)); // 111200
-    double dlat  = 101400 * fabs((self.latitude  - userLatitude)); // 101400
+    double dlong = 111200 * fabs((self.longitude - userLongitude));
+    double dlat  = 101400 * fabs((self.latitude  - userLatitude));
     
     return dlong * dlong + dlat * dlat;
 }
