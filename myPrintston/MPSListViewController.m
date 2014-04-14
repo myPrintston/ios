@@ -26,6 +26,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        userLongitude = -74.6552;
+        userLatitude  = 40.345;
         
     }
     
@@ -41,6 +43,10 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+    userLongitude = -74.6552;
+    userLatitude  = 40.345;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     locationManager = [[CLLocationManager alloc] init];
@@ -92,7 +98,7 @@
     if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
     if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor redColor];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%3dm) %@", (int)[currentPrinter distance], currentPrinter.room];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%3fm) %@", [currentPrinter dist:userLongitude :userLatitude], currentPrinter.room];
     
     return cell;
 }
@@ -101,7 +107,7 @@
 - (NSMutableArray*) loadPrinters
 {
     
-    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/?fromios"];
+    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/?pall"];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -138,6 +144,8 @@
              NSLog(@"Error : %@", [connectionError localizedFailureReason]);
          }
      }]; */
+    
+    NSLog(@"\n\n\n\n");
     
 }
 
@@ -202,8 +210,8 @@
         [self.tableView reloadData];
     }
     
-    userLongitude = 40.345;
-    userLatitude  = -74.6552;
+    userLongitude = -74.6552;
+    userLatitude  = 40.345;
 }
 
 #pragma mark - Navigation

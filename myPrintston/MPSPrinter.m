@@ -34,10 +34,14 @@
         self.printerid = [dictionary[@"pk"] intValue];
         self.building  = [fields objectForKey:@"buildingName"];
         self.room      = [fields objectForKey:@"roomNumber"];
-        //self.status    = [fields[@"status"] intValue];
-        self.status = 1;
+        self.longitude = [fields[@"longitude"] doubleValue];
+        self.latitude  = [fields[@"latitude"]  doubleValue];
+        self.status    = [fields[@"status"] intValue];
         self.statusMsg = [fields objectForKey:@"statusMsg"];
         
+        NSLog(@"%@", self.building);
+        NSLog(@"%f", self.longitude);
+        NSLog(@"%f\n\n", self.latitude);
     }
     
     return self;
@@ -55,13 +59,26 @@
     c = 2 * atan2( sqrt(a), sqrt(1-a) )
     d = R * c (where R is the radius of the Earth)
     */
+    /*
+    double dlon = self.longitude - userLongitude;
+    double dlat = self.latitude  - userLatitude;
     
-    return (self.longitude - userLongitude) * (self.longitude - userLongitude) +
-           (self.latitude  - userLatitude ) * (self.latitude  - userLatitude );
+    double sindlat = sin(dlat/2);
+    double sindlon = sin(dlon/2);
+    
+    double a= sindlat*sindlat + cos(self.longitude) * cos(self.latitude) * sindlon*sindlon;
+    double c= 2 * atan2 (sqrt(a), sqrt(1-a));
+    
+    return 6373000 * c;*/
+    
+    double dlong = 111200 * fabs((self.longitude - userLongitude)); // 111200
+    double dlat  = 101400 * fabs((self.latitude  - userLatitude)); // 101400
+    
+    return dlong * dlong + dlat * dlat;
 }
 
 - (double) dist:(double)userLongitude :(double)userLatitude {
-    return sqrt([self dist2: userLongitude :userLatitude]);
+    return sqrt([self dist2:userLongitude :userLatitude]);
 }
 
 - (double) distance {
