@@ -231,7 +231,6 @@
     MPSPrinter *printer = [self->printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     detailController.printer = printer;
     detailController.title = [printer name];
-    detailController.statusMsg.text = [NSString stringWithFormat:@"Status: %@", printer.statusMsg];
 }
 
 @end
