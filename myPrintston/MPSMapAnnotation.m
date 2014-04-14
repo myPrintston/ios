@@ -10,4 +10,11 @@
 
 @implementation MPSMapAnnotation
 
+- (id) initWithPrinter:(MPSPrinter*)printer
+{
+    self.coordinate = CLLocationCoordinate2DMake(printer.latitude, printer.longitude);
+    return self;
+}
+
+
 @end

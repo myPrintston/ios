@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+#import "MPSPrinter.h"
 
-@interface MPSMapAnnotation : NSObject
+@interface MPSMapAnnotation : NSObject<MKAnnotation>
+
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+
+- (id) initWithPrinter:(MPSPrinter*)printer;
 
 @end
