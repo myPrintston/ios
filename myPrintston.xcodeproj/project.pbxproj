@@ -25,6 +25,8 @@
 		C1633A2718E66E1700419AA1 /* MPSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1633A2618E66E1700419AA1 /* MPSListViewController.m */; };
 		C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */; };
 		C1A5F63618EDC17100FA1DFC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A5F63518EDC17100FA1DFC /* CoreLocation.framework */; };
+		C1E3635318FB75EF00A6486B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E3635218FB75EF00A6486B /* MapKit.framework */; };
+		C1E3635918FB79D500A6486B /* MPSMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E3635818FB79D500A6486B /* MPSMapAnnotation.m */; };
 		C1FB68EF18E6216000376EBC /* MPSPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FB68EE18E6216000376EBC /* MPSPrinter.m */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,9 @@
 		C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSPrinterViewController.h; sourceTree = "<group>"; };
 		C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSPrinterViewController.m; sourceTree = "<group>"; };
 		C1A5F63518EDC17100FA1DFC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C1E3635218FB75EF00A6486B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C1E3635718FB79D500A6486B /* MPSMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSMapAnnotation.h; sourceTree = "<group>"; };
+		C1E3635818FB79D500A6486B /* MPSMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSMapAnnotation.m; sourceTree = "<group>"; };
 		C1FB68ED18E6216000376EBC /* MPSPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSPrinter.h; sourceTree = "<group>"; };
 		C1FB68EE18E6216000376EBC /* MPSPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSPrinter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1E3635318FB75EF00A6486B /* MapKit.framework in Frameworks */,
 				C1A5F63618EDC17100FA1DFC /* CoreLocation.framework in Frameworks */,
 				C13168D118DA75290034F142 /* CoreGraphics.framework in Frameworks */,
 				C13168D318DA75290034F142 /* UIKit.framework in Frameworks */,
@@ -116,6 +122,7 @@
 		C13168CD18DA75290034F142 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C1E3635218FB75EF00A6486B /* MapKit.framework */,
 				C1A5F63518EDC17100FA1DFC /* CoreLocation.framework */,
 				C13168CE18DA75290034F142 /* Foundation.framework */,
 				C13168D018DA75290034F142 /* CoreGraphics.framework */,
@@ -173,6 +180,8 @@
 		C1E3635018F46D2000A6486B /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C1E3635718FB79D500A6486B /* MPSMapAnnotation.h */,
+				C1E3635818FB79D500A6486B /* MPSMapAnnotation.m */,
 				C1FB68ED18E6216000376EBC /* MPSPrinter.h */,
 				C1FB68EE18E6216000376EBC /* MPSPrinter.m */,
 			);
@@ -298,6 +307,7 @@
 				C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */,
 				C13168E818DA75290034F142 /* MPSSecondViewController.m in Sources */,
 				C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */,
+				C1E3635918FB79D500A6486B /* MPSMapAnnotation.m in Sources */,
 				C1FB68EF18E6216000376EBC /* MPSPrinter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
