@@ -46,7 +46,7 @@
 - (void) dealloc {
 }
 
-
+// Calculate distance squared to a given position
 - (double) dist2:(double) userLongitude :(double)userLatitude {
     
     double dlong = 111200 * fabs((self.longitude - userLongitude));
@@ -55,6 +55,7 @@
     return dlong * dlong + dlat * dlat;
 }
 
+// Calculate distance to a given position
 - (double) dist:(double)userLongitude :(double)userLatitude {
     return sqrt([self dist2:userLongitude :userLatitude]);
 }

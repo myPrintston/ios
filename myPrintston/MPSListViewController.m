@@ -53,6 +53,7 @@
     [self getCurrentLocation];
 
     self->printers = self.loadPrinters;
+    [self sortPrinters];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,9 +83,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //UIColor *red   = [UIColor colorWithRed:255.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f];
-    //UIColor *green = [UIColor colorWithRed:0.0f/255.0f green:255.0f/255.0f blue:0.0f/255.0f alpha:1.0f];
-    
     // Configure the cell...
     static NSString *CellIdentifier = @"PrinterCell";
     
@@ -98,7 +96,7 @@
     if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
     if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor redColor];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%3fm) %@", [currentPrinter dist:userLongitude :userLatitude], currentPrinter.room];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter dist:userLongitude :userLatitude], currentPrinter.room];
     
     return cell;
 }
@@ -147,6 +145,16 @@
     
     NSLog(@"\n\n\n\n");
     
+}
+
+- (void) sortPrinters
+{
+    [self->printers sortUsingComparator:^(id p1, id p2) {
+        if ([p1 dist2:userLongitude :userLatitude] > [p2 dist2:userLongitude :userLatitude])
+            return (NSComparisonResult) NSOrderedDescending;
+        else
+            return (NSComparisonResult) NSOrderedAscending;
+    }];
 }
 
 /*
@@ -207,6 +215,7 @@
     if (currentLocation != nil) {
         userLongitude = currentLocation.coordinate.longitude;
         userLatitude  = currentLocation.coordinate.latitude;
+        [self sortPrinters];
         [self.tableView reloadData];
     }
     
