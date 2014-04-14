@@ -215,7 +215,6 @@
     if (currentLocation != nil) {
         userLongitude = currentLocation.coordinate.longitude;
         userLatitude  = currentLocation.coordinate.latitude;
-        [self sortPrinters];
         [self.tableView reloadData];
     }
     
@@ -228,10 +227,11 @@
 // Modify the prepareForSegue method by
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    MPSPrinterViewController *detailController =segue.destinationViewController;
+    MPSPrinterViewController *detailController = segue.destinationViewController;
     MPSPrinter *printer = [self->printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     detailController.printer = printer;
     detailController.title = [printer name];
+    detailController.statusMsg.text = [NSString stringWithFormat:@"Status: %@", printer.statusMsg];
 }
 
 @end

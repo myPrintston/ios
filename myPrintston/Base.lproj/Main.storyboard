@@ -132,8 +132,8 @@
                                             <segue destination="3eS-uH-UYn" kind="push" id="VfU-dI-hZH"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaK-X2-MqO">
-                                        <rect key="frame" x="20" y="20" width="280" height="62"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yK-ds-RRJ">
+                                        <rect key="frame" x="20" y="20" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -159,7 +159,7 @@
                     <navigationItem key="navigationItem" title="Title" id="tkV-A3-Wja"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="Status" destination="CaK-X2-MqO" id="y1Q-su-ubn"/>
+                        <outlet property="statusMsg" destination="6yK-ds-RRJ" id="wBH-hV-VF0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGK-ri-8FL" userLabel="First Responder" sceneMemberID="firstResponder"/>

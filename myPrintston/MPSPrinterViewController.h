@@ -13,5 +13,6 @@
 
 @property (nonatomic) MPSPrinter *printer;
 @property (weak, nonatomic) IBOutlet UIButton *errorButton;
+@property (weak, nonatomic) IBOutlet UILabel *statusMsg;
 
 @end
