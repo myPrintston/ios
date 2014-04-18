@@ -10,4 +10,11 @@
 
 @interface MPSErrorType : NSObject
 
+@property(nonatomic) int errorid;
+@property(nonatomic) BOOL admin;
+@property(nonatomic) NSString *eMsg;
+@property(nonatomic) NSString *eType;
+
+- (id)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

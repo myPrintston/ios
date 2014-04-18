@@ -10,4 +10,22 @@
 
 @implementation MPSErrorType
 
+- (id) init {
+    return self;
+}
+
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    NSDictionary *fields = dictionary[@"fields"];
+    
+    if(self = [self init]) {
+        // Assign all properties with keyed values from the dictionary
+        self.errorid = [dictionary[@"pk"] intValue];
+        self.admin   = [fields[@"Admin"] boolValue];
+        self.eMsg    = [fields objectForKey:@"eMsg"];
+        self.eType   = [fields objectForKey:@"eType"];
+    }
+    
+    return self;
+}
+
 @end
