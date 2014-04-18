@@ -54,8 +54,6 @@
     NSData *data = [NSData dataWithContentsOfURL:url];
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
-    NSLog(@"%@", jsonArray);
-    
     NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
     for (NSDictionary *errorInfo in jsonArray) {
         MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
