@@ -120,31 +120,6 @@
     
     return urlprinters;
     
-    
-    /*
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setValue:@"application/json" forHTTPHeaderField:@"accept"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPMethod:@"GET"];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response,
-                                               NSData *data, NSError *connectionError)
-     {
-         if (connectionError == nil)
-         {
-             NSString *result = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-             NSLog(@"ret=%@", result);
-         } else {
-             NSLog(@"connection error");
-             NSLog(@"%@", [NSString stringWithFormat:@"%d", [connectionError code]]);
-             NSLog(@"Error : %@", [connectionError localizedDescription]);
-             NSLog(@"Error : %@", [connectionError localizedRecoveryOptions]);
-             NSLog(@"Error : %@", [connectionError localizedRecoverySuggestion]);
-             NSLog(@"Error : %@", [connectionError localizedFailureReason]);
-         }
-     }]; */
-    
     NSLog(@"\n\n\n\n");
     
 }
