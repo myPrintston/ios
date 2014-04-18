@@ -22,6 +22,7 @@
 		C13168F318DA75290034F142 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168D218DA75290034F142 /* UIKit.framework */; };
 		C13168FB18DA75290034F142 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C13168F918DA75290034F142 /* InfoPlist.strings */; };
 		C13168FD18DA75290034F142 /* myPrintstonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168FC18DA75290034F142 /* myPrintstonTests.m */; };
+		C144412E1900A0960009C104 /* MPSErrorType.m in Sources */ = {isa = PBXBuildFile; fileRef = C144412D1900A0960009C104 /* MPSErrorType.m */; };
 		C1633A2718E66E1700419AA1 /* MPSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1633A2618E66E1700419AA1 /* MPSListViewController.m */; };
 		C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */; };
 		C1A5F63618EDC17100FA1DFC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A5F63518EDC17100FA1DFC /* CoreLocation.framework */; };
@@ -62,6 +63,8 @@
 		C13168F818DA75290034F142 /* myPrintstonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myPrintstonTests-Info.plist"; sourceTree = "<group>"; };
 		C13168FA18DA75290034F142 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C13168FC18DA75290034F142 /* myPrintstonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myPrintstonTests.m; sourceTree = "<group>"; };
+		C144412C1900A0960009C104 /* MPSErrorType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSErrorType.h; sourceTree = "<group>"; };
+		C144412D1900A0960009C104 /* MPSErrorType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSErrorType.m; sourceTree = "<group>"; };
 		C1633A2518E66E1700419AA1 /* MPSListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSListViewController.h; sourceTree = "<group>"; };
 		C1633A2618E66E1700419AA1 /* MPSListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSListViewController.m; sourceTree = "<group>"; };
 		C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSPrinterViewController.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 		C1E3635018F46D2000A6486B /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C144412C1900A0960009C104 /* MPSErrorType.h */,
+				C144412D1900A0960009C104 /* MPSErrorType.m */,
 				C1E3635718FB79D500A6486B /* MPSMapAnnotation.h */,
 				C1E3635818FB79D500A6486B /* MPSMapAnnotation.m */,
 				C1FB68ED18E6216000376EBC /* MPSPrinter.h */,
@@ -303,6 +308,7 @@
 			files = (
 				C13168DB18DA75290034F142 /* main.m in Sources */,
 				C105C3DA18F1CDDC005F7821 /* MPSErrorViewController.m in Sources */,
+				C144412E1900A0960009C104 /* MPSErrorType.m in Sources */,
 				C1633A2718E66E1700419AA1 /* MPSListViewController.m in Sources */,
 				C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */,
 				C13168E818DA75290034F142 /* MPSSecondViewController.m in Sources */,

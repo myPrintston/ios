@@ -7,6 +7,7 @@
 //
 
 #import "MPSErrorViewController.h"
+#import "MPSErrorType.h"
 
 @interface MPSErrorViewController () {
     NSMutableArray *possibleErrors;
@@ -49,10 +50,19 @@
 
 - (NSMutableArray*) loadPossibleErrors
 {
-    NSString *error1 = @"INK";
-    NSString *error2 = @"TONER";
-    NSString *error3 = @"PAPER";
-    return [NSMutableArray arrayWithObjects:error1, error2, error3, nil];
+    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/?etypes"];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSLog(@"%@", jsonArray);
+    
+    NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
+    for (NSDictionary *errorInfo in jsonArray) {
+        MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
+        [urlerrors addObject:error];
+    }
+    
+    return urlerrors;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -75,13 +85,13 @@
     // Configure the cell...
     static NSString *CellIdentifier = @"Error";
     
-    NSString *currentError = [self->possibleErrors objectAtIndex:indexPath.row];
+    MPSErrorType *currentError = [self->possibleErrors objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [errorList dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (!cell)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     
-    cell.textLabel.text = currentError;
+    cell.textLabel.text = currentError.eMsg;
     
     return cell;
 }
@@ -113,25 +123,26 @@
         UITableViewCell *cell = [self.errorList cellForRowAtIndexPath:path];
         cell.accessoryType = UITableViewCellAccessoryNone;
         if (cell == nil)
-            NSLog(@"hi");
+            NSLog(@"Good");
     }
     
-    NSDictionary *json = @{@"hi":@"doug"};
-    NSError *error;
+    NSDictionary *json = [[NSMutableDictionary alloc] init];
+    [json setValue:@"netid" forKey:@"daashley"];
+    
+    NSError *error = NULL;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json options:0 error:&error];
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://54.186.188.121:2016/?fromios"]]];
+    [request setURL: [NSURL URLWithString:@"http://54.186.188.121:2016/?error"]];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:jsonData];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-Length"];
+    NSLog(@"%d", [jsonData length]);
     NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
     
     if(!conn)
         NSLog(@"Connection could not be made");
-    
-    
-    
 }
 
 @end

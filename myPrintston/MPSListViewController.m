@@ -108,6 +108,8 @@
     NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/?pall"];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
+    if (data == nil)
+        return [NSMutableArray arrayWithObjects: nil];
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
     NSMutableArray *urlprinters = [[NSMutableArray alloc] init];
