@@ -7,7 +7,6 @@
 //
 
 #import "MPSErrorViewController.h"
-#import "MPSErrorType.h"
 
 @interface MPSErrorViewController () {
     NSMutableArray *possibleErrors;
@@ -40,6 +39,12 @@
     self.errorList.separatorColor = [UIColor clearColor];
     self.errorList.separatorStyle = UITableViewCellSeparatorStyleNone;
     self->possibleErrors = self.loadPossibleErrors;
+    self.netid.delegate = self;
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+//                                   initWithTarget:self
+//                                   action:@selector(dismissKeyboard)];
+//    
+//    [self.view addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,31 +121,66 @@
 
 
 - (IBAction)submit {
+    NSMutableArray *errorids = [[NSMutableArray alloc] init];
+    
     for (int i = 0; i < [possibleErrors count]; i++) {
         NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
         UITableViewCell *cell = [self.errorList cellForRowAtIndexPath:path];
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark)
+            [errorids addObject:[NSNumber numberWithInt:[[self->possibleErrors objectAtIndex:i] errorid]]];
         cell.accessoryType = UITableViewCellAccessoryNone;
-        if (cell == nil)
-            NSLog(@"Good");
     }
     
-    NSDictionary *json = [[NSMutableDictionary alloc] init];
-    [json setValue:@"netid" forKey:@"daashley"];
-    
-    NSError *error = NULL;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json options:0 error:&error];
+    if ([errorids count] > 0) {
+        // Create the JSON to send
+        NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
+        [json setValue:[NSString stringWithFormat:@"%d", self.printer.printerid] forKey:@"printerid"];
+        [json setValue:self.netid.text forKey:@"netid" ];
+        [json setValue:self.printer.building forKey:@"buildingName"];
+        [json setValue:self.printer.room forKey:@"roomNumber"];
+        [json setValue:@"Hello Doug" forKey:@"errMsg"];
+        [json setObject:errorids forKey:@"errors"];
 
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL: [NSURL URLWithString:@"http://54.186.188.121:2016/?error"]];
-    [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:jsonData];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-Length"];
-    NSLog(@"%d", [jsonData length]);
-    NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        NSError *error = NULL;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json options:0 error:&error];
+
+        NSLog(@"%@", json);
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL: [NSURL URLWithString:@"http://54.186.188.121:2016/?error"]];
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:jsonData];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-Length"];
+        NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+        
+        if(!conn)
+            NSLog(@"Connection could not be made");
+        
+        self.netid.text = @"";
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+//-(void)dismissKeyboard {
+//    [self.netid resignFirstResponder];
+//}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if(!conn)
-        NSLog(@"Connection could not be made");
+    UITouch *touch = [[event allTouches] anyObject];
+    
+    NSLog(@"%@", self.view);
+    NSLog(@"%@", [touch view]);
+    
+    if (![[touch view] isKindOfClass:[UITextField class]]) {
+        [self.view endEditing:YES];
+    }
 }
 
 @end

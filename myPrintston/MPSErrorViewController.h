@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MPSPrinter.h"
+#import "MPSErrorType.h"
 
-@interface MPSErrorViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface MPSErrorViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
+@property (nonatomic) MPSPrinter *printer;
 @property (retain, nonatomic) IBOutlet UITableView *errorList;
-- (IBAction)submit;
+@property (weak, nonatomic) IBOutlet UITextField *netid;
 
+- (IBAction)submit;
 @end
