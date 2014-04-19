@@ -23,9 +23,10 @@
 
 - (NSString*)name;
 
++ (void) setUserLongitude:(double)newUserLongitude;
++ (void) setUserLatitude: (double)newUserLatitude;
 
-- (double) distance;
-- (double) dist:(double)userLongitude :(double)userLatitude;
-- (double) dist2:(double)userLongitude :(double)userLatitude;
+- (double) dist;
+- (double) dist2;
 
 @end

@@ -87,7 +87,7 @@
     if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
     if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor redColor];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter dist:userLongitude :userLatitude], currentPrinter.room];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter dist], currentPrinter.room];
     
     return cell;
 }
@@ -114,7 +114,7 @@
 - (void) sortPrinters
 {
     [self.printers sortUsingComparator:^(id p1, id p2) {
-        if ([p1 dist2:userLongitude :userLatitude] > [p2 dist2:userLongitude :userLatitude])
+        if ([p1 dist2] > [p2 dist2])
             return (NSComparisonResult) NSOrderedDescending;
         else
             return (NSComparisonResult) NSOrderedAscending;

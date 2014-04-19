@@ -35,14 +35,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    userLongitude = -74.6552;
-    userLatitude  = 40.345;
+    [MPSPrinter setUserLongitude: -74.6552];
+    [MPSPrinter setUserLatitude:   40.345];
     
     locationManager = [[CLLocationManager alloc] init];
     [self getCurrentLocation];
     
     self->printers = self.loadPrinters;
-    //[self sortPrinters];
+    [self sortPrinters];
     
     MPSListNavController *controller = self.viewControllers[0];
     controller.printers = self->printers;
@@ -76,12 +76,16 @@
 
 - (void) sortPrinters
 {
+    [locationManager stopUpdatingLocation];
+    
     [self->printers sortUsingComparator:^(id p1, id p2) {
-        if ([p1 dist2:userLongitude :userLatitude] > [p2 dist2:userLongitude :userLatitude])
+        if ([p1 dist2] > [p2 dist2])
             return (NSComparisonResult) NSOrderedDescending;
         else
             return (NSComparisonResult) NSOrderedAscending;
     }];
+    
+    [locationManager startUpdatingLocation];
 }
 
 
@@ -111,8 +115,8 @@
         userLatitude  = currentLocation.coordinate.latitude;
     }
     
-    userLongitude = -74.6552;
-    userLatitude  = 40.345;
+    [MPSPrinter setUserLongitude: -74.6551];
+    [MPSPrinter setUserLatitude:   40.3450];
     
     //NSLog(@"Location Update");
 }

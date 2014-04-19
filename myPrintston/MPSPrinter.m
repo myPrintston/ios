@@ -8,6 +8,8 @@
 
 #import "MPSPrinter.h"
 
+static double userLongitude;
+static double userLatitude;
 
 @implementation MPSPrinter
 
@@ -46,8 +48,17 @@
 - (void) dealloc {
 }
 
++ (void) setUserLongitude:(double)newUserLongitude {
+    userLongitude = newUserLongitude;
+}
+
++ (void) setUserLatitude:(double)newUserLatitude {
+    userLatitude = newUserLatitude;
+}
+
+
 // Calculate distance squared to a given position
-- (double) dist2:(double) userLongitude :(double)userLatitude {
+- (double) dist2 {
     
     double dlong = 111200 * fabs((self.longitude - userLongitude));
     double dlat  = 101400 * fabs((self.latitude  - userLatitude));
@@ -56,12 +67,8 @@
 }
 
 // Calculate distance to a given position
-- (double) dist:(double)userLongitude :(double)userLatitude {
-    return sqrt([self dist2:userLongitude :userLatitude]);
-}
-
-- (double) distance {
-    return 3.1415926535;
+- (double) dist {
+    return sqrt([self dist2]);
 }
 
 - (NSString*) name {
