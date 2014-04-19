@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/Corelocation.h>
 
-@interface MPSListViewController : UITableViewController <CLLocationManagerDelegate>
+@interface MPSListViewController : UITableViewController
 
 @property (nonatomic) NSMutableArray *printers;
 
