@@ -271,10 +271,10 @@
             </objects>
             <point key="canvasLocation" x="1514" y="-301"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Controller-->
         <scene sceneID="Vex-rW-GRa">
             <objects>
-                <tabBarController id="8YX-ce-x5E" sceneMemberID="viewController">
+                <tabBarController id="8YX-ce-x5E" customClass="MPSTabController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="GcG-l2-tlC"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
