@@ -10,10 +10,8 @@
 #import "MPSPrinterViewController.h"
 #import "MPSPrinter.h"
 
-@interface MPSListViewController() {
-    double userLongitude;
-    double userLatitude;
-}
+@interface MPSListViewController()
+
 @end
 
 @implementation MPSListViewController
@@ -23,8 +21,6 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        userLongitude = -74.6552;
-        userLatitude  = 40.345;
     }
     
     return self;
@@ -39,10 +35,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    
-    userLongitude = -74.6552;
-    userLatitude  = 40.345;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 }
