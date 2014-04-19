@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/Corelocation.h>
 
-@interface MPSTabController : UITabBarController
+@interface MPSTabController : UITabBarController <CLLocationManagerDelegate>
+
+- (NSMutableArray*) loadPrinters;
 
 @end
