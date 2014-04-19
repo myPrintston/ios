@@ -7,6 +7,7 @@
 //
 
 #import "MPSPrinterViewController.h"
+#import "MPSErrorViewController.h"
 #import "MPSPrinter.h"
 #import "MPSMapAnnotation.h"
 
@@ -77,6 +78,16 @@
     }
     
     return view;
+}
+
+#pragma mark - Navigation
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+// Modify the prepareForSegue method by
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    MPSErrorViewController *detailController = segue.destinationViewController;
+    detailController.printer = self.printer;
+    detailController.title = [self.printer name];
 }
 
 @end
