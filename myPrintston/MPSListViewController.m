@@ -12,7 +12,6 @@
 #import <CoreLocation/Corelocation.h>
 
 @interface MPSListViewController() {
-    NSMutableArray *printers;
     CLLocationManager *locationManager;
     double userLongitude;
     double userLatitude;
@@ -28,7 +27,6 @@
         // Custom initialization
         userLongitude = -74.6552;
         userLatitude  = 40.345;
-        
     }
     
     return self;
@@ -48,12 +46,9 @@
     userLongitude = -74.6552;
     userLatitude  = 40.345;
     
+    NSLog(@"%@", self.printers);
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
-    locationManager = [[CLLocationManager alloc] init];
-    [self getCurrentLocation];
-
-    self->printers = self.loadPrinters;
-    [self sortPrinters];
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,7 +72,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self->printers count];
+    return [self.printers count];
 }
 
 
@@ -86,7 +81,7 @@
     // Configure the cell...
     static NSString *CellIdentifier = @"PrinterCell";
     
-    MPSPrinter *currentPrinter = [self->printers objectAtIndex:indexPath.row];
+    MPSPrinter *currentPrinter = [self.printers objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
@@ -122,7 +117,7 @@
 
 - (void) sortPrinters
 {
-    [self->printers sortUsingComparator:^(id p1, id p2) {
+    [self.printers sortUsingComparator:^(id p1, id p2) {
         if ([p1 dist2:userLongitude :userLatitude] > [p2 dist2:userLongitude :userLatitude])
             return (NSComparisonResult) NSOrderedDescending;
         else
@@ -201,7 +196,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     MPSPrinterViewController *detailController = segue.destinationViewController;
-    MPSPrinter *printer = [self->printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    MPSPrinter *printer = [self.printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     detailController.printer = printer;
     detailController.title = [printer name];
 }
