@@ -292,10 +292,10 @@
             </objects>
             <point key="canvasLocation" x="-519" y="415"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--List Nav Controller-->
         <scene sceneID="4Dk-kb-yQq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p9v-qa-PD4" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p9v-qa-PD4" customClass="MPSListNavController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="list" id="Azl-CI-9Lp">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
