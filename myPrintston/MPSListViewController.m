@@ -83,7 +83,7 @@
     
     //cell.imageView.contentMode = UIViewContentModeCenter;
     //cell.imageView.transform = CGAffineTransformMakeRotation([currentPrinter angle] + M_2_PI);
-    NSLog(@"%f", [currentPrinter angle]);
+//    NSLog(@"%f", [currentPrinter angle]);
     
     return cell;
 }
