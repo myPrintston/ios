@@ -13,6 +13,4 @@
 
 @property (nonatomic) NSMutableArray *printers;
 
-- (NSMutableArray*) loadPrinters;
-
 @end

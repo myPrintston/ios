@@ -88,35 +88,6 @@
     return cell;
 }
 
-
-- (NSMutableArray*) loadPrinters
-{
-    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/?pall/"];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    
-    if (data == nil)
-        return [NSMutableArray arrayWithObjects: nil];
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    NSMutableArray *urlprinters = [[NSMutableArray alloc] init];
-    for (NSDictionary *printerInfo in jsonArray) {
-        MPSPrinter *printer = [[MPSPrinter alloc] initWithDictionary:printerInfo];
-        [urlprinters addObject:printer];
-    }
-    
-    return urlprinters;
-}
-
-- (void) sortPrinters
-{
-    [self.printers sortUsingComparator:^(id p1, id p2) {
-        if ([p1 dist2] > [p2 dist2])
-            return (NSComparisonResult) NSOrderedDescending;
-        else
-            return (NSComparisonResult) NSOrderedAscending;
-    }];
-}
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
