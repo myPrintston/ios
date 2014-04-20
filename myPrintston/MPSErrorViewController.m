@@ -10,6 +10,7 @@
 
 @interface MPSErrorViewController () {
     NSMutableArray *possibleErrors;
+    BOOL isAdmin;
 }
 
 
@@ -50,6 +51,8 @@
     [self.comment.layer setBorderWidth:2.0];
     self.comment.layer.cornerRadius = 1;
     self.comment.clipsToBounds = YES;
+    
+    isAdmin = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,8 +69,10 @@
     
     NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
     for (NSDictionary *errorInfo in jsonArray) {
-        MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
-        [urlerrors addObject:error];
+        if (isAdmin || errorInfo[@"fields"][@"Admin"]) {
+            MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
+            [urlerrors addObject:error];
+        }
     }
     
     return urlerrors;
