@@ -72,6 +72,10 @@ static double userLatitude;
 }
 
 - (double) distCL:(CLLocation*)userLocation {
+    double uLong, uLat;
+    uLong = (userLocation.coordinate.longitude == 0 ? userLongitude : userLocation.coordinate.longitude);
+    uLat = (userLocation.coordinate.latitude == 0 ? userLatitude : userLocation.coordinate.latitude);
+    
     return [self.location distanceFromLocation:userLocation];
 }
 
