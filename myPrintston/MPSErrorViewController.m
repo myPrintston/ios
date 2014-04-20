@@ -157,7 +157,7 @@
         NSLog(@"%@", json);
         
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-        [request setURL: [NSURL URLWithString:@"http://54.186.188.121:2016/?error"]];
+        [request setURL: [NSURL URLWithString:@"http://54.186.188.121:2016/error"]];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:jsonData];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
