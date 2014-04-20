@@ -45,7 +45,7 @@
 //                                   action:@selector(dismissKeyboard)];
 //    
 //    [self.view addGestureRecognizer:tap];
-    NSLog(@"HI");
+
     [self.comment.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
     [self.comment.layer setBorderWidth:2.0];
     self.comment.layer.cornerRadius = 1;
