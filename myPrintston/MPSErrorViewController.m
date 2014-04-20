@@ -45,6 +45,11 @@
 //                                   action:@selector(dismissKeyboard)];
 //    
 //    [self.view addGestureRecognizer:tap];
+    NSLog(@"HI");
+    [self.comment.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+    [self.comment.layer setBorderWidth:2.0];
+    self.comment.layer.cornerRadius = 1;
+    self.comment.clipsToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,23 +127,28 @@
 
 - (IBAction)submit {
     NSMutableArray *errorids = [[NSMutableArray alloc] init];
+    BOOL needComment = NO;
+    
     
     for (int i = 0; i < [possibleErrors count]; i++) {
         NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
         UITableViewCell *cell = [self.errorList cellForRowAtIndexPath:path];
-        if (cell.accessoryType == UITableViewCellAccessoryCheckmark)
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
             [errorids addObject:[NSNumber numberWithInt:[[self->possibleErrors objectAtIndex:i] errorid]]];
+            if ([[[possibleErrors objectAtIndex:i] eType] isEqualToString:@"text"])
+                needComment = YES;
+        }
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    if ([errorids count] > 0) {
+    if ([errorids count] > 0 && ( !needComment || [self.comment.text length] > 0)) {
         // Create the JSON to send
         NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
         [json setValue:[NSString stringWithFormat:@"%d", self.printer.printerid] forKey:@"printerid"];
         [json setValue:self.netid.text forKey:@"netid" ];
         [json setValue:self.printer.building forKey:@"buildingName"];
         [json setValue:self.printer.room forKey:@"roomNumber"];
-        [json setValue:@"Hello Doug" forKey:@"errMsg"];
+        [json setValue:self.comment.text forKey:@"errMsg"];
         [json setObject:errorids forKey:@"errors"];
 
         NSError *error = NULL;

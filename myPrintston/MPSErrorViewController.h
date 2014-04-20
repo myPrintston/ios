@@ -15,6 +15,9 @@
 @property (nonatomic) MPSPrinter *printer;
 @property (retain, nonatomic) IBOutlet UITableView *errorList;
 @property (weak, nonatomic) IBOutlet UITextField *netid;
+@property (weak, nonatomic) IBOutlet UITextView *comment;
+
+
 
 - (IBAction)submit;
 @end
