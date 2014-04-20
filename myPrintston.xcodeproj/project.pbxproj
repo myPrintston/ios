@@ -25,6 +25,8 @@
 		C144412E1900A0960009C104 /* MPSErrorType.m in Sources */ = {isa = PBXBuildFile; fileRef = C144412D1900A0960009C104 /* MPSErrorType.m */; };
 		C1444131190242190009C104 /* MPSTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1444130190242190009C104 /* MPSTabController.m */; };
 		C144413419024A2F0009C104 /* MPSListNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = C144413319024A2F0009C104 /* MPSListNavController.m */; };
+		C1444137190447EC0009C104 /* MPSMapNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1444136190447EC0009C104 /* MPSMapNavController.m */; };
+		C144413C190448B20009C104 /* MPSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C144413B190448B20009C104 /* MPSMapViewController.m */; };
 		C1633A2718E66E1700419AA1 /* MPSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1633A2618E66E1700419AA1 /* MPSListViewController.m */; };
 		C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */; };
 		C1A5F63618EDC17100FA1DFC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A5F63518EDC17100FA1DFC /* CoreLocation.framework */; };
@@ -71,6 +73,10 @@
 		C1444130190242190009C104 /* MPSTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSTabController.m; sourceTree = "<group>"; };
 		C144413219024A2F0009C104 /* MPSListNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSListNavController.h; sourceTree = "<group>"; };
 		C144413319024A2F0009C104 /* MPSListNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSListNavController.m; sourceTree = "<group>"; };
+		C1444135190447EC0009C104 /* MPSMapNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSMapNavController.h; sourceTree = "<group>"; };
+		C1444136190447EC0009C104 /* MPSMapNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSMapNavController.m; sourceTree = "<group>"; };
+		C144413A190448B20009C104 /* MPSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSMapViewController.h; sourceTree = "<group>"; };
+		C144413B190448B20009C104 /* MPSMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSMapViewController.m; sourceTree = "<group>"; };
 		C1633A2518E66E1700419AA1 /* MPSListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSListViewController.h; sourceTree = "<group>"; };
 		C1633A2618E66E1700419AA1 /* MPSListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSListViewController.m; sourceTree = "<group>"; };
 		C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSPrinterViewController.h; sourceTree = "<group>"; };
@@ -186,6 +192,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C1444138190448690009C104 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				C1633A2518E66E1700419AA1 /* MPSListViewController.h */,
+				C1633A2618E66E1700419AA1 /* MPSListViewController.m */,
+				C144413219024A2F0009C104 /* MPSListNavController.h */,
+				C144413319024A2F0009C104 /* MPSListNavController.m */,
+			);
+			name = ListView;
+			sourceTree = "<group>";
+		};
+		C1444139190448830009C104 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				C144413A190448B20009C104 /* MPSMapViewController.h */,
+				C144413B190448B20009C104 /* MPSMapViewController.m */,
+				C1444135190447EC0009C104 /* MPSMapNavController.h */,
+				C1444136190447EC0009C104 /* MPSMapNavController.m */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
 		C1E3635018F46D2000A6486B /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,14 +230,12 @@
 		C1E3635118F46D8F00A6486B /* views */ = {
 			isa = PBXGroup;
 			children = (
-				C144413219024A2F0009C104 /* MPSListNavController.h */,
-				C144413319024A2F0009C104 /* MPSListNavController.m */,
+				C1444139190448830009C104 /* MapView */,
+				C1444138190448690009C104 /* ListView */,
 				C144412F190242190009C104 /* MPSTabController.h */,
 				C1444130190242190009C104 /* MPSTabController.m */,
 				C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */,
 				C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */,
-				C1633A2518E66E1700419AA1 /* MPSListViewController.h */,
-				C1633A2618E66E1700419AA1 /* MPSListViewController.m */,
 				C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */,
 				C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */,
 			);
@@ -317,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C13168DB18DA75290034F142 /* main.m in Sources */,
+				C144413C190448B20009C104 /* MPSMapViewController.m in Sources */,
 				C105C3DA18F1CDDC005F7821 /* MPSErrorViewController.m in Sources */,
 				C144412E1900A0960009C104 /* MPSErrorType.m in Sources */,
 				C1633A2718E66E1700419AA1 /* MPSListViewController.m in Sources */,
@@ -327,6 +354,7 @@
 				C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */,
 				C1E3635918FB79D500A6486B /* MPSMapAnnotation.m in Sources */,
 				C1FB68EF18E6216000376EBC /* MPSPrinter.m in Sources */,
+				C1444137190447EC0009C104 /* MPSMapNavController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
