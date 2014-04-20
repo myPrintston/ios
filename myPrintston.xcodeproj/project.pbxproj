@@ -27,6 +27,17 @@
 		C144413419024A2F0009C104 /* MPSListNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = C144413319024A2F0009C104 /* MPSListNavController.m */; };
 		C1444137190447EC0009C104 /* MPSMapNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1444136190447EC0009C104 /* MPSMapNavController.m */; };
 		C144413C190448B20009C104 /* MPSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C144413B190448B20009C104 /* MPSMapViewController.m */; };
+		C144413E1904512E0009C104 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C144413D1904512E0009C104 /* AVFoundation.framework */; };
+		C1444140190451370009C104 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C144413F190451370009C104 /* CoreData.framework */; };
+		C1444142190451460009C104 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1444141190451460009C104 /* CoreText.framework */; };
+		C14441441904514F0009C104 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14441431904514F0009C104 /* GLKit.framework */; };
+		C1444146190451580009C104 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1444145190451580009C104 /* ImageIO.framework */; };
+		C1444148190451650009C104 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1444147190451650009C104 /* libc++.dylib */; };
+		C144414A190451700009C104 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1444149190451700009C104 /* libicucore.dylib */; };
+		C144414C1904517A0009C104 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C144414B1904517A0009C104 /* libz.dylib */; };
+		C144414E190451800009C104 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C144414D190451800009C104 /* OpenGLES.framework */; };
+		C1444150190451870009C104 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C144414F190451870009C104 /* QuartzCore.framework */; };
+		C1444152190451920009C104 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1444151190451920009C104 /* SystemConfiguration.framework */; };
 		C1633A2718E66E1700419AA1 /* MPSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1633A2618E66E1700419AA1 /* MPSListViewController.m */; };
 		C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */; };
 		C1A5F63618EDC17100FA1DFC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A5F63518EDC17100FA1DFC /* CoreLocation.framework */; };
@@ -77,6 +88,17 @@
 		C1444136190447EC0009C104 /* MPSMapNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSMapNavController.m; sourceTree = "<group>"; };
 		C144413A190448B20009C104 /* MPSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSMapViewController.h; sourceTree = "<group>"; };
 		C144413B190448B20009C104 /* MPSMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSMapViewController.m; sourceTree = "<group>"; };
+		C144413D1904512E0009C104 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C144413F190451370009C104 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C1444141190451460009C104 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		C14441431904514F0009C104 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		C1444145190451580009C104 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		C1444147190451650009C104 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		C1444149190451700009C104 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		C144414B1904517A0009C104 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C144414D190451800009C104 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		C144414F190451870009C104 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C1444151190451920009C104 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C1633A2518E66E1700419AA1 /* MPSListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSListViewController.h; sourceTree = "<group>"; };
 		C1633A2618E66E1700419AA1 /* MPSListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSListViewController.m; sourceTree = "<group>"; };
 		C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSPrinterViewController.h; sourceTree = "<group>"; };
@@ -95,10 +117,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1E3635318FB75EF00A6486B /* MapKit.framework in Frameworks */,
-				C1A5F63618EDC17100FA1DFC /* CoreLocation.framework in Frameworks */,
 				C13168D118DA75290034F142 /* CoreGraphics.framework in Frameworks */,
 				C13168D318DA75290034F142 /* UIKit.framework in Frameworks */,
 				C13168CF18DA75290034F142 /* Foundation.framework in Frameworks */,
+				C144413E1904512E0009C104 /* AVFoundation.framework in Frameworks */,
+				C1444140190451370009C104 /* CoreData.framework in Frameworks */,
+				C1A5F63618EDC17100FA1DFC /* CoreLocation.framework in Frameworks */,
+				C1444142190451460009C104 /* CoreText.framework in Frameworks */,
+				C14441441904514F0009C104 /* GLKit.framework in Frameworks */,
+				C1444146190451580009C104 /* ImageIO.framework in Frameworks */,
+				C1444148190451650009C104 /* libc++.dylib in Frameworks */,
+				C144414A190451700009C104 /* libicucore.dylib in Frameworks */,
+				C144414C1904517A0009C104 /* libz.dylib in Frameworks */,
+				C144414E190451800009C104 /* OpenGLES.framework in Frameworks */,
+				C1444150190451870009C104 /* QuartzCore.framework in Frameworks */,
+				C1444152190451920009C104 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +170,17 @@
 		C13168CD18DA75290034F142 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C1444151190451920009C104 /* SystemConfiguration.framework */,
+				C144414F190451870009C104 /* QuartzCore.framework */,
+				C144414D190451800009C104 /* OpenGLES.framework */,
+				C144414B1904517A0009C104 /* libz.dylib */,
+				C1444149190451700009C104 /* libicucore.dylib */,
+				C1444147190451650009C104 /* libc++.dylib */,
+				C1444145190451580009C104 /* ImageIO.framework */,
+				C14441431904514F0009C104 /* GLKit.framework */,
+				C1444141190451460009C104 /* CoreText.framework */,
+				C144413F190451370009C104 /* CoreData.framework */,
+				C144413D1904512E0009C104 /* AVFoundation.framework */,
 				C1E3635218FB75EF00A6486B /* MapKit.framework */,
 				C1A5F63518EDC17100FA1DFC /* CoreLocation.framework */,
 				C13168CE18DA75290034F142 /* Foundation.framework */,
