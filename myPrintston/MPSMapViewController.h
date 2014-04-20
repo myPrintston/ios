@@ -10,4 +10,6 @@
 
 @interface MPSMapViewController : UIViewController
 
+@property (nonatomic) NSMutableArray *printers;
+
 @end
