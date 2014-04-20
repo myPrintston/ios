@@ -60,7 +60,7 @@
 
 - (NSMutableArray*) loadPossibleErrors
 {
-    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/?etypes"];
+    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/etypes"];
     NSData *data = [NSData dataWithContentsOfURL:url];
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     

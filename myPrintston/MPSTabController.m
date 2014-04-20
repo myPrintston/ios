@@ -60,7 +60,7 @@
 
 - (NSMutableArray*) loadPrinters
 {
-    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/?pall"];
+    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/pall"];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
     if (data == nil)
