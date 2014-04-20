@@ -23,6 +23,7 @@ static double userLatitude;
     
     if (self)
     {
+        
     }
     
     return self;
@@ -38,6 +39,7 @@ static double userLatitude;
         self.room      = [fields objectForKey:@"roomNumber"];
         self.longitude = [fields[@"longitude"] doubleValue];
         self.latitude  = [fields[@"latitude"]  doubleValue];
+        self.location  = [[CLLocation  alloc] initWithLatitude:self.latitude longitude:self.longitude];
         self.status    = [fields[@"status"] intValue];
         self.statusMsg = [fields objectForKey:@"statusMsg"];
     }
@@ -59,10 +61,8 @@ static double userLatitude;
 
 // Calculate distance squared to a given position
 - (double) dist2 {
-    
     double dlong = 111200 * fabs((self.longitude - userLongitude));
     double dlat  = 101400 * fabs((self.latitude  - userLatitude));
-    
     return dlong * dlong + dlat * dlat;
 }
 
@@ -71,8 +71,37 @@ static double userLatitude;
     return sqrt([self dist2]);
 }
 
+- (double) angle {
+//    double dlong = 111200 * fabs((self.longitude - userLongitude));
+//    double dlat  = 101400 * fabs((self.latitude  - userLatitude));
+    
+//    double dlong = (userLongitude - self.longitude) * M_PI / 180.0;
+//    double dlat  = (userLatitude  - self.latitude)  * M_PI / 180.0;
+    
+    double fLng = userLongitude  * M_PI / 180.0;
+    double fLat = userLatitude   * M_PI / 180.0;
+    double tLng = self.longitude * M_PI / 180.0;
+    double tLat = self.latitude  * M_PI / 180.0;
+    
+    return atan2(sin(fLng-tLng)*cos(tLat), cos(fLat)*sin(tLat)-sin(fLat)*cos(tLat)*cos(fLng-tLng));
+}
+
 - (NSString*) name {
     return [NSString stringWithFormat:@"%@ - %@", self.building, self.room];
+}
+
+- (void) updateStatus {
+    NSString *url_string = [NSString stringWithFormat:@"http://54.186.188.121:2016/?pid=%d", self.printerid];
+    NSURL *url = [NSURL URLWithString:url_string];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    if (data == nil)
+        return;
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    self.status    = [jsonArray[0][@"status"] integerValue];
+    self.statusMsg = jsonArray[0][@"statusMsg"];
 }
 
 @end

@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface MPSPrinter : NSObject
 
 @property (nonatomic) int printerid;
 @property (nonatomic) double longitude;
 @property (nonatomic) double latitude;
+@property (nonatomic) CLLocation *location;
 @property (nonatomic) NSString *building;
 @property (nonatomic) NSString *room;
 @property (nonatomic) int status;
@@ -28,5 +30,9 @@
 
 - (double) dist;
 - (double) dist2;
+- (double) angle;
+
+- (void) updateStatus;
+
 
 @end
