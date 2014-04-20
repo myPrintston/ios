@@ -8,6 +8,7 @@
 
 #import "MPSTabController.h"
 #import "MPSListNavController.h"
+#import "MPSMapNavController.h"
 #import "MPSPrinter.h"
 
 @interface MPSTabController () {
@@ -46,8 +47,12 @@
     self->printers = self.loadPrinters;
     [self sortPrinters];
     
-    MPSListNavController *controller = self.viewControllers[0];
-    controller.printers = self->printers;
+    
+    MPSListNavController *listController = self.viewControllers[0];
+    MPSMapNavController  *mapController = self.viewControllers[1];
+    listController.printers = self->printers;
+    mapController.printers = self->printers;
+    
 }
 
 - (void)didReceiveMemoryWarning
