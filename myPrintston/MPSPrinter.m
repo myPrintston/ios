@@ -71,6 +71,10 @@ static double userLatitude;
     return sqrt([self dist2]);
 }
 
+- (double) distCL:(CLLocation*)userLocation {
+    return [self.location distanceFromLocation:userLocation];
+}
+
 - (double) angle {
 //    double dlong = 111200 * fabs((self.longitude - userLongitude));
 //    double dlat  = 101400 * fabs((self.latitude  - userLatitude));
