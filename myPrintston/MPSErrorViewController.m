@@ -52,7 +52,7 @@
     self.comment.layer.cornerRadius = 1;
     self.comment.clipsToBounds = YES;
     
-    isAdmin = NO;
+    isAdmin = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,8 +68,9 @@
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
     NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
+    isAdmin = YES;
     for (NSDictionary *errorInfo in jsonArray) {
-        if (isAdmin || errorInfo[@"fields"][@"Admin"]) {
+        if (isAdmin || ![errorInfo[@"fields"][@"Admin"] boolValue]) {
             MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
             [urlerrors addObject:error];
         }
@@ -143,10 +144,9 @@
             if ([[[possibleErrors objectAtIndex:i] eType] isEqualToString:@"text"])
                 needComment = YES;
         }
-        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    if ([errorids count] > 0 && ( !needComment || [self.comment.text length] > 0)) {
+    if (([errorids count] > 0) && ( !needComment || [self.comment.text length] > 0)) {
         // Create the JSON to send
         NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
         [json setValue:[NSString stringWithFormat:@"%d", self.printer.printerid] forKey:@"printerid"];
@@ -161,6 +161,8 @@
 
         NSLog(@"%@", json);
         
+        
+        // Send POST request
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL: [NSURL URLWithString:@"http://54.186.188.121:2016/error/"]];
         [request setHTTPMethod:@"POST"];
@@ -172,7 +174,14 @@
         if(!conn)
             NSLog(@"Connection could not be made");
         
+        // Reset fields
         self.netid.text = @"";
+        self.comment.text = @"";
+        for (int i = 0; i < [possibleErrors count]; i++) {
+            NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
+            UITableViewCell *cell = [self.errorList cellForRowAtIndexPath:path];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
 }
 
