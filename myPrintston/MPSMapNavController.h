@@ -10,4 +10,6 @@
 
 @interface MPSMapNavController : UINavigationController
 
+@property (nonatomic) NSMutableArray *printers;
+
 @end

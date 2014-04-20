@@ -7,6 +7,7 @@
 //
 
 #import "MPSMapNavController.h"
+#import "MPSMapViewController.h"
 
 @interface MPSMapNavController ()
 
@@ -27,6 +28,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    MPSMapViewController *controller = self.viewControllers[0];
+    controller.printers = self.printers;
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,6 +47,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    MPSMapViewController *controller = segue.destinationViewController;
+    controller.printers = self.printers;
 }
 */
 
