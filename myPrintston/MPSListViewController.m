@@ -79,7 +79,8 @@
     if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
     if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor redColor];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter dist], currentPrinter.room];
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter dist], currentPrinter.room];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter distCL:self.locationManager.location], currentPrinter.room];
     
     //cell.imageView.contentMode = UIViewContentModeCenter;
     //cell.imageView.transform = CGAffineTransformMakeRotation([currentPrinter angle] + M_2_PI);
