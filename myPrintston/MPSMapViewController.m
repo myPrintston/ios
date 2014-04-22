@@ -44,10 +44,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-//    MPSPrinterViewController *detailController = segue.destinationViewController;
-//    MPSPrinter *printer = [self.printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
-//    detailController.printer = printer;
-//    detailController.title = [printer name];
+    
 }
 
 
