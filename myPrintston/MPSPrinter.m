@@ -108,7 +108,7 @@ static double userLatitude;
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
-    self.status    = [jsonArray[0][@"status"] integerValue];
+    self.status    = [jsonArray[0][@"status"] intValue];
     self.statusMsg = jsonArray[0][@"statusMsg"];
 }
 
