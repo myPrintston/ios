@@ -7,6 +7,7 @@
 //
 
 #import "MPSMapViewController.h"
+#import "MPSPrinterViewController.h"
 
 @interface MPSMapViewController ()
 
@@ -35,7 +36,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -43,7 +44,11 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+//    MPSPrinterViewController *detailController = segue.destinationViewController;
+//    MPSPrinter *printer = [self.printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+//    detailController.printer = printer;
+//    detailController.title = [printer name];
 }
-*/
+
 
 @end
