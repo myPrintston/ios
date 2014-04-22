@@ -52,6 +52,7 @@
     MPSMapNavController  *mapController = self.viewControllers[1];
     listController.printers = self->printers;
     mapController.printers = self->printers;
+    listController.locationManager = self->locationManager;
     
 }
 
@@ -117,8 +118,10 @@
         userLatitude  = currentLocation.coordinate.latitude;
     }
     
-    [MPSPrinter setUserLongitude: -74.6551];
-    [MPSPrinter setUserLatitude:   40.3450];
+//    [MPSPrinter setUserLongitude: -74.6551];
+//    [MPSPrinter setUserLatitude:   40.3450];
+      [MPSPrinter setUserLongitude: userLongitude];
+      [MPSPrinter setUserLatitude:  userLatitude];
 }
 
 /*
