@@ -30,6 +30,7 @@
 
 - (double) dist;
 - (double) dist2;
+- (double) distCL:(CLLocation *)userLocation;
 - (double) angle;
 
 - (void) updateStatus;
