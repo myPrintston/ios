@@ -239,10 +239,10 @@
 		C1444138190448690009C104 /* ListView */ = {
 			isa = PBXGroup;
 			children = (
-				C1633A2518E66E1700419AA1 /* MPSListViewController.h */,
-				C1633A2618E66E1700419AA1 /* MPSListViewController.m */,
 				C144413219024A2F0009C104 /* MPSListNavController.h */,
 				C144413319024A2F0009C104 /* MPSListNavController.m */,
+				C1633A2518E66E1700419AA1 /* MPSListViewController.h */,
+				C1633A2618E66E1700419AA1 /* MPSListViewController.m */,
 			);
 			name = ListView;
 			sourceTree = "<group>";
@@ -250,10 +250,10 @@
 		C1444139190448830009C104 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				C144413A190448B20009C104 /* MPSMapViewController.h */,
-				C144413B190448B20009C104 /* MPSMapViewController.m */,
 				C1444135190447EC0009C104 /* MPSMapNavController.h */,
 				C1444136190447EC0009C104 /* MPSMapNavController.m */,
+				C144413A190448B20009C104 /* MPSMapViewController.h */,
+				C144413B190448B20009C104 /* MPSMapViewController.m */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
