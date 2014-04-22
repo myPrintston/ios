@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/Corelocation.h>
 
 @interface MPSListNavController : UINavigationController
 
 @property (nonatomic) NSMutableArray *printers;
+@property (nonatomic) CLLocationManager *locationManager;
 
 @end

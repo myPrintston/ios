@@ -12,5 +12,6 @@
 @interface MPSListViewController : UITableViewController
 
 @property (nonatomic) NSMutableArray *printers;
+@property (nonatomic) CLLocationManager *locationManager;
 
 @end
