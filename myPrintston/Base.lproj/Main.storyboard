@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="62" y="710"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Map View Controller - Map-->
         <scene sceneID="JdV-VP-ALm">
             <objects>
-                <viewController id="YRL-n5-4pW" customClass="MPSMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapView" title="Map" id="YRL-n5-4pW" customClass="MPSMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RLu-Ad-ftF"/>
                         <viewControllerLayoutGuide type="bottom" id="Pt3-WX-ACf"/>
@@ -38,17 +38,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="Mda-6F-4ZO"/>
                     <connections>
-                        <segue destination="s46-Mj-Y5b" kind="push" identifier="Mao" id="WQ5-aP-Uvd"/>
+                        <segue destination="s46-Mj-Y5b" kind="push" identifier="MapSegue" id="MLG-bv-LQT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHc-hm-5Ck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="602" y="710"/>
         </scene>
-        <!--List View Controller - Table-->
+        <!--List View Controller - List-->
         <scene sceneID="8b6-Eb-M4K">
             <objects>
-                <tableViewController title="Table" id="Pqy-MP-Tk9" customClass="MPSListViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListView" title="List" id="Pqy-MP-Tk9" customClass="MPSListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" id="yAI-kc-5Je">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,7 +82,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="s46-Mj-Y5b" kind="push" identifier="List" id="rFU-dH-dJ7"/>
+                                    <segue destination="s46-Mj-Y5b" kind="push" identifier="ListSegue" id="rFU-dH-dJ7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -97,10 +97,10 @@
             </objects>
             <point key="canvasLocation" x="602" y="7"/>
         </scene>
-        <!--Printer View Controller - Title-->
+        <!--Printer View Controller - Printer-->
         <scene sceneID="UgK-Cw-Ib1">
             <objects>
-                <viewController id="s46-Mj-Y5b" customClass="MPSPrinterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrinterView" title="Printer" id="s46-Mj-Y5b" customClass="MPSPrinterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="76b-f2-E60"/>
                         <viewControllerLayoutGuide type="bottom" id="eZW-YH-d7Y"/>
@@ -132,7 +132,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="3eS-uH-UYn" kind="push" id="VfU-dI-hZH"/>
+                                            <segue destination="3eS-uH-UYn" kind="push" identifier="PrinterSegue" id="VfU-dI-hZH"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yK-ds-RRJ">
@@ -177,7 +177,7 @@
         <!--Error View Controller-->
         <scene sceneID="2en-qC-nre">
             <objects>
-                <viewController id="3eS-uH-UYn" customClass="MPSErrorViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ErrorView" id="3eS-uH-UYn" customClass="MPSErrorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AP0-4F-hAv"/>
                         <viewControllerLayoutGuide type="bottom" id="bKd-TR-KNz"/>
@@ -356,6 +356,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WQ5-aP-Uvd"/>
+        <segue reference="MLG-bv-LQT"/>
     </inferredMetricsTieBreakers>
 </document>
