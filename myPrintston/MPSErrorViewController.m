@@ -168,7 +168,7 @@
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:jsonData];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [request setValue:[NSString stringWithFormat:@"%d", [jsonData length]] forHTTPHeaderField:@"Content-Length"];
+        [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]] forHTTPHeaderField:@"Content-Length"];
         NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
         
         if(!conn)
