@@ -110,15 +110,10 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    CLLocation *currentLocation = newLocation;
+    [MPSPrinter incrementUserLongitude];
+    [self sortPrinters];
+    [[[[[self.childViewControllers objectAtIndex:0] childViewControllers] objectAtIndex:0] tableView] reloadData];
     
-    if (currentLocation != nil) {
-        [MPSPrinter setUserLongitude: currentLocation.coordinate.longitude];
-        [MPSPrinter setUserLatitude:  currentLocation.coordinate.latitude ];
-    }
-    
-//    [MPSPrinter setUserLongitude: -74.6551];
-//    [MPSPrinter setUserLatitude:   40.3450];
 }
 
 /*
