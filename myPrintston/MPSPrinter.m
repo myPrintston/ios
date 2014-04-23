@@ -50,6 +50,10 @@ static double userLatitude;
 - (void) dealloc {
 }
 
++ (void) incrementUserLongitude {
+    userLongitude += 0.0001;
+}
+
 + (void) setUserLongitude:(double)newUserLongitude {
     userLongitude = newUserLongitude;
 }
@@ -76,6 +80,7 @@ static double userLatitude;
     uLong = (userLocation.coordinate.longitude == 0 ? userLongitude : userLocation.coordinate.longitude);
     uLat = (userLocation.coordinate.latitude == 0 ? userLatitude : userLocation.coordinate.latitude);
     
+//    return [self dist];
     return [self.location distanceFromLocation:userLocation];
 }
 
