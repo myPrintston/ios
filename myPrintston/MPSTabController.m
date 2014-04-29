@@ -52,6 +52,7 @@
     listController.printers = self->printers;
     mapController.printers = self->printers;
     listController.locationManager = self->locationManager;
+    mapController.locationManager = self->locationManager;
 }
 
 - (void)didReceiveMemoryWarning

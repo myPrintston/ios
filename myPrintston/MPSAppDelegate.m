@@ -7,11 +7,14 @@
 //
 
 #import "MPSAppDelegate.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation MPSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [GMSServices provideAPIKey:@"AIzaSyDVjVMdjZ5bzV_Qs3HSHUwU2GOONDtR3rw"];
     /*
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
         [application setStatusBarStyle:UIStatusBarStyleLightContent];

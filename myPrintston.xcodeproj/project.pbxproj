@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12273F9D1906D7F300EFD4AE /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12273F9C1906D7F300EFD4AE /* GoogleMaps.framework */; };
+		124F951D19081F7200DC8736 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 124F951C19081F7200DC8736 /* GoogleMaps.bundle */; };
 		C105C3DA18F1CDDC005F7821 /* MPSErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */; };
 		C13168CF18DA75290034F142 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168CE18DA75290034F142 /* Foundation.framework */; };
 		C13168D118DA75290034F142 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168D018DA75290034F142 /* CoreGraphics.framework */; };
@@ -57,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12273F9C1906D7F300EFD4AE /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		124F951C19081F7200DC8736 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSErrorViewController.h; sourceTree = "<group>"; };
 		C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSErrorViewController.m; sourceTree = "<group>"; };
 		C13168CB18DA75290034F142 /* myPrintston.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myPrintston.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +134,7 @@
 				C144414A190451700009C104 /* libicucore.dylib in Frameworks */,
 				C144414C1904517A0009C104 /* libz.dylib in Frameworks */,
 				C144414E190451800009C104 /* OpenGLES.framework in Frameworks */,
+				12273F9D1906D7F300EFD4AE /* GoogleMaps.framework in Frameworks */,
 				C1444150190451870009C104 /* QuartzCore.framework in Frameworks */,
 				C1444152190451920009C104 /* SystemConfiguration.framework in Frameworks */,
 			);
@@ -170,6 +175,8 @@
 		C13168CD18DA75290034F142 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				124F951C19081F7200DC8736 /* GoogleMaps.bundle */,
+				12273F9C1906D7F300EFD4AE /* GoogleMaps.framework */,
 				C1444151190451920009C104 /* SystemConfiguration.framework */,
 				C144414F190451870009C104 /* QuartzCore.framework */,
 				C144414D190451800009C104 /* OpenGLES.framework */,
@@ -368,6 +375,7 @@
 				C13168EA18DA75290034F142 /* Images.xcassets in Resources */,
 				C13168D918DA75290034F142 /* InfoPlist.strings in Resources */,
 				C13168E218DA75290034F142 /* Main.storyboard in Resources */,
+				124F951D19081F7200DC8736 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,9 +533,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myPrintston/myPrintston-Prefix.pch";
 				INFOPLIST_FILE = "myPrintston/myPrintston-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -542,9 +555,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myPrintston/myPrintston-Prefix.pch";
 				INFOPLIST_FILE = "myPrintston/myPrintston-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
