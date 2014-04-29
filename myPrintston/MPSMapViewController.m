@@ -49,11 +49,9 @@ GMSMapView *mapView_;
     
     
     
-    CLLocationManager *locMgr = self.locationManager;
+//    CLLocationManager *locMgr = self.locationManager;
 
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:startLongitude
-                                                            longitude:startLatitude
-                                                                 zoom:6]; // zoom can be modified if it's too deep or too shallow
+//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:startLongitude longitude:startLatitude zoom:6]; // zoom can be modified if it's too deep or too shallow
     
     NSMutableArray *printers = self.printers;
     
@@ -66,7 +64,7 @@ GMSMapView *mapView_;
         NSString *currSnippet =  printer.room;
         
         GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = CLLocationCoordinate2DMake(currLat, currLat);
+        marker.position = CLLocationCoordinate2DMake(currLat, currLong);
         
         marker.title = currName;
         marker.snippet = currSnippet;

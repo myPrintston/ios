@@ -31,6 +31,7 @@
     
     MPSMapViewController *controller = self.viewControllers[0];
     controller.printers = self.printers;
+    controller.locationManager = self.locationManager;
 }
 
 - (void)didReceiveMemoryWarning

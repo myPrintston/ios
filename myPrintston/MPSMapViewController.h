@@ -8,10 +8,12 @@
 
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/Corelocation.h>
 #import "MPSListViewController.h"
 
 @interface MPSMapViewController : UIViewController
 
 @property (nonatomic) NSMutableArray *printers;
+@property (nonatomic) CLLocationManager *locationManager;
 
 @end
