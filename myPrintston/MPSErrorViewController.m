@@ -192,11 +192,13 @@
         [request setHTTPBody:jsonData];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]] forHTTPHeaderField:@"Content-Length"];
-        NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
         
-        if(!conn)
-            NSLog(@"Connection could not be made");
+        NSURLResponse *response;
+        NSError *connectionError = nil;
+        NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
         
+        NSLog(@"%@", [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding]);
+
         // Create prompt that shows submission success
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"Submission Success!"
@@ -216,10 +218,8 @@
     json[@"netid"]        =  self.netid.text;
     json[@"buildingName"] =  self.printer.building;
     json[@"roomNumber"]   =  self.printer.room;
-    json[@"errorMsg"]     =  self.comment.text;
+    json[@"errMsg"]       =  self.comment.text;
     json[@"errors"]       =  errorids;
-    
-    NSLog(@"%@", json);
     
     return json;
 }
@@ -237,10 +237,6 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
-    
-    NSLog(@"%@", self.view);
-    NSLog(@"%@", [touch view]);
-    
     if (![[touch view] isKindOfClass:[UITextField class]]) {
         [self.view endEditing:YES];
     }
