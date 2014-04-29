@@ -135,6 +135,7 @@
 */
 
 - (IBAction)submit {
+    UIAlertView *alert;
     NSMutableArray *errorids = [[NSMutableArray alloc] init];
     BOOL needComment = NO;
     
@@ -152,10 +153,10 @@
     
     // Message prompt if no errors are selected
     if ([errorids count] == 0) {
-        UIAlertView *alert = [[UIAlertView alloc]
-                                initWithTitle:@"Submission Failed"
-                                message:@"You must select at least one error."
-                                delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Submission Failed"
+                 message:@"You must select at least one error."
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
         [alert show];
         return;
     }
@@ -163,16 +164,16 @@
     // Message prompt if user needs to input a message
     if (needComment && ([self.comment.text length] == 0)) {
         if ([errorids count] == 1) {
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle:@"Submission Failed"
-                                  message:@"The error you selected requires a comment"
-                                  delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+            alert = [[UIAlertView alloc]
+                     initWithTitle:@"Submission Failed"
+                     message:@"The error you selected requires a comment"
+                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
             [alert show];
         } else {
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle:@"Submission Failed"
-                                  message:@"One of the errors you selected requires a comment"
-                                  delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+            alert = [[UIAlertView alloc]
+                     initWithTitle:@"Submission Failed"
+                     message:@"One of the errors you selected requires a comment"
+                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
             [alert show];
         }
         return;
@@ -193,17 +194,27 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]] forHTTPHeaderField:@"Content-Length"];
         
-        NSURLResponse *response;
+        NSURLResponse *urlResponse;
         NSError *connectionError = nil;
-        NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
+        NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&connectionError];
         
-        NSLog(@"%@", [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding]);
-
+        NSString *message = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+        
+        // If there's a rejection from the server side, let the user know.
+        if (![message isEqualToString:@"Thank you for your report!"]) {
+            alert = [[UIAlertView alloc]
+                     initWithTitle:@"Submission Success!"
+                     message:message
+                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
+            
         // Create prompt that shows submission success
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:@"Submission Success!"
-                              message:@"Thanks!"
-                              delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Submission Failed"
+                 message:message
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
         [alert show];
         
         // Segue back to beginning
