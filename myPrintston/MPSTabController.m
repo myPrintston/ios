@@ -14,8 +14,6 @@
 @interface MPSTabController () {
     NSMutableArray *printers;
     CLLocationManager *locationManager;
-    double userLongitude;
-    double userLatitude;
 }
 
 @end
@@ -50,11 +48,11 @@
     
     MPSListNavController *listController = self.viewControllers[0];
     MPSMapNavController  *mapController = self.viewControllers[1];
+    
     listController.printers = self->printers;
     mapController.printers = self->printers;
     listController.locationManager = self->locationManager;
     mapController.locationManager = self->locationManager;
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,8 +83,9 @@
 
 - (void) sortPrinters
 {
+    CLLocation *userLocation = locationManager.location;
     [self->printers sortUsingComparator:^(id p1, id p2) {
-        if ([p1 dist2] > [p2 dist2])
+        if ([p1 distCL:userLocation] > [p2 distCL:userLocation])
             return (NSComparisonResult) NSOrderedDescending;
         else
             return (NSComparisonResult) NSOrderedAscending;
@@ -112,17 +111,10 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    CLLocation *currentLocation = newLocation;
+    [MPSPrinter incrementUserLongitude];
+    [self sortPrinters];
+    [[[[[self.childViewControllers objectAtIndex:0] childViewControllers] objectAtIndex:0] tableView] reloadData];
     
-    if (currentLocation != nil) {
-        userLongitude = currentLocation.coordinate.longitude;
-        userLatitude  = currentLocation.coordinate.latitude;
-    }
-    
-//    [MPSPrinter setUserLongitude: -74.6551];
-//    [MPSPrinter setUserLatitude:   40.3450];
-      [MPSPrinter setUserLongitude: userLongitude];
-      [MPSPrinter setUserLatitude:  userLatitude];
 }
 
 /*
