@@ -57,6 +57,12 @@
     
     keyboardHeight = 0;
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
     [self registerForKeyboardNotifications];
 }
 
@@ -247,6 +253,10 @@
     json[@"errors"]       =  errorids;
     
     return json;
+}
+
+-(void)dismissKeyboard {
+    [self.comment resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
