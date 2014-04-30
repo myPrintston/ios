@@ -262,9 +262,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="q7o-Db-ME6" secondAttribute="bottom" constant="130" id="12g-z8-s5F"/>
-                                    <constraint firstAttribute="bottom" secondItem="MsG-vA-OYh" secondAttribute="bottom" constant="50" id="30V-u4-gnr"/>
                                     <constraint firstItem="b1m-bS-Btg" firstAttribute="leading" secondItem="a2a-OR-6Cm" secondAttribute="leading" constant="70" id="9Dh-IB-Zrq"/>
+                                    <constraint firstItem="b1m-bS-Btg" firstAttribute="top" secondItem="MsG-vA-OYh" secondAttribute="bottom" constant="10" id="9gG-ER-aso"/>
+                                    <constraint firstItem="q7o-Db-ME6" firstAttribute="top" secondItem="qaE-D3-u2v" secondAttribute="bottom" constant="5" id="BUu-ow-jtk"/>
                                     <constraint firstAttribute="bottom" secondItem="b1m-bS-Btg" secondAttribute="bottom" constant="10" id="JXa-Mo-c1b"/>
                                     <constraint firstItem="SVK-kf-GFA" firstAttribute="leading" secondItem="a2a-OR-6Cm" secondAttribute="leading" constant="20" id="K7w-4K-sjI"/>
                                     <constraint firstAttribute="trailing" secondItem="q7o-Db-ME6" secondAttribute="trailing" constant="20" id="PxX-ry-SaV"/>
@@ -276,7 +276,7 @@
                                     <constraint firstItem="MsG-vA-OYh" firstAttribute="leading" secondItem="a2a-OR-6Cm" secondAttribute="leading" constant="20" id="pcM-b8-nIx"/>
                                     <constraint firstAttribute="trailing" secondItem="qaE-D3-u2v" secondAttribute="trailing" constant="20" id="rqd-km-V9m"/>
                                     <constraint firstItem="q7o-Db-ME6" firstAttribute="leading" secondItem="a2a-OR-6Cm" secondAttribute="leading" constant="5" id="s6r-Xs-7Sq"/>
-                                    <constraint firstItem="q7o-Db-ME6" firstAttribute="top" secondItem="a2a-OR-6Cm" secondAttribute="top" constant="40" id="yko-ox-aeq"/>
+                                    <constraint firstItem="MsG-vA-OYh" firstAttribute="top" secondItem="q7o-Db-ME6" secondAttribute="bottom" constant="10" id="w1I-ae-kQI"/>
                                 </constraints>
                             </view>
                         </subviews>

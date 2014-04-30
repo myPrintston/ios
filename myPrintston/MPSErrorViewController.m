@@ -39,13 +39,13 @@
     [self.errorList registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Error"];
     self.errorList.separatorColor = [UIColor clearColor];
     self.errorList.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.errorList.scrollEnabled = NO;
+    
     self->possibleErrors = self.loadPossibleErrors;
     self.netid.delegate = self;
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-//                                   initWithTarget:self
-//                                   action:@selector(dismissKeyboard)];
-//    
-//    [self.view addGestureRecognizer:tap];
+    self.comment.delegate = self;
+    self.comment.enablesReturnKeyAutomatically = NO;
+    
 
     [self.comment.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
     [self.comment.layer setBorderWidth:2.0];
@@ -250,43 +250,16 @@
     return YES;
 }
 
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    [self animateTextView: textView up: YES];
-}
-
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    [self animateTextView: textView up: NO];
-}
-
-- (void) animateTextView: (UITextView*) textView up: (BOOL) up
-{
-    const int movementDistance = 80; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
-    int movement = (up ? -movementDistance : movementDistance);
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
-}
-
- 
-//-(void)dismissKeyboard {
-//    [self.netid resignFirstResponder];
-//}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    UITouch *touch = [[event allTouches] anyObject];
-    if (![[touch view] isKindOfClass:[UITextField class]]) {
-        [self.view endEditing:YES];
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
     }
+    
+    return YES;
 }
+
+
 
 @end
