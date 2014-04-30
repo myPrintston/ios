@@ -69,13 +69,22 @@
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
     NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
+    MPSErrorType *other;
+    
     isAdmin = YES;
     for (NSDictionary *errorInfo in jsonArray) {
-        if (isAdmin || ![errorInfo[@"fields"][@"Admin"] boolValue]) {
+        if (isAdmin || ![errorInfo[@"fields"][@"admin"] boolValue]) {
             MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
-            [urlerrors addObject:error];
+            
+            if ([errorInfo[@"fields"][@"eMsg"] isEqualToString:@"Other"])
+                other = error;
+            else
+                [urlerrors addObject:error];
         }
     }
+    
+    if (other)
+        [urlerrors addObject:other];
     
     return urlerrors;
 }
@@ -203,7 +212,7 @@
         // If there's a rejection from the server side, let the user know.
         if (![message isEqualToString:@"Thank you for your report!"]) {
             alert = [[UIAlertView alloc]
-                     initWithTitle:@"Submission Success!"
+                     initWithTitle:@"Submission Failed"
                      message:message
                      delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
             [alert show];
@@ -212,7 +221,7 @@
             
         // Create prompt that shows submission success
         alert = [[UIAlertView alloc]
-                 initWithTitle:@"Submission Failed"
+                 initWithTitle:@"Submission Success!"
                  message:message
                  delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
         [alert show];
@@ -240,20 +249,20 @@
     [textField resignFirstResponder];
     return YES;
 }
-/*
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [self animateTextField: textField up: YES];
+    [self animateTextView: textView up: YES];
 }
 
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (void)textViewDidEndEditing:(UITextView *)textView
 {
-    [self animateTextField: textField up: NO];
+    [self animateTextView: textView up: NO];
 }
 
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+- (void) animateTextView: (UITextView*) textView up: (BOOL) up
 {
     const int movementDistance = 80; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
@@ -266,7 +275,7 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
 }
-*/
+
  
 //-(void)dismissKeyboard {
 //    [self.netid resignFirstResponder];
