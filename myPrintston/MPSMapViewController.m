@@ -32,26 +32,17 @@ GMSMapView *mapView_;
 {
     [super viewDidLoad];
     
-
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:40.3457006
-                                                            longitude:-74.65758709
-                                                                 zoom:12];
+    CLLocationManager *locMgr = self.locationManager;
+    double posLat = locMgr.location.coordinate.latitude;
+    double posLong = locMgr.location.coordinate.longitude;
+    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:posLat
+                                                            longitude:posLong
+                                                                 zoom:18];
+    
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
-    
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(40.3457006,-74.65758709);
-    marker.title = @"Wright Hall";
-    marker.snippet = @"3rd Floor";
-    marker.map = mapView_;
-    
-    
-    
-//    CLLocationManager *locMgr = self.locationManager;
-
-//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:startLongitude longitude:startLatitude zoom:6]; // zoom can be modified if it's too deep or too shallow
     
     NSMutableArray *printers = self.printers;
     
