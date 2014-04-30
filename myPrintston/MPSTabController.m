@@ -39,8 +39,6 @@
     
     locationManager = [[CLLocationManager alloc] init];
     [self getCurrentLocation];
-    NSLog(@"%f", self->locationManager.location.coordinate.latitude);
-    NSLog(@"%f", self->locationManager.location.coordinate.longitude);
     
     self->printers = self.loadPrinters;
     [self sortPrinters];

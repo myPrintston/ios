@@ -61,6 +61,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+// Query server and get the error types
 - (NSMutableArray*) loadPossibleErrors
 {
     NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/etypes/"];
@@ -79,11 +80,13 @@
     return urlerrors;
 }
 
+// Number of sections of errors = 1
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
     return 1;
 }
+
 
 - (NSInteger)tableView:(UITableView *)errorList numberOfRowsInSection:(NSInteger)section
 {
@@ -119,6 +122,7 @@
     
     [errorList deselectRowAtIndexPath:indexPath animated:NO];
 }
+
 /*
 #pragma mark - Navigation
 
@@ -130,8 +134,8 @@
 }
 */
 
-
 - (IBAction)submit {
+    UIAlertView *alert;
     NSMutableArray *errorids = [[NSMutableArray alloc] init];
     BOOL needComment = NO;
     
@@ -140,28 +144,48 @@
         NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
         UITableViewCell *cell = [self.errorList cellForRowAtIndexPath:path];
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-            [errorids addObject:[NSNumber numberWithInt:[[self->possibleErrors objectAtIndex:i] errorid]]];
-            if ([[[possibleErrors objectAtIndex:i] eType] isEqualToString:@"text"])
+            [errorids addObject:[NSNumber numberWithInt:[self->possibleErrors[i] errorid]]];
+            if ([[possibleErrors[i] eType] isEqualToString:@"text"])
                 needComment = YES;
         }
     }
     
-    if (([errorids count] > 0) && ( !needComment || [self.comment.text length] > 0)) {
-        // Create the JSON to send
-        NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
-        [json setValue:[NSString stringWithFormat:@"%d", self.printer.printerid] forKey:@"printerid"];
-        [json setValue:self.netid.text forKey:@"netid" ];
-        [json setValue:self.printer.building forKey:@"buildingName"];
-        [json setValue:self.printer.room forKey:@"roomNumber"];
-        [json setValue:self.comment.text forKey:@"errMsg"];
-        [json setObject:errorids forKey:@"errors"];
-
+    
+    // Message prompt if no errors are selected
+    if ([errorids count] == 0) {
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Submission Failed"
+                 message:@"You must select at least one error."
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    // Message prompt if user needs to input a message
+    if (needComment && ([self.comment.text length] == 0)) {
+        if ([errorids count] == 1) {
+            alert = [[UIAlertView alloc]
+                     initWithTitle:@"Submission Failed"
+                     message:@"The error you selected requires a comment"
+                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+            [alert show];
+        } else {
+            alert = [[UIAlertView alloc]
+                     initWithTitle:@"Submission Failed"
+                     message:@"One of the errors you selected requires a comment"
+                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+            [alert show];
+        }
+        return;
+    }
+    
+    
+    if (YES) {
+        // Prepare the JSON to send as NSData
+        NSMutableDictionary *json = [self prepareJSON: errorids];
         NSError *error = NULL;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json options:0 error:&error];
 
-        NSLog(@"%@", json);
-        
-        
         // Send POST request
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL: [NSURL URLWithString:@"http://54.186.188.121:2016/error/"]];
@@ -169,20 +193,46 @@
         [request setHTTPBody:jsonData];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]] forHTTPHeaderField:@"Content-Length"];
-        NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
         
-        if(!conn)
-            NSLog(@"Connection could not be made");
+        NSURLResponse *urlResponse;
+        NSError *connectionError = nil;
+        NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&connectionError];
         
-        // Reset fields
-        self.netid.text = @"";
-        self.comment.text = @"";
-        for (int i = 0; i < [possibleErrors count]; i++) {
-            NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
-            UITableViewCell *cell = [self.errorList cellForRowAtIndexPath:path];
-            cell.accessoryType = UITableViewCellAccessoryNone;
+        NSString *message = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+        
+        // If there's a rejection from the server side, let the user know.
+        if (![message isEqualToString:@"Thank you for your report!"]) {
+            alert = [[UIAlertView alloc]
+                     initWithTitle:@"Submission Success!"
+                     message:message
+                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+            [alert show];
+            return;
         }
+            
+        // Create prompt that shows submission success
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Submission Failed"
+                 message:message
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        
+        // Segue back to beginning
+        [self performSegueWithIdentifier:@"Submitted" sender:nil];
     }
+}
+
+- (NSMutableDictionary *) prepareJSON:(NSMutableArray*) errorids{
+    NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
+    
+    json[@"printerid"]    =  [NSString stringWithFormat:@"%d", self.printer.printerid];
+    json[@"netid"]        =  self.netid.text;
+    json[@"buildingName"] =  self.printer.building;
+    json[@"roomNumber"]   =  self.printer.room;
+    json[@"errMsg"]       =  self.comment.text;
+    json[@"errors"]       =  errorids;
+    
+    return json;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -198,10 +248,6 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
-    
-    NSLog(@"%@", self.view);
-    NSLog(@"%@", [touch view]);
-    
     if (![[touch view] isKindOfClass:[UITextField class]]) {
         [self.view endEditing:YES];
     }
