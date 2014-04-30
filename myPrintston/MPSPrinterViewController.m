@@ -33,16 +33,6 @@
     
     
     self.statusMsg.text = [NSString stringWithFormat:@"Status: %@", self.printer.statusMsg];
-    
-    
-    // Make a map annotation for a pin from the printer and add it to the map view
-    MPSMapAnnotation *mapPoint = [[MPSMapAnnotation alloc] init];
-    mapPoint.coordinate = CLLocationCoordinate2DMake(self.printer.latitude, self.printer.longitude);
-    [self.mapView addAnnotation:mapPoint];
-    
-    // Zoom to a region around the pin
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(mapPoint.coordinate, 500, 500);
-    [self.mapView setRegion:region];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,23 +52,6 @@
 }
 */
 
-#pragma mark - MKMapViewDelegate
-
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    MKPinAnnotationView *view = nil;
-    static NSString *reuseIdentifier = @"MapAnnotation";
-    
-    // Return a MKPinAnnotationView with a simple accessory button
-    view = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIdentifier];
-    if(!view) {
-        view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
-        view.canShowCallout = YES;
-        view.animatesDrop = YES;
-    }
-    
-    return view;
-}
 
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation

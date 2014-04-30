@@ -10,11 +10,10 @@
 #import "MPSPrinter.h"
 #import <MapKit/MapKit.h>
 
-@interface MPSPrinterViewController : UIViewController<MKMapViewDelegate>
+@interface MPSPrinterViewController : UIViewController
 
 @property (nonatomic) MPSPrinter *printer;
 @property (weak, nonatomic) IBOutlet UIButton *errorButton;
 @property (weak, nonatomic) IBOutlet UILabel *statusMsg;
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
