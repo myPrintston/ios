@@ -12,6 +12,7 @@
     NSMutableArray *possibleErrors;
     BOOL isAdmin;
     double keyboardHeight;
+    UIGestureRecognizer *tap;
 }
 
 
@@ -57,11 +58,8 @@
     
     keyboardHeight = 0;
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-    
-    [self.view addGestureRecognizer:tap];
+    tap = [[UITapGestureRecognizer alloc]
+            initWithTarget:self action:@selector(dismissKeyboard)];
     
     [self registerForKeyboardNotifications];
 }
@@ -256,7 +254,16 @@
 }
 
 -(void)dismissKeyboard {
+    [self.netid resignFirstResponder];
     [self.comment resignFirstResponder];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.view addGestureRecognizer:tap];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.view removeGestureRecognizer:tap];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -276,6 +283,7 @@
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
+    [self.view addGestureRecognizer:tap];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.3];
     
@@ -284,6 +292,7 @@
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
+    [self.view removeGestureRecognizer:tap];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.2];
     
@@ -295,9 +304,8 @@
 
 - (void)registerForKeyboardNotifications
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)
+        name:UIKeyboardWillShowNotification object:nil];
 }
 
 // Called when the UIKeyboardDidShowNotification is sent.
