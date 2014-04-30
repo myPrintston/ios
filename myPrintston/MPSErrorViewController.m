@@ -11,6 +11,7 @@
 @interface MPSErrorViewController () {
     NSMutableArray *possibleErrors;
     BOOL isAdmin;
+    double keyboardHeight;
 }
 
 
@@ -53,6 +54,10 @@
     self.comment.clipsToBounds = YES;
     
     isAdmin = YES;
+    
+    keyboardHeight = 0;
+    
+    [self registerForKeyboardNotifications];
 }
 
 - (void)didReceiveMemoryWarning
@@ -260,6 +265,38 @@
     return YES;
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.3];
+    
+    self.view.transform = CGAffineTransformTranslate(self.view.transform, 0, -keyboardHeight);
+    [UIView commitAnimations];
+}
 
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.2];
+    
+    self.view.transform = CGAffineTransformTranslate(self.view.transform, 0, keyboardHeight);
+    [UIView commitAnimations];
+    
+    [self.comment resignFirstResponder];
+}
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWillShow:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    keyboardHeight = kbSize.height - 49;
+}
 
 @end
