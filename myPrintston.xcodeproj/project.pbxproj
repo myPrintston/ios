@@ -17,7 +17,6 @@
 		C13168DB18DA75290034F142 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168DA18DA75290034F142 /* main.m */; };
 		C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168DE18DA75290034F142 /* MPSAppDelegate.m */; };
 		C13168E218DA75290034F142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C13168E018DA75290034F142 /* Main.storyboard */; };
-		C13168E818DA75290034F142 /* MPSSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168E718DA75290034F142 /* MPSSecondViewController.m */; };
 		C13168EA18DA75290034F142 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C13168E918DA75290034F142 /* Images.xcassets */; };
 		C13168F118DA75290034F142 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168F018DA75290034F142 /* XCTest.framework */; };
 		C13168F218DA75290034F142 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168CE18DA75290034F142 /* Foundation.framework */; };
@@ -74,8 +73,6 @@
 		C13168DD18DA75290034F142 /* MPSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPSAppDelegate.h; sourceTree = "<group>"; };
 		C13168DE18DA75290034F142 /* MPSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSAppDelegate.m; sourceTree = "<group>"; };
 		C13168E118DA75290034F142 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C13168E618DA75290034F142 /* MPSSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPSSecondViewController.h; sourceTree = "<group>"; };
-		C13168E718DA75290034F142 /* MPSSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSSecondViewController.m; sourceTree = "<group>"; };
 		C13168E918DA75290034F142 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C13168EF18DA75290034F142 /* myPrintstonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myPrintstonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13168F018DA75290034F142 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -206,8 +203,6 @@
 				C13168E018DA75290034F142 /* Main.storyboard */,
 				C13168DD18DA75290034F142 /* MPSAppDelegate.h */,
 				C13168DE18DA75290034F142 /* MPSAppDelegate.m */,
-				C13168E618DA75290034F142 /* MPSSecondViewController.h */,
-				C13168E718DA75290034F142 /* MPSSecondViewController.m */,
 				C13168E918DA75290034F142 /* Images.xcassets */,
 				C13168D518DA75290034F142 /* Supporting Files */,
 			);
@@ -402,7 +397,6 @@
 				C144413419024A2F0009C104 /* MPSListNavController.m in Sources */,
 				C1444131190242190009C104 /* MPSTabController.m in Sources */,
 				C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */,
-				C13168E818DA75290034F142 /* MPSSecondViewController.m in Sources */,
 				C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */,
 				C1E3635918FB79D500A6486B /* MPSMapAnnotation.m in Sources */,
 				C1FB68EF18E6216000376EBC /* MPSPrinter.m in Sources */,
@@ -540,8 +534,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myPrintston/myPrintston-Prefix.pch";
 				INFOPLIST_FILE = "myPrintston/myPrintston-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -562,8 +556,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myPrintston/myPrintston-Prefix.pch";
 				INFOPLIST_FILE = "myPrintston/myPrintston-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
