@@ -45,7 +45,7 @@
     for (int i = 0; i < [printerids count]; i++)
     {
         MPSPrinter *printer = [self.printers objectAtIndex:i];
-        printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] integerValue];
+        printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
         printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
     }
 }
