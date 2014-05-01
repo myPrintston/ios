@@ -9,7 +9,6 @@
 #import "MPSPrinterViewController.h"
 #import "MPSErrorViewController.h"
 #import "MPSPrinter.h"
-#import "MPSMapAnnotation.h"
 
 @interface MPSPrinterViewController ()
 
