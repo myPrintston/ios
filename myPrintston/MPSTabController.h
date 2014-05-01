@@ -12,5 +12,6 @@
 @interface MPSTabController : UITabBarController <CLLocationManagerDelegate>
 
 - (NSMutableArray*) loadPrinters;
+- (void) updatePrinters;
 
 @end

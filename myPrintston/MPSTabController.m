@@ -79,6 +79,29 @@
     return urlprinters;
 }
 
+- (void) updatePrinters
+{
+    NSMutableArray *printerids = [[NSMutableArray alloc] init];
+    for (MPSPrinter *printer in printers)
+        [printerids addObject:[NSNumber numberWithInt:printer.printerid]];
+    
+    NSString *urlstring = [@"http://54.186.188.121:2016/pids/" stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
+    
+    NSURL *url = [NSURL URLWithString:urlstring];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    if (data == nil)
+        return;
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    for (int i = 0; i < [printerids count]; i++)
+    {
+        MPSPrinter *printer = [printers objectAtIndex:i];
+        printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] integerValue];
+        printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
+    }
+}
+
 - (void) sortPrinters
 {
     CLLocation *userLocation = locationManager.location;
@@ -112,7 +135,6 @@
     [MPSPrinter incrementUserLongitude];
     [self sortPrinters];
     [[[[[self.childViewControllers objectAtIndex:0] childViewControllers] objectAtIndex:0] tableView] reloadData];
-    
 }
 
 /*
