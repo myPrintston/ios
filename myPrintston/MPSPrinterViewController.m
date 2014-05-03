@@ -6,16 +6,22 @@
 //
 //
 
+#import "MPSListNavController.h"
 #import "MPSPrinterViewController.h"
 #import "MPSErrorViewController.h"
 #import "MPSPrinter.h"
 #import "MPSMapAnnotation.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface MPSPrinterViewController ()
 
 @end
 
+// self.printer = printer
+
 @implementation MPSPrinterViewController
+
+GMSMapView *mapView_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,11 +35,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    // get position
+    CLLocationManager *locMgr = self.locationManager;
+    double userLat = locMgr.location.coordinate.latitude;
+    double userLong = locMgr.location.coordinate.longitude;
+    
+    // center on user
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:userLat
+                                                            longitude:userLong
+                                                                 zoom:18];
+    
+    // setup
+    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    mapView_.myLocationEnabled = YES;
+    self.view = mapView_;
+    
+    // user location
+    GMSMarker *userLoc = [[GMSMarker alloc] init];
+    userLoc.position = CLLocationCoordinate2DMake(userLat, userLong);
+    
+    userLoc.map = mapView_;
+    
+    // get current printer location / add marker
+    MPSPrinter *printer = self.printer;
+    
+    double currLong = printer.longitude;
+    double currLat = printer.latitude;
+    
+    NSString *currName = printer.building;
+    NSString *currSnippet =  printer.room;
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = CLLocationCoordinate2DMake(currLat, currLong);
+    
+    marker.title = currName;
+    marker.snippet = currSnippet;
+    marker.map = mapView_;
     
     
     self.statusMsg.text = [NSString stringWithFormat:@"Status: %@", self.printer.statusMsg];
+    // Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning
 {

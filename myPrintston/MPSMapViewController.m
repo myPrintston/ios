@@ -28,6 +28,10 @@ GMSMapView *mapView_;
     return self;
 }
 
+//if (currentPrinter.status == 0) cell.textLabel.textColor = [UIColor greenColor];
+//if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
+//if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor redColor];
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -40,6 +44,15 @@ GMSMapView *mapView_;
                                                             longitude:posLong
                                                                  zoom:18];
     
+
+    //testing coords: 40.343658, -74.658338
+
+//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:40.343658
+//                                                            longitude:-74.658338
+//                                                              zoom:18];
+    
+    
+    
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
@@ -51,11 +64,30 @@ GMSMapView *mapView_;
         double currLong = printer.longitude;
         double currLat = printer.latitude;
         
+        NSLog(@"%f, %f", currLat, currLong);
+        
+        double currStatus = printer.status;
+        
+        
+        
         NSString *currName = printer.building;
         NSString *currSnippet =  printer.room;
         
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.position = CLLocationCoordinate2DMake(currLat, currLong);
+        
+        if (currStatus == 0)
+        {
+            marker.icon = [GMSMarker markerImageWithColor:[UIColor greenColor]];
+        }
+        else if (currStatus == 1)
+        {
+            marker.icon = [GMSMarker markerImageWithColor:[UIColor orangeColor]];
+        }
+        else
+        {
+            marker.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
+        }
         
         marker.title = currName;
         marker.snippet = currSnippet;
