@@ -66,6 +66,16 @@ GMSMapView *mapView_;
     // Do any additional setup after loading the view.
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    double posLat = self.locationManager.location.coordinate.latitude;
+    double posLong = self.locationManager.location.coordinate.longitude;
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:posLat
+                                                            longitude:posLong
+                                                                 zoom:18];
+    GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
+    [mapView_ moveCamera:update];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
