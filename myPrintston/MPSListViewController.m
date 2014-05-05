@@ -42,11 +42,17 @@
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
-    for (int i = 0; i < [printerids count]; i++)
-    {
-        MPSPrinter *printer = [self.printers objectAtIndex:i];
-        printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
-        printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
+    NSLog(@"Count from server: %d", [jsonArray count]);
+    if ([jsonArray count] == 0) {
+        self.printers = [self loadPrinters];
+        [self.tableView reloadData];
+    } else {
+        for (int i = 0; i < [printerids count]; i++)
+        {
+            MPSPrinter *printer = [self.printers objectAtIndex:i];
+            printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
+            printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
+        }
     }
 }
 
@@ -69,6 +75,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSMutableArray*) loadPrinters
+{
+    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/pall/"];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    if (data == nil)
+        return [NSMutableArray arrayWithObjects: nil];
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSMutableArray *urlprinters = [[NSMutableArray alloc] init];
+    for (NSDictionary *printerInfo in jsonArray) {
+        MPSPrinter *printer = [[MPSPrinter alloc] initWithDictionary:printerInfo];
+        [urlprinters addObject:printer];
+    }
+    
+    return urlprinters;
+}
+
 -(void)didMoveToParentViewController:(UIViewController *)parent{
     [self.tableView reloadData];
 }
@@ -84,6 +108,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    NSLog(@"Count in internal printers: %d", [self.printers count]);
     return [self.printers count];
 }
 
