@@ -94,7 +94,7 @@
     static NSString *CellIdentifier = @"PrinterCell";
     
     MPSPrinter *currentPrinter = [self.printers objectAtIndex:indexPath.row];
-    
+      
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = currentPrinter.building;
@@ -103,11 +103,17 @@
     if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
     if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor redColor];
     
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter dist], currentPrinter.room];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter distCL:self.locationManager.location], currentPrinter.room];
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%f) %@", ([currentPrinter angle] * 180 / M_PI), currentPrinter.room];
     
-    //cell.imageView.contentMode = UIViewContentModeCenter;
-    //cell.imageView.transform = CGAffineTransformMakeRotation([currentPrinter angle] + M_2_PI);
+    // Show border for better debugging
+    [cell.imageView.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [cell.imageView.layer setBorderWidth: 0.5];
+    cell.imageView.contentMode = UIViewContentModeCenter;
+    
+    if (indexPath.row == 0)
+        cell.imageView.transform = CGAffineTransformMakeRotation(-[currentPrinter angle]);
+    
 //    NSLog(@"%f", [currentPrinter angle]);
     
     return cell;

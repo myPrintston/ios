@@ -132,7 +132,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    [MPSPrinter incrementUserLongitude];
+//    [MPSPrinter incrementUserLongitude];
     [self sortPrinters];
     [[[[[self.childViewControllers objectAtIndex:0] childViewControllers] objectAtIndex:0] tableView] reloadData];
 }
