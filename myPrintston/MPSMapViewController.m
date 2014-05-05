@@ -9,7 +9,6 @@
 #import "MPSMapViewController.h"
 #import "MPSPrinterViewController.h"
 #import "MPSListNavController.h"
-#import <GoogleMaps/GoogleMaps.h>
 
 @interface MPSMapViewController ()
     
@@ -43,6 +42,7 @@ GMSMapView *mapView_;
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
+    mapView_.delegate = self;
     
     NSMutableArray *printers = self.printers;
     
@@ -60,6 +60,7 @@ GMSMapView *mapView_;
         marker.title = currName;
         marker.snippet = currSnippet;
         marker.map = mapView_;
+        marker.userData = printer;
     }
     
     // Do any additional setup after loading the view.
@@ -71,6 +72,9 @@ GMSMapView *mapView_;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker*)marker {
+    [self performSegueWithIdentifier:@"MapSegue" sender:marker];
+}
 
 #pragma mark - Navigation
 
@@ -79,10 +83,12 @@ GMSMapView *mapView_;
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-//    MPSPrinterViewController *detailController = segue.destinationViewController;
-//    MPSPrinter *printer = ??????;
-//    detailController.printer = printer;
-//    detailController.title = [printer name];
+    GMSMarker *marker = sender;
+
+    MPSPrinterViewController *detailController = segue.destinationViewController;
+    MPSPrinter *printer = marker.userData;
+    detailController.printer = printer;
+    detailController.title = [printer name];
 }
 
 
