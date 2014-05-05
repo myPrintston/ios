@@ -42,7 +42,6 @@
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
-    NSLog(@"Count from server: %d", [jsonArray count]);
     if ([jsonArray count] == 0) {
         self.printers = [self loadPrinters];
         [self.tableView reloadData];
@@ -108,7 +107,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"Count in internal printers: %d", [self.printers count]);
     return [self.printers count];
 }
 
