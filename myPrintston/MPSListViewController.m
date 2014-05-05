@@ -12,6 +12,8 @@
 #import "MPSListNavController.h"
 #import "MPSPrinter.h"
 
+extern NSString *IP;
+
 @interface MPSListViewController()
 
 @end
@@ -33,7 +35,7 @@
     for (MPSPrinter *printer in self.printers)
         [printerids addObject:[NSNumber numberWithInt:printer.printerid]];
     
-    NSString *urlstring = [@"http://54.186.188.121:2016/pids/" stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
+    NSString *urlstring = [[NSString stringWithFormat:@"%@/pids/", IP] stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
     
     NSURL *url = [NSURL URLWithString:urlstring];
     NSData *data = [NSData dataWithContentsOfURL:url];
@@ -76,7 +78,7 @@
 
 - (NSMutableArray*) loadPrinters
 {
-    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/pall/"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/pall/", IP]];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
     if (data == nil)
