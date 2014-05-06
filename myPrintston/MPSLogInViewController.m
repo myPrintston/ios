@@ -135,7 +135,7 @@ extern BOOL isAdmin;
         [alert show];
         return;
     }
-
+    
     alert = [[UIAlertView alloc]
              initWithTitle:@"Login Success!"
              message:@"You have successfully logged in!"
@@ -145,5 +145,4 @@ extern BOOL isAdmin;
     isAdmin = YES;
     [self performSegueWithIdentifier:@"login" sender:nil];
 }
-
 @end
