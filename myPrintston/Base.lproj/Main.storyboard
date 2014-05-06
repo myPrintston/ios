@@ -129,6 +129,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="login" destination="oY4-0b-DIx" eventType="touchUpInside" id="KP6-Qv-r83"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -148,10 +151,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Admin Log In" id="CxE-PL-3Xl"/>
+                    <connections>
+                        <segue destination="fBL-UW-dbb" kind="push" identifier="login" id="Ytd-rH-AzP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHV-ip-2Zx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1301" y="1094"/>
+            <point key="canvasLocation" x="1301" y="1066"/>
         </scene>
         <!--Log Out View Controller - Admin Log Out-->
         <scene sceneID="XBB-Vi-SRy">
@@ -182,6 +188,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="logout" destination="fBL-UW-dbb" eventType="touchUpInside" id="r7E-Lp-ibr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -195,16 +204,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kb3-le-raG" firstAttribute="leading" secondItem="dzp-ib-VZg" secondAttribute="leading" id="G3X-XM-lMg"/>
+                            <constraint firstItem="kb3-le-raG" firstAttribute="top" secondItem="no3-PH-a6F" secondAttribute="bottom" id="NLO-Km-89m"/>
                             <constraint firstItem="dR0-gY-GrG" firstAttribute="top" secondItem="kb3-le-raG" secondAttribute="bottom" id="aev-8l-Obp"/>
                             <constraint firstAttribute="trailing" secondItem="kb3-le-raG" secondAttribute="trailing" id="bbg-iQ-kkk"/>
-                            <constraint firstItem="kb3-le-raG" firstAttribute="top" secondItem="no3-PH-a6F" secondAttribute="bottom" id="jxI-39-pT4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Admin Log Out" id="Klb-hT-N2B"/>
+                    <connections>
+                        <segue destination="oY4-0b-DIx" kind="push" identifier="logout" id="uAE-h0-52I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfo-ha-YOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1301" y="1806"/>
+            <point key="canvasLocation" x="1301" y="1723"/>
         </scene>
         <!--List View Controller - List-->
         <scene sceneID="8b6-Eb-M4K">
@@ -543,6 +555,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="uAE-h0-52I"/>
+        <segue reference="Ytd-rH-AzP"/>
         <segue reference="MLG-bv-LQT"/>
     </inferredMetricsTieBreakers>
 </document>

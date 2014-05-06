@@ -8,6 +8,8 @@
 
 #import "MPSLogOutViewController.h"
 
+extern BOOL isAdmin;
+
 @interface MPSLogOutViewController ()
 
 @end
@@ -47,5 +49,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)logout {
+    isAdmin = NO;
+    [self performSegueWithIdentifier:@"logout" sender:nil];
+}
 
 @end

@@ -8,6 +8,8 @@
 
 #import "MPSLogInViewController.h"
 
+extern BOOL isAdmin;
+
 @interface MPSLogInViewController ()
 
 @end
@@ -47,5 +49,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)login {
+    isAdmin = YES;
+    [self performSegueWithIdentifier:@"login" sender:nil];
+}
 
 @end

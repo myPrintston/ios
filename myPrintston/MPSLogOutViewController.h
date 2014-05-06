@@ -10,4 +10,6 @@
 
 @interface MPSLogOutViewController : UIViewController
 
+- (IBAction)logout;
+
 @end
