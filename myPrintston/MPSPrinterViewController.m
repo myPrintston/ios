@@ -11,6 +11,8 @@
 #import "MPSErrorViewController.h"
 #import "MPSPrinter.h"
 
+extern BOOL isAdmin;
+
 @interface MPSPrinterViewController ()
 
 @end
@@ -42,17 +44,12 @@ GMSMapView *mapView_;
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:userLat
                                                             longitude:userLong
                                                                  zoom:18];
+    
     GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
     [self.mapView moveCamera:update];
     
     // setup
     self.mapView.myLocationEnabled = YES;
-    
-    // user location
-    GMSMarker *userLoc = [[GMSMarker alloc] init];
-    userLoc.position = CLLocationCoordinate2DMake(userLat, userLong);
-    
-    userLoc.map = self.mapView;
     
     // get current printer location / add marker
     MPSPrinter *printer = self.printer;
