@@ -152,7 +152,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Admin Log In" id="CxE-PL-3Xl"/>
                     <connections>
-                        <segue destination="fBL-UW-dbb" kind="push" identifier="login" id="Ytd-rH-AzP"/>
+                        <segue destination="8YX-ce-x5E" kind="modal" identifier="login" modalTransitionStyle="flipHorizontal" id="iKd-xh-d1O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHV-ip-2Zx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -211,7 +211,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Admin Log Out" id="Klb-hT-N2B"/>
                     <connections>
-                        <segue destination="oY4-0b-DIx" kind="push" identifier="logout" id="uAE-h0-52I"/>
+                        <segue destination="8YX-ce-x5E" kind="modal" identifier="logout" modalTransitionStyle="flipHorizontal" id="9NE-1f-JfA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfo-ha-YOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -555,8 +555,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uAE-h0-52I"/>
-        <segue reference="Ytd-rH-AzP"/>
+        <segue reference="iKd-xh-d1O"/>
         <segue reference="MLG-bv-LQT"/>
     </inferredMetricsTieBreakers>
 </document>
