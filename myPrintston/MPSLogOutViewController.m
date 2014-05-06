@@ -9,6 +9,7 @@
 #import "MPSLogOutViewController.h"
 
 extern BOOL isAdmin;
+extern NSString *IP;
 
 @interface MPSLogOutViewController ()
 
@@ -58,6 +59,15 @@ extern BOOL isAdmin;
 
 - (IBAction)logout {
     isAdmin = NO;
+    UIAlertView *alert;
+    
+    // Create prompt that shows submission success
+    alert = [[UIAlertView alloc]
+             initWithTitle:@"Logout Success!"
+             message:@"You have successfully logged out!"
+             delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+    [alert show];
+    
     [self performSegueWithIdentifier:@"logout" sender:nil];
 }
 

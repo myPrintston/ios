@@ -8,6 +8,7 @@
 
 #import "MPSLogInViewController.h"
 
+extern NSString *IP;
 extern BOOL isAdmin;
 
 @interface MPSLogInViewController () {
@@ -106,6 +107,41 @@ extern BOOL isAdmin;
 */
 
 - (IBAction)login {
+    UIAlertView *alert;
+    
+    
+    NSString *urlstring = [NSString stringWithFormat:@"%@/login/%@/%@/", IP, self.userid.text, self.userpw.text];
+    NSURL *url = [NSURL URLWithString:urlstring];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    if (!data) {
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Login Failure"
+                 message:@"Could not connect to the server"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    
+    if (![jsonArray[0] boolValue]) {
+        NSLog(@"Log in attempt");
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Login Failure"
+                 message:@"Not a valid ID/PW pair"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+
+    alert = [[UIAlertView alloc]
+             initWithTitle:@"Login Success!"
+             message:@"You have successfully logged in!"
+             delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+    [alert show];
+    
     isAdmin = YES;
     [self performSegueWithIdentifier:@"login" sender:nil];
 }
