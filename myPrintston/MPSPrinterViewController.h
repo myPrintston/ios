@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MPSPrinter.h"
 #import <MapKit/MapKit.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface MPSPrinterViewController : UIViewController
 
@@ -16,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *errorButton;
 @property (weak, nonatomic) IBOutlet UILabel *statusMsg;
 @property (nonatomic) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 
 @end

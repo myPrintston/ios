@@ -17,8 +17,6 @@
 
 @implementation MPSMapViewController
 
-GMSMapView *mapView_;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -53,9 +51,9 @@ GMSMapView *mapView_;
     
     
     
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
-    self.view = mapView_;
+    self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    self.mapView.myLocationEnabled = YES;
+    self.view = self.mapView;
     
     NSMutableArray *printers = self.printers;
     
@@ -91,7 +89,7 @@ GMSMapView *mapView_;
         
         marker.title = currName;
         marker.snippet = currSnippet;
-        marker.map = mapView_;
+        marker.map = self.mapView;
     }
     
     // Do any additional setup after loading the view.

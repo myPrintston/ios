@@ -10,10 +10,12 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/Corelocation.h>
 #import "MPSListViewController.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface MPSMapViewController : UIViewController
 
 @property (nonatomic) NSMutableArray *printers;
 @property (nonatomic) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 
 @end

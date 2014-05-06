@@ -11,7 +11,6 @@
 #import "MPSErrorViewController.h"
 #import "MPSPrinter.h"
 #import "MPSMapAnnotation.h"
-#import <GoogleMaps/GoogleMaps.h>
 
 @interface MPSPrinterViewController ()
 
@@ -37,25 +36,24 @@ GMSMapView *mapView_;
     [super viewDidLoad];
     
     // get position
-    CLLocationManager *locMgr = self.locationManager;
-    double userLat = locMgr.location.coordinate.latitude;
-    double userLong = locMgr.location.coordinate.longitude;
+    double userLat = self.locationManager.location.coordinate.latitude;
+    double userLong = self.locationManager.location.coordinate.longitude;
     
     // center on user
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:userLat
                                                             longitude:userLong
                                                                  zoom:18];
+    GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
+    [self.mapView moveCamera:update];
     
     // setup
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
-    self.view = mapView_;
+    self.mapView.myLocationEnabled = YES;
     
     // user location
     GMSMarker *userLoc = [[GMSMarker alloc] init];
     userLoc.position = CLLocationCoordinate2DMake(userLat, userLong);
     
-    userLoc.map = mapView_;
+    userLoc.map = self.mapView;
     
     // get current printer location / add marker
     MPSPrinter *printer = self.printer;
@@ -71,7 +69,7 @@ GMSMapView *mapView_;
     
     marker.title = currName;
     marker.snippet = currSnippet;
-    marker.map = mapView_;
+    marker.map = self.mapView;
     
     
     self.statusMsg.text = [NSString stringWithFormat:@"Status: %@", self.printer.statusMsg];
