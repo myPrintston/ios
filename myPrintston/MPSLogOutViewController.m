@@ -33,6 +33,12 @@ extern BOOL isAdmin;
     [self.navigationItem setHidesBackButton:YES animated:NO];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (!isAdmin)
+        [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
