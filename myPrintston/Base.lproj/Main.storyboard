@@ -60,6 +60,42 @@
             </objects>
             <point key="canvasLocation" x="602" y="710"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xja-oL-qKl">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="CnD-7L-6x5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="second" id="1eF-Sd-G7X"/>
+                    <navigationItem key="navigationItem" id="Ttq-bZ-jfq"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ka9-5n-vHx">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="oY4-0b-DIx" kind="relationship" relationship="rootViewController" id="EfH-2S-xtb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VtR-RD-DVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="68" y="1386"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vsc-wt-WVw">
+            <objects>
+                <viewController id="oY4-0b-DIx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="brD-6S-Rb3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xn3-u3-AZK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zf1-jb-GEz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CxE-PL-3Xl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mHV-ip-2Zx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="602" y="1386"/>
+        </scene>
         <!--List View Controller - List-->
         <scene sceneID="8b6-Eb-M4K">
             <objects>
@@ -340,6 +376,7 @@
                     <connections>
                         <segue destination="p9v-qa-PD4" kind="relationship" relationship="viewControllers" id="raS-WH-pgq"/>
                         <segue destination="jZh-Qk-nIg" kind="relationship" relationship="viewControllers" id="DuT-w4-JED"/>
+                        <segue destination="CnD-7L-6x5" kind="relationship" relationship="viewControllers" id="YKr-Iy-23q"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
@@ -372,6 +409,7 @@
         <image name="Arrow" width="40" height="40"/>
         <image name="list" width="48" height="48"/>
         <image name="map" width="40" height="40"/>
+        <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
