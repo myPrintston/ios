@@ -50,7 +50,7 @@
                             <constraint firstItem="Jjo-Xz-PmG" firstAttribute="leading" secondItem="Wmq-oX-Ctk" secondAttribute="leading" id="cc0-ZI-ltX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Mda-6F-4ZO"/>
+                    <navigationItem key="navigationItem" title="Printers" id="Mda-6F-4ZO"/>
                     <connections>
                         <outlet property="mapView" destination="Jjo-Xz-PmG" id="ngc-cw-rAB"/>
                         <segue destination="s46-Mj-Y5b" kind="push" identifier="MapSegue" id="MLG-bv-LQT"/>
