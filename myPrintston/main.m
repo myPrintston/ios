@@ -10,6 +10,9 @@
 
 #import "MPSAppDelegate.h"
 
+NSString *IP = @"http://54.186.188.121:2016";
+BOOL isAdmin = NO;
+
 int main(int argc, char * argv[])
 {
     @autoreleasepool {

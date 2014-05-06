@@ -8,7 +8,11 @@
 
 #import "MPSListViewController.h"
 #import "MPSPrinterViewController.h"
+#import "MPSTabController.h"
+#import "MPSListNavController.h"
 #import "MPSPrinter.h"
+
+extern NSString *IP;
 
 @interface MPSListViewController()
 
@@ -24,6 +28,33 @@
     }
     
     return self;
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    NSMutableArray *printerids = [[NSMutableArray alloc] init];
+    for (MPSPrinter *printer in self.printers)
+        [printerids addObject:[NSNumber numberWithInt:printer.printerid]];
+    
+    NSString *urlstring = [[NSString stringWithFormat:@"%@/pids/", IP] stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
+    
+    NSURL *url = [NSURL URLWithString:urlstring];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    if (data == nil)
+        return;
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    if ([jsonArray count] == 0) {
+        self.printers = [self loadPrinters];
+        [self.tableView reloadData];
+    } else {
+        for (int i = 0; i < [printerids count]; i++)
+        {
+            MPSPrinter *printer = [self.printers objectAtIndex:i];
+            printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
+            printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
+        }
+    }
 }
 
 - (void)viewDidLoad
@@ -43,6 +74,24 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSMutableArray*) loadPrinters
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/pall/", IP]];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    if (data == nil)
+        return [NSMutableArray arrayWithObjects: nil];
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSMutableArray *urlprinters = [[NSMutableArray alloc] init];
+    for (NSDictionary *printerInfo in jsonArray) {
+        MPSPrinter *printer = [[MPSPrinter alloc] initWithDictionary:printerInfo];
+        [urlprinters addObject:printer];
+    }
+    
+    return urlprinters;
 }
 
 -(void)didMoveToParentViewController:(UIViewController *)parent{
@@ -70,7 +119,7 @@
     static NSString *CellIdentifier = @"PrinterCell";
     
     MPSPrinter *currentPrinter = [self.printers objectAtIndex:indexPath.row];
-    
+      
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = currentPrinter.building;
@@ -79,48 +128,21 @@
     if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
     if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor redColor];
     
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter dist], currentPrinter.room];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter distCL:self.locationManager.location], currentPrinter.room];
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%f) %@", ([currentPrinter angle] * 180 / M_PI), currentPrinter.room];
     
-    //cell.imageView.contentMode = UIViewContentModeCenter;
-    //cell.imageView.transform = CGAffineTransformMakeRotation([currentPrinter angle] + M_2_PI);
+    // Show border for better debugging
+    [cell.imageView.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [cell.imageView.layer setBorderWidth: 0.5];
+    cell.imageView.contentMode = UIViewContentModeCenter;
+    
+    if (indexPath.row == 0)
+        cell.imageView.transform = CGAffineTransformMakeRotation(-[currentPrinter angle]);
+    
 //    NSLog(@"%f", [currentPrinter angle]);
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/  
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - Navigation

@@ -11,6 +11,8 @@
 #import "MPSMapNavController.h"
 #import "MPSPrinter.h"
 
+extern NSString *IP;
+
 @interface MPSTabController () {
     NSMutableArray *printers;
     CLLocationManager *locationManager;
@@ -63,7 +65,7 @@
 
 - (NSMutableArray*) loadPrinters
 {
-    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/pall/"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/pall/", IP]];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
     if (data == nil)
@@ -77,6 +79,29 @@
     }
     
     return urlprinters;
+}
+
+- (void) updatePrinters
+{
+    NSMutableArray *printerids = [[NSMutableArray alloc] init];
+    for (MPSPrinter *printer in printers)
+        [printerids addObject:[NSNumber numberWithInt:printer.printerid]];
+    
+    NSString *urlstring = [[NSString stringWithFormat:@"%@/pids/", IP] stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
+    
+    NSURL *url = [NSURL URLWithString:urlstring];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    if (data == nil)
+        return;
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    for (int i = 0; i < [printerids count]; i++)
+    {
+        MPSPrinter *printer = [printers objectAtIndex:i];
+        printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
+        printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
+    }
 }
 
 - (void) sortPrinters
@@ -109,10 +134,9 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    [MPSPrinter incrementUserLongitude];
+//    [MPSPrinter incrementUserLongitude];
     [self sortPrinters];
     [[[[[self.childViewControllers objectAtIndex:0] childViewControllers] objectAtIndex:0] tableView] reloadData];
-    
 }
 
 /*

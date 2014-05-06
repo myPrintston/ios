@@ -8,9 +8,12 @@
 
 #import "MPSErrorViewController.h"
 
+extern BOOL isAdmin;
+
 @interface MPSErrorViewController () {
     NSMutableArray *possibleErrors;
-    BOOL isAdmin;
+    double keyboardHeight;
+    UIGestureRecognizer *tap;
 }
 
 
@@ -39,20 +42,25 @@
     [self.errorList registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Error"];
     self.errorList.separatorColor = [UIColor clearColor];
     self.errorList.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.errorList.scrollEnabled = NO;
+    
     self->possibleErrors = self.loadPossibleErrors;
     self.netid.delegate = self;
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-//                                   initWithTarget:self
-//                                   action:@selector(dismissKeyboard)];
-//    
-//    [self.view addGestureRecognizer:tap];
+    self.comment.delegate = self;
+    self.comment.enablesReturnKeyAutomatically = NO;
+    
 
     [self.comment.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
     [self.comment.layer setBorderWidth:2.0];
     self.comment.layer.cornerRadius = 1;
     self.comment.clipsToBounds = YES;
     
-    isAdmin = YES;
+    keyboardHeight = 0;
+    
+    tap = [[UITapGestureRecognizer alloc]
+            initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    [self registerForKeyboardNotifications];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,12 +74,15 @@
 {
     NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/etypes/"];
     NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    if (!data)
+        return [[NSMutableArray alloc] init];
+    
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
     NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
     MPSErrorType *other;
     
-    isAdmin = YES;
     for (NSDictionary *errorInfo in jsonArray) {
         if (isAdmin || ![errorInfo[@"fields"][@"admin"] boolValue]) {
             MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
@@ -244,49 +255,68 @@
     return json;
 }
 
+-(void)dismissKeyboard {
+    [self.netid resignFirstResponder];
+    [self.comment resignFirstResponder];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.view addGestureRecognizer:tap];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.view removeGestureRecognizer:tap];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
 
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    [self animateTextView: textView up: YES];
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    [self animateTextView: textView up: NO];
-}
-
-- (void) animateTextView: (UITextView*) textView up: (BOOL) up
-{
-    const int movementDistance = 80; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [self.view addGestureRecognizer:tap];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.3];
     
-    int movement = (up ? -movementDistance : movementDistance);
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    self.view.transform = CGAffineTransformTranslate(self.view.transform, 0, -keyboardHeight);
     [UIView commitAnimations];
 }
 
- 
-//-(void)dismissKeyboard {
-//    [self.netid resignFirstResponder];
-//}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [self.view removeGestureRecognizer:tap];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.2];
     
-    UITouch *touch = [[event allTouches] anyObject];
-    if (![[touch view] isKindOfClass:[UITextField class]]) {
-        [self.view endEditing:YES];
-    }
+    self.view.transform = CGAffineTransformTranslate(self.view.transform, 0, keyboardHeight);
+    [UIView commitAnimations];
+    
+    [self.comment resignFirstResponder];
+}
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)
+        name:UIKeyboardWillShowNotification object:nil];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWillShow:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    keyboardHeight = kbSize.height - 49;
 }
 
 @end

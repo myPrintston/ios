@@ -12,7 +12,7 @@
 #import "MPSListViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 
-@interface MPSMapViewController : UIViewController
+@interface MPSMapViewController : UIViewController<GMSMapViewDelegate>
 
 @property (nonatomic) NSMutableArray *printers;
 @property (nonatomic) CLLocationManager *locationManager;

@@ -10,7 +10,7 @@
 #import "MPSPrinter.h"
 #import "MPSErrorType.h"
 
-@interface MPSErrorViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface MPSErrorViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate>
 
 @property (nonatomic) MPSPrinter *printer;
 @property (retain, nonatomic) IBOutlet UITableView *errorList;
