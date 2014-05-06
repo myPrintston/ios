@@ -116,6 +116,37 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LP5-rJ-lc7">
+                                        <rect key="frame" x="152" y="40" width="17" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NLx-3R-Mna">
+                                        <rect key="frame" x="85" y="91" width="150" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="1eN-3D-U9O"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U97-ph-WeP">
+                                        <rect key="frame" x="120" y="151" width="81" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cyp-a5-mk9">
+                                        <rect key="frame" x="85" y="202" width="150" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="wg6-m2-XzN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCH-zR-QRn">
                                         <rect key="frame" x="80" y="297" width="160" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -137,8 +168,16 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="lCH-zR-QRn" secondAttribute="trailing" constant="80" id="4bj-qt-1Qg"/>
+                                    <constraint firstItem="cyp-a5-mk9" firstAttribute="top" secondItem="U97-ph-WeP" secondAttribute="bottom" constant="30" id="82Z-qj-afV"/>
                                     <constraint firstAttribute="bottom" secondItem="lCH-zR-QRn" secondAttribute="bottom" constant="20" id="UXm-Hx-KRp"/>
+                                    <constraint firstAttribute="centerX" secondItem="NLx-3R-Mna" secondAttribute="centerX" id="Yt4-Vc-6pS"/>
+                                    <constraint firstItem="LP5-rJ-lc7" firstAttribute="top" secondItem="kvv-YD-uN9" secondAttribute="top" constant="40" id="Yxb-2r-FW7"/>
+                                    <constraint firstAttribute="centerX" secondItem="LP5-rJ-lc7" secondAttribute="centerX" id="cpX-rE-Y2X"/>
                                     <constraint firstItem="lCH-zR-QRn" firstAttribute="leading" secondItem="kvv-YD-uN9" secondAttribute="leading" constant="80" id="fY5-67-ALz"/>
+                                    <constraint firstAttribute="centerX" secondItem="U97-ph-WeP" secondAttribute="centerX" id="lJm-6X-Jeh"/>
+                                    <constraint firstItem="U97-ph-WeP" firstAttribute="top" secondItem="NLx-3R-Mna" secondAttribute="bottom" constant="30" id="nGZ-bR-Gg1"/>
+                                    <constraint firstAttribute="centerX" secondItem="cyp-a5-mk9" secondAttribute="centerX" id="sfN-YM-kQk"/>
+                                    <constraint firstItem="NLx-3R-Mna" firstAttribute="top" secondItem="LP5-rJ-lc7" secondAttribute="bottom" constant="30" id="t3r-tb-taa"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -152,6 +191,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Admin Log In" id="CxE-PL-3Xl"/>
                     <connections>
+                        <outlet property="userid" destination="NLx-3R-Mna" id="ASi-yO-WML"/>
+                        <outlet property="userpw" destination="cyp-a5-mk9" id="5vs-Ht-MSs"/>
                         <segue destination="8YX-ce-x5E" kind="modal" identifier="login" modalTransitionStyle="flipHorizontal" id="iKd-xh-d1O"/>
                     </connections>
                 </viewController>

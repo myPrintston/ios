@@ -10,7 +10,10 @@
 
 extern BOOL isAdmin;
 
-@interface MPSLogInViewController ()
+@interface MPSLogInViewController () {
+    double keyboardHeight;
+    UIGestureRecognizer *tap;
+}
 
 @end
 
@@ -31,6 +34,14 @@ extern BOOL isAdmin;
     // Do any additional setup after loading the view.
     
     [self.navigationItem setHidesBackButton:YES animated:NO];
+    
+    self.userid.delegate = self;
+    self.userpw.delegate = self;
+    
+    keyboardHeight = 146;
+    
+    tap = [[UITapGestureRecognizer alloc]
+           initWithTarget:self action:@selector(dismissKeyboard)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,6 +54,44 @@ extern BOOL isAdmin;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dismissKeyboard {
+    [self.userid resignFirstResponder];
+    [self.userpw resignFirstResponder];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.view addGestureRecognizer:tap];
+    
+    if (textField == self.userpw) {
+        NSLog(@"userpw editing");
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:.3];
+        
+        self.view.transform = CGAffineTransformTranslate(self.view.transform, 0, -keyboardHeight);
+        [UIView commitAnimations];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.view removeGestureRecognizer:tap];
+    
+    if (textField == self.userpw) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:.2];
+        
+        self.view.transform = CGAffineTransformTranslate(self.view.transform, 0, keyboardHeight);
+        [UIView commitAnimations];
+        
+        [self.userpw resignFirstResponder];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 /*
