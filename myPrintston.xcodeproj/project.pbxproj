@@ -65,7 +65,7 @@
 		124F951C19081F7200DC8736 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSErrorViewController.h; sourceTree = "<group>"; };
 		C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSErrorViewController.m; sourceTree = "<group>"; };
-		C1268CB91918886E00986D9D /* princeton.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = princeton.gpx; sourceTree = "<group>"; };
+		C1268CB91918886E00986D9D /* princeton.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = princeton.gpx; path = ../princeton.gpx; sourceTree = "<group>"; };
 		C1268CBF1918ABC200986D9D /* MPSAdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSAdminViewController.h; sourceTree = "<group>"; };
 		C1268CC01918ABC200986D9D /* MPSAdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSAdminViewController.m; sourceTree = "<group>"; };
 		C1268CC21918ACF300986D9D /* MPSLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSLogInViewController.h; sourceTree = "<group>"; };
@@ -174,7 +174,6 @@
 		C13168C218DA75290034F142 = {
 			isa = PBXGroup;
 			children = (
-				C1268CB91918886E00986D9D /* princeton.gpx */,
 				C13168D418DA75290034F142 /* myPrintston */,
 				C13168F618DA75290034F142 /* myPrintstonTests */,
 				C13168CD18DA75290034F142 /* Frameworks */,
@@ -234,9 +233,10 @@
 		C13168D518DA75290034F142 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C13168DA18DA75290034F142 /* main.m */,
+				C1268CB91918886E00986D9D /* princeton.gpx */,
 				C13168D618DA75290034F142 /* myPrintston-Info.plist */,
 				C13168D718DA75290034F142 /* InfoPlist.strings */,
-				C13168DA18DA75290034F142 /* main.m */,
 				C13168DC18DA75290034F142 /* myPrintston-Prefix.pch */,
 			);
 			name = "Supporting Files";
