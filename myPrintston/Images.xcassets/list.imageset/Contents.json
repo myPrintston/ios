@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "list-bullets.png"
+      "filename" : "listSmall.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "text-align-justify.png"
+      "filename" : "listLarge.png"
     }
   ],
   "info" : {
