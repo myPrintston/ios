@@ -11,6 +11,9 @@
 		124F951D19081F7200DC8736 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 124F951C19081F7200DC8736 /* GoogleMaps.bundle */; };
 		C105C3DA18F1CDDC005F7821 /* MPSErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */; };
 		C1268CBA1918886E00986D9D /* princeton.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C1268CB91918886E00986D9D /* princeton.gpx */; };
+		C1268CC11918ABC200986D9D /* MPSAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1268CC01918ABC200986D9D /* MPSAdminViewController.m */; };
+		C1268CC41918ACF300986D9D /* MPSLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1268CC31918ACF300986D9D /* MPSLogInViewController.m */; };
+		C1268CC71918AD0300986D9D /* MPSLogOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1268CC61918AD0300986D9D /* MPSLogOutViewController.m */; };
 		C13168CF18DA75290034F142 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168CE18DA75290034F142 /* Foundation.framework */; };
 		C13168D118DA75290034F142 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168D018DA75290034F142 /* CoreGraphics.framework */; };
 		C13168D318DA75290034F142 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168D218DA75290034F142 /* UIKit.framework */; };
@@ -62,7 +65,13 @@
 		124F951C19081F7200DC8736 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSErrorViewController.h; sourceTree = "<group>"; };
 		C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSErrorViewController.m; sourceTree = "<group>"; };
-		C1268CB91918886E00986D9D /* princeton.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = princeton.gpx; sourceTree = "<group>"; };
+		C1268CB91918886E00986D9D /* princeton.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = princeton.gpx; path = ../princeton.gpx; sourceTree = "<group>"; };
+		C1268CBF1918ABC200986D9D /* MPSAdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSAdminViewController.h; sourceTree = "<group>"; };
+		C1268CC01918ABC200986D9D /* MPSAdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSAdminViewController.m; sourceTree = "<group>"; };
+		C1268CC21918ACF300986D9D /* MPSLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSLogInViewController.h; sourceTree = "<group>"; };
+		C1268CC31918ACF300986D9D /* MPSLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSLogInViewController.m; sourceTree = "<group>"; };
+		C1268CC51918AD0300986D9D /* MPSLogOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSLogOutViewController.h; sourceTree = "<group>"; };
+		C1268CC61918AD0300986D9D /* MPSLogOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSLogOutViewController.m; sourceTree = "<group>"; };
 		C13168CB18DA75290034F142 /* myPrintston.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myPrintston.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13168CE18DA75290034F142 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C13168D018DA75290034F142 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -152,6 +161,12 @@
 		C1268CBB1918918100986D9D /* AdminView */ = {
 			isa = PBXGroup;
 			children = (
+				C1268CBF1918ABC200986D9D /* MPSAdminViewController.h */,
+				C1268CC01918ABC200986D9D /* MPSAdminViewController.m */,
+				C1268CC21918ACF300986D9D /* MPSLogInViewController.h */,
+				C1268CC31918ACF300986D9D /* MPSLogInViewController.m */,
+				C1268CC51918AD0300986D9D /* MPSLogOutViewController.h */,
+				C1268CC61918AD0300986D9D /* MPSLogOutViewController.m */,
 			);
 			name = AdminView;
 			sourceTree = "<group>";
@@ -159,7 +174,6 @@
 		C13168C218DA75290034F142 = {
 			isa = PBXGroup;
 			children = (
-				C1268CB91918886E00986D9D /* princeton.gpx */,
 				C13168D418DA75290034F142 /* myPrintston */,
 				C13168F618DA75290034F142 /* myPrintstonTests */,
 				C13168CD18DA75290034F142 /* Frameworks */,
@@ -219,9 +233,10 @@
 		C13168D518DA75290034F142 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C13168DA18DA75290034F142 /* main.m */,
+				C1268CB91918886E00986D9D /* princeton.gpx */,
 				C13168D618DA75290034F142 /* myPrintston-Info.plist */,
 				C13168D718DA75290034F142 /* InfoPlist.strings */,
-				C13168DA18DA75290034F142 /* main.m */,
 				C13168DC18DA75290034F142 /* myPrintston-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -397,10 +412,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C13168DB18DA75290034F142 /* main.m in Sources */,
+				C1268CC41918ACF300986D9D /* MPSLogInViewController.m in Sources */,
 				C144413C190448B20009C104 /* MPSMapViewController.m in Sources */,
 				C105C3DA18F1CDDC005F7821 /* MPSErrorViewController.m in Sources */,
+				C1268CC11918ABC200986D9D /* MPSAdminViewController.m in Sources */,
 				C144412E1900A0960009C104 /* MPSErrorType.m in Sources */,
 				C1633A2718E66E1700419AA1 /* MPSListViewController.m in Sources */,
+				C1268CC71918AD0300986D9D /* MPSLogOutViewController.m in Sources */,
 				C144413419024A2F0009C104 /* MPSListNavController.m in Sources */,
 				C1444131190242190009C104 /* MPSTabController.m in Sources */,
 				C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */,
