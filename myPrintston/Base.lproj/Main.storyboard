@@ -111,7 +111,20 @@
                     <view key="view" contentMode="scaleToFill" id="zf1-jb-GEz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvv-YD-uN9">
+                                <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xn3-u3-AZK" firstAttribute="top" secondItem="kvv-YD-uN9" secondAttribute="bottom" id="TDG-Oh-h0E"/>
+                            <constraint firstItem="kvv-YD-uN9" firstAttribute="top" secondItem="brD-6S-Rb3" secondAttribute="bottom" id="U2c-uZ-rA4"/>
+                            <constraint firstAttribute="trailing" secondItem="kvv-YD-uN9" secondAttribute="trailing" id="jcY-70-nTz"/>
+                            <constraint firstItem="kvv-YD-uN9" firstAttribute="leading" secondItem="zf1-jb-GEz" secondAttribute="leading" id="mkA-Zt-36d"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="CxE-PL-3Xl"/>
                 </viewController>
@@ -130,7 +143,20 @@
                     <view key="view" contentMode="scaleToFill" id="dzp-ib-VZg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kb3-le-raG">
+                                <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kb3-le-raG" firstAttribute="leading" secondItem="dzp-ib-VZg" secondAttribute="leading" id="G3X-XM-lMg"/>
+                            <constraint firstItem="dR0-gY-GrG" firstAttribute="top" secondItem="kb3-le-raG" secondAttribute="bottom" id="aev-8l-Obp"/>
+                            <constraint firstAttribute="trailing" secondItem="kb3-le-raG" secondAttribute="trailing" id="bbg-iQ-kkk"/>
+                            <constraint firstItem="kb3-le-raG" firstAttribute="top" secondItem="no3-PH-a6F" secondAttribute="bottom" id="jxI-39-pT4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Log Out" id="Klb-hT-N2B"/>
                 </viewController>
