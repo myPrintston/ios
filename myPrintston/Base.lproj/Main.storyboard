@@ -35,10 +35,24 @@
                     <view key="view" contentMode="scaleToFill" id="Wmq-oX-Ctk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jjo-Xz-PmG" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jjo-Xz-PmG" firstAttribute="top" secondItem="RLu-Ad-ftF" secondAttribute="bottom" id="O1T-Xd-LjI"/>
+                            <constraint firstAttribute="trailing" secondItem="Jjo-Xz-PmG" secondAttribute="trailing" id="WNe-iZ-1jb"/>
+                            <constraint firstItem="Pt3-WX-ACf" firstAttribute="top" secondItem="Jjo-Xz-PmG" secondAttribute="bottom" id="c4M-oU-ASt"/>
+                            <constraint firstItem="Jjo-Xz-PmG" firstAttribute="leading" secondItem="Wmq-oX-Ctk" secondAttribute="leading" id="cc0-ZI-ltX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mda-6F-4ZO"/>
                     <connections>
+                        <outlet property="mapView" destination="Jjo-Xz-PmG" id="ngc-cw-rAB"/>
                         <segue destination="s46-Mj-Y5b" kind="push" identifier="MapSegue" id="MLG-bv-LQT"/>
                     </connections>
                 </viewController>

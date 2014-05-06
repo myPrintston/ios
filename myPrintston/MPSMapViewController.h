@@ -16,5 +16,6 @@
 
 @property (nonatomic) NSMutableArray *printers;
 @property (nonatomic) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 
 @end

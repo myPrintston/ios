@@ -16,8 +16,6 @@
 
 @implementation MPSMapViewController
 
-GMSMapView *mapView_;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,22 +29,20 @@ GMSMapView *mapView_;
 {
     [super viewDidLoad];
     
-    CLLocationManager *locMgr = self.locationManager;
-    double posLat = locMgr.location.coordinate.latitude;
-    double posLong = locMgr.location.coordinate.longitude;
+    double posLat  = self.locationManager.location.coordinate.latitude;
+    double posLong = self.locationManager.location.coordinate.longitude;
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:posLat
                                                             longitude:posLong
                                                                  zoom:18];
     
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
-    self.view = mapView_;
-    mapView_.delegate = self;
+    GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
+    [self.mapView moveCamera:update];
     
-    NSMutableArray *printers = self.printers;
+    self.mapView.myLocationEnabled = YES;
+    self.mapView.delegate = self;
     
-    for (MPSPrinter *printer in printers)
+    for (MPSPrinter *printer in self.printers)
     {
         double currLong = printer.longitude;
         double currLat = printer.latitude;
@@ -59,7 +55,7 @@ GMSMapView *mapView_;
         
         marker.title = currName;
         marker.snippet = currSnippet;
-        marker.map = mapView_;
+        marker.map = self.mapView;
         marker.userData = printer;
     }
     
@@ -73,7 +69,7 @@ GMSMapView *mapView_;
                                                             longitude:posLong
                                                                  zoom:18];
     GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
-    [mapView_ moveCamera:update];
+    [self.mapView moveCamera:update];
 }
 
 - (void)didReceiveMemoryWarning
