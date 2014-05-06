@@ -391,14 +391,17 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="tkV-A3-Wja">
-                        <barButtonItem key="rightBarButtonItem" title="Fix" style="plain" id="R4z-bA-Nce">
+                        <barButtonItem key="rightBarButtonItem" title="Fix" id="R4z-bA-Nce">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="x7o-Nh-v1E">
-                                <rect key="frame" x="261" y="7" width="43" height="30"/>
+                                <rect key="frame" x="261" y="5" width="43" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Fix">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="fix" destination="s46-Mj-Y5b" eventType="touchUpInside" id="7YQ-WN-3zM"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -609,7 +612,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9NE-1f-JfA"/>
+        <segue reference="Gf1-Hd-gcY"/>
         <segue reference="rFU-dH-dJ7"/>
     </inferredMetricsTieBreakers>
 </document>

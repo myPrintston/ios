@@ -19,4 +19,6 @@
 @property (nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 
+- (IBAction)fix;
+
 @end

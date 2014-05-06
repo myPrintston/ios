@@ -12,6 +12,7 @@
 #import "MPSPrinter.h"
 
 extern BOOL isAdmin;
+extern NSString *IP;
 
 @interface MPSPrinterViewController ()
 
@@ -99,6 +100,52 @@ GMSMapView *mapView_;
     MPSErrorViewController *detailController = segue.destinationViewController;
     detailController.printer = self.printer;
     detailController.title = [self.printer name];
+}
+
+- (IBAction)fix {
+    UIAlertView *alert;
+    
+    NSString *urlstring = [NSString stringWithFormat:@"%@/checklogin", IP];
+    NSURL *url = [NSURL URLWithString:urlstring];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    if (!data) {
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Error"
+                 message:@"Could not connect to the server"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSLog(@"%d", [jsonArray[0] boolValue]);
+    
+    if (![jsonArray[0] boolValue]) {
+        if (!isAdmin) {
+            alert = [[UIAlertView alloc]
+                     initWithTitle:@"Error"
+                     message:@"Please log in as an administrator first."
+                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+            [alert show];
+            return;
+        } else {
+            alert = [[UIAlertView alloc]
+                     initWithTitle:@"Error"
+                     message:@"Your admin session has timed out. Please log in again."
+                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+            [alert show];
+            isAdmin = NO;
+            return;
+        }
+    }
+    
+    alert = [[UIAlertView alloc]
+             initWithTitle:@"Fixed"
+             message:@"Fixed!"
+             delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+    [alert show];
 }
 
 @end
