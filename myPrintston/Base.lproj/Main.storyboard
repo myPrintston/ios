@@ -64,7 +64,9 @@
         <scene sceneID="xja-oL-qKl">
             <objects>
                 <navigationController definesPresentationContext="YES" id="CnD-7L-6x5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="second" id="1eF-Sd-G7X"/>
+                    <tabBarItem key="tabBarItem" title="" image="admin" id="1eF-Sd-G7X">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="Ttq-bZ-jfq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ka9-5n-vHx">
                         <autoresizingMask key="autoresizingMask"/>
@@ -155,7 +157,7 @@
                                             <constraint firstAttribute="height" constant="50" id="PeD-Mj-2cZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Log In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -191,6 +193,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Admin Log In" id="CxE-PL-3Xl"/>
                     <connections>
+                        <outlet property="login" destination="lCH-zR-QRn" id="5f3-cV-AY5"/>
+                        <outlet property="loginButton" destination="lCH-zR-QRn" id="bph-tf-KtN"/>
                         <outlet property="userid" destination="NLx-3R-Mna" id="ASi-yO-WML"/>
                         <outlet property="userpw" destination="cyp-a5-mk9" id="5vs-Ht-MSs"/>
                         <segue destination="8YX-ce-x5E" kind="modal" identifier="login" modalTransitionStyle="flipHorizontal" id="iKd-xh-d1O"/>
@@ -224,7 +228,7 @@
                                             <constraint firstAttribute="height" constant="50" id="KtF-Lj-Cbk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Log Out">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -598,9 +602,9 @@
     </scenes>
     <resources>
         <image name="Arrow" width="40" height="40"/>
-        <image name="list" width="48" height="48"/>
-        <image name="map" width="40" height="40"/>
-        <image name="second" width="30" height="30"/>
+        <image name="admin" width="30" height="30"/>
+        <image name="list" width="30" height="30"/>
+        <image name="map" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -608,7 +612,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9NE-1f-JfA"/>
+        <segue reference="iKd-xh-d1O"/>
         <segue reference="MLG-bv-LQT"/>
     </inferredMetricsTieBreakers>
 </document>

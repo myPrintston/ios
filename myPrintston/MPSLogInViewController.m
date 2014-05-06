@@ -43,6 +43,8 @@ extern BOOL isAdmin;
     
     tap = [[UITapGestureRecognizer alloc]
            initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
