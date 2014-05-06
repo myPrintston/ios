@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -70,17 +70,40 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="oY4-0b-DIx" kind="relationship" relationship="rootViewController" id="EfH-2S-xtb"/>
+                        <segue destination="hwj-MC-PE2" kind="relationship" relationship="rootViewController" id="HR1-z4-tg5"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VtR-RD-DVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="68" y="1386"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller-->
+        <scene sceneID="BXI-Mo-Owf">
+            <objects>
+                <viewController id="hwj-MC-PE2" customClass="MPSAdminViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rfB-me-kLo"/>
+                        <viewControllerLayoutGuide type="bottom" id="l1O-gY-EF1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jjd-qa-cjA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jSX-EC-lNx"/>
+                    <connections>
+                        <segue destination="oY4-0b-DIx" kind="push" identifier="LogIn" id="y9w-o0-Eet"/>
+                        <segue destination="fBL-UW-dbb" kind="push" identifier="LogOut" id="oQA-pD-xTE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jSW-II-6d5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="602" y="1386"/>
+        </scene>
+        <!--Log In View Controller - Log In-->
         <scene sceneID="vsc-wt-WVw">
             <objects>
-                <viewController id="oY4-0b-DIx" sceneMemberID="viewController">
+                <viewController id="oY4-0b-DIx" customClass="MPSLogInViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="brD-6S-Rb3"/>
                         <viewControllerLayoutGuide type="bottom" id="Xn3-u3-AZK"/>
@@ -90,11 +113,30 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="CxE-PL-3Xl"/>
+                    <navigationItem key="navigationItem" title="Log In" id="CxE-PL-3Xl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHV-ip-2Zx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="602" y="1386"/>
+            <point key="canvasLocation" x="1301" y="1094"/>
+        </scene>
+        <!--Log Out View Controller - Log Out-->
+        <scene sceneID="XBB-Vi-SRy">
+            <objects>
+                <viewController id="fBL-UW-dbb" customClass="MPSLogOutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="no3-PH-a6F"/>
+                        <viewControllerLayoutGuide type="bottom" id="dR0-gY-GrG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dzp-ib-VZg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Log Out" id="Klb-hT-N2B"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jfo-ha-YOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301" y="1806"/>
         </scene>
         <!--List View Controller - List-->
         <scene sceneID="8b6-Eb-M4K">
