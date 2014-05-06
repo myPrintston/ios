@@ -109,6 +109,7 @@
     MPSPrinterViewController *detailController = segue.destinationViewController;
     MPSPrinter *printer = marker.userData;
     detailController.printer = printer;
+    detailController.locationManager = self.locationManager;
     detailController.title = [printer name];
 }
 

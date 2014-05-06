@@ -153,6 +153,7 @@ extern NSString *IP;
     MPSPrinterViewController *detailController = segue.destinationViewController;
     MPSPrinter *printer = [self.printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     detailController.printer = printer;
+    detailController.locationManager = self.locationManager;
     detailController.title = [printer name];
 }
 
