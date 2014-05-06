@@ -8,9 +8,10 @@
 
 #import "MPSErrorViewController.h"
 
+extern BOOL isAdmin;
+
 @interface MPSErrorViewController () {
     NSMutableArray *possibleErrors;
-    BOOL isAdmin;
     double keyboardHeight;
     UIGestureRecognizer *tap;
 }
@@ -54,8 +55,6 @@
     self.comment.layer.cornerRadius = 1;
     self.comment.clipsToBounds = YES;
     
-    isAdmin = YES;
-    
     keyboardHeight = 0;
     
     tap = [[UITapGestureRecognizer alloc]
@@ -84,7 +83,6 @@
     NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
     MPSErrorType *other;
     
-    isAdmin = YES;
     for (NSDictionary *errorInfo in jsonArray) {
         if (isAdmin || ![errorInfo[@"fields"][@"admin"] boolValue]) {
             MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
