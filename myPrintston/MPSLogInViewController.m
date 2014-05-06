@@ -66,7 +66,6 @@ extern BOOL isAdmin;
     [self.view addGestureRecognizer:tap];
     
     if (textField == self.userpw) {
-        NSLog(@"userpw editing");
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:.3];
         
