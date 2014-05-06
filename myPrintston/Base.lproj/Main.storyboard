@@ -100,7 +100,7 @@
             </objects>
             <point key="canvasLocation" x="602" y="1386"/>
         </scene>
-        <!--Log In View Controller - Log In-->
+        <!--Log In View Controller - Admin Log In-->
         <scene sceneID="vsc-wt-WVw">
             <objects>
                 <viewController id="oY4-0b-DIx" customClass="MPSLogInViewController" sceneMemberID="viewController">
@@ -126,13 +126,13 @@
                             <constraint firstItem="kvv-YD-uN9" firstAttribute="leading" secondItem="zf1-jb-GEz" secondAttribute="leading" id="mkA-Zt-36d"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Log In" id="CxE-PL-3Xl"/>
+                    <navigationItem key="navigationItem" title="Admin Log In" id="CxE-PL-3Xl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHV-ip-2Zx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1301" y="1094"/>
         </scene>
-        <!--Log Out View Controller - Log Out-->
+        <!--Log Out View Controller - Admin Log Out-->
         <scene sceneID="XBB-Vi-SRy">
             <objects>
                 <viewController id="fBL-UW-dbb" customClass="MPSLogOutViewController" sceneMemberID="viewController">
@@ -158,7 +158,7 @@
                             <constraint firstItem="kb3-le-raG" firstAttribute="top" secondItem="no3-PH-a6F" secondAttribute="bottom" id="jxI-39-pT4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Log Out" id="Klb-hT-N2B"/>
+                    <navigationItem key="navigationItem" title="Admin Log Out" id="Klb-hT-N2B"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfo-ha-YOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
