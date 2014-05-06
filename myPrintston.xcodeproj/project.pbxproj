@@ -10,6 +10,7 @@
 		12273F9D1906D7F300EFD4AE /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12273F9C1906D7F300EFD4AE /* GoogleMaps.framework */; };
 		124F951D19081F7200DC8736 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 124F951C19081F7200DC8736 /* GoogleMaps.bundle */; };
 		C105C3DA18F1CDDC005F7821 /* MPSErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */; };
+		C1268CBA1918886E00986D9D /* princeton.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C1268CB91918886E00986D9D /* princeton.gpx */; };
 		C13168CF18DA75290034F142 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168CE18DA75290034F142 /* Foundation.framework */; };
 		C13168D118DA75290034F142 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168D018DA75290034F142 /* CoreGraphics.framework */; };
 		C13168D318DA75290034F142 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13168D218DA75290034F142 /* UIKit.framework */; };
@@ -61,6 +62,7 @@
 		124F951C19081F7200DC8736 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSErrorViewController.h; sourceTree = "<group>"; };
 		C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSErrorViewController.m; sourceTree = "<group>"; };
+		C1268CB91918886E00986D9D /* princeton.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = princeton.gpx; sourceTree = "<group>"; };
 		C13168CB18DA75290034F142 /* myPrintston.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myPrintston.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13168CE18DA75290034F142 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C13168D018DA75290034F142 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -150,6 +152,7 @@
 		C13168C218DA75290034F142 = {
 			isa = PBXGroup;
 			children = (
+				C1268CB91918886E00986D9D /* princeton.gpx */,
 				C13168D418DA75290034F142 /* myPrintston */,
 				C13168F618DA75290034F142 /* myPrintstonTests */,
 				C13168CD18DA75290034F142 /* Frameworks */,
@@ -364,6 +367,7 @@
 			files = (
 				C13168EA18DA75290034F142 /* Images.xcassets in Resources */,
 				C13168D918DA75290034F142 /* InfoPlist.strings in Resources */,
+				C1268CBA1918886E00986D9D /* princeton.gpx in Resources */,
 				C13168E218DA75290034F142 /* Main.storyboard in Resources */,
 				124F951D19081F7200DC8736 /* GoogleMaps.bundle in Resources */,
 			);
