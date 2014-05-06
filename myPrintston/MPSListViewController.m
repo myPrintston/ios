@@ -124,9 +124,10 @@ extern NSString *IP;
     
     cell.textLabel.text = currentPrinter.building;
     
-    if (currentPrinter.status == 0) cell.textLabel.textColor = [UIColor greenColor];
-    if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor orangeColor];
-    if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor redColor];
+    if (currentPrinter.status == 0) cell.textLabel.textColor = [UIColor colorWithRed:0/255.0f green:134/255.0f blue:37/255.0f alpha:1.0f];
+    if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor colorWithRed:231/255.0f green:162/255.0f blue:76/255.0f alpha:1.0f];
+    if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor colorWithRed:231/255.0f green:56/255.0f blue:28/255.0f alpha:1.0f];
+    
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter distCL:self.locationManager.location], currentPrinter.room];
 //    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%f) %@", ([currentPrinter angle] * 180 / M_PI), currentPrinter.room];
