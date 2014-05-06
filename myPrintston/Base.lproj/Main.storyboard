@@ -479,7 +479,7 @@
                                             <outlet property="delegate" destination="3eS-uH-UYn" id="MBT-0l-g3U"/>
                                         </connections>
                                     </tableView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Hello" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qaE-D3-u2v">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qaE-D3-u2v">
                                         <rect key="frame" x="89" y="5" width="211" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -610,7 +610,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iKd-xh-d1O"/>
+        <segue reference="Gf1-Hd-gcY"/>
         <segue reference="rFU-dH-dJ7"/>
     </inferredMetricsTieBreakers>
 </document>
