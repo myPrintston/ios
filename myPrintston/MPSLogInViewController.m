@@ -127,7 +127,6 @@ extern BOOL isAdmin;
     
     
     if (![jsonArray[0] boolValue]) {
-        NSLog(@"Log in attempt");
         alert = [[UIAlertView alloc]
                  initWithTitle:@"Login Failure"
                  message:@"Not a valid ID/PW pair"
