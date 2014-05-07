@@ -31,6 +31,8 @@ extern NSString *IP;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Log Out";
+    
     [self.navigationItem setHidesBackButton:YES animated:NO];
 }
 

@@ -34,6 +34,8 @@ extern BOOL isAdmin;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Log In";
+    
     [self.navigationItem setHidesBackButton:YES animated:NO];
     
     self.userid.delegate = self;
@@ -49,6 +51,8 @@ extern BOOL isAdmin;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.title = @"Log In";
+    
     if (isAdmin)
         [self.navigationController popViewControllerAnimated:YES];
 }
