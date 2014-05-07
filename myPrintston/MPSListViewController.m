@@ -100,7 +100,6 @@ extern NSString *IP;
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
     [refresh addTarget:self
                 action:@selector(updatePrinters:)
                 forControlEvents:UIControlEventValueChanged];
