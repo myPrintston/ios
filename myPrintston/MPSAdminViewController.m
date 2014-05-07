@@ -9,6 +9,7 @@
 #import "MPSAdminViewController.h"
 
 extern BOOL isAdmin;
+extern NSString *IP;
 
 @interface MPSAdminViewController ()
 
@@ -33,11 +34,39 @@ extern BOOL isAdmin;
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    if (!isAdmin) {
+    UIAlertView *alert;
+    
+    if (!isAdmin)
         [self performSegueWithIdentifier:@"LogIn" sender:nil];
-    } else {
-        [self performSegueWithIdentifier:@"LogOut" sender:nil];
+        
+
+    NSString *urlstring = [NSString stringWithFormat:@"%@/checklogin", IP];
+    NSURL *url = [NSURL URLWithString:urlstring];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    if (!data) {
+        isAdmin = NO;
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Error"
+                 message:@"Could not connect to the server. Logging out."
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        [self performSegueWithIdentifier:@"LogIn" sender:nil];
     }
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    if (![jsonArray[0] boolValue]) {
+        isAdmin = NO;
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Error"
+                 message:@"Your admin session has timed out. Please log in again."
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        [self performSegueWithIdentifier:@"LogIn" sender:nil];
+    }
+    
+    [self performSegueWithIdentifier:@"LogOut" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning

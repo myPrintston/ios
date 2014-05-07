@@ -8,6 +8,7 @@
 
 #import "MPSErrorViewController.h"
 
+extern NSString *IP;
 extern BOOL isAdmin;
 
 @interface MPSErrorViewController () {
@@ -155,6 +156,7 @@ extern BOOL isAdmin;
 */
 
 - (IBAction)submit {
+    
     UIAlertView *alert;
     NSMutableArray *errorids = [[NSMutableArray alloc] init];
     BOOL needComment = NO;
@@ -199,7 +201,6 @@ extern BOOL isAdmin;
         return;
     }
     
-    
     if (YES) {
         // Prepare the JSON to send as NSData
         NSMutableDictionary *json = [self prepareJSON: errorids];
@@ -208,11 +209,12 @@ extern BOOL isAdmin;
 
         // Send POST request
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-        [request setURL: [NSURL URLWithString:@"http://54.186.188.121:2016/error/"]];
+        [request setURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@/error/", IP]]];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:jsonData];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[jsonData length]] forHTTPHeaderField:@"Content-Length"];
+        
         
         NSURLResponse *urlResponse;
         NSError *connectionError = nil;
@@ -246,10 +248,10 @@ extern BOOL isAdmin;
     NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
     
     json[@"printerid"]    =  [NSString stringWithFormat:@"%d", self.printer.printerid];
-    json[@"netid"]        =  self.netid.text;
+    json[@"netid"]        =  self.netid.text ? self.netid.text : @"";
     json[@"buildingName"] =  self.printer.building;
     json[@"roomNumber"]   =  self.printer.room;
-    json[@"errMsg"]       =  self.comment.text;
+    json[@"errMsg"]       =  self.comment.text ? self.comment.text : @"";
     json[@"errors"]       =  errorids;
     
     return json;
