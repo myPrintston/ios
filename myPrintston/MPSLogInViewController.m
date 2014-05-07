@@ -45,8 +45,6 @@ extern BOOL isAdmin;
     
     tap = [[UITapGestureRecognizer alloc]
            initWithTarget:self action:@selector(dismissKeyboard)];
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -129,7 +127,6 @@ extern BOOL isAdmin;
     }
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
     
     if (![jsonArray[0] boolValue]) {
         alert = [[UIAlertView alloc]
