@@ -395,6 +395,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="errorButton" destination="ros-SG-h4e" id="SVG-ih-ItR"/>
                         <outlet property="mapView" destination="jLi-qF-yxh" id="m4P-l7-L8z"/>
                         <outlet property="statusMsg" destination="6yK-ds-RRJ" id="wBH-hV-VF0"/>
                     </connections>
