@@ -57,6 +57,38 @@ extern NSString *IP;
     }
 }
 
+- (void) updatePrinters:(UIRefreshControl *)refresh
+{
+    [self.tableView reloadData];
+    NSMutableArray *printerids = [[NSMutableArray alloc] init];
+    for (MPSPrinter *printer in self.printers)
+        [printerids addObject:[NSNumber numberWithInt:printer.printerid]];
+    
+    NSString *urlstring = [[NSString stringWithFormat:@"%@/pids/", IP] stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
+    
+    NSURL *url = [NSURL URLWithString:urlstring];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    if (data == nil)
+        return;
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    if ([jsonArray count] == 0) {
+        self.printers = [self loadPrinters];
+        [self.tableView reloadData];
+    } else {
+        for (int i = 0; i < [printerids count]; i++)
+        {
+            MPSPrinter *printer = [self.printers objectAtIndex:i];
+            printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
+            printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
+        }
+    }
+    
+//    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -66,6 +98,14 @@ extern NSString *IP;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [refresh addTarget:self
+                action:@selector(updatePrinters:)
+                forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refresh;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 }
