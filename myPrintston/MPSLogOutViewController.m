@@ -60,8 +60,33 @@ extern NSString *IP;
 */
 
 - (IBAction)logout {
-    isAdmin = NO;
     UIAlertView *alert;
+    
+    NSString *urlstring = [NSString stringWithFormat:@"%@/logout/", IP];
+    NSURL *url = [NSURL URLWithString:urlstring];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+
+    if (!data) {
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Logout Failure"
+                 message:@"Could not connect to the server"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    if (![jsonArray[0] boolValue]) {
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Logout Failure"
+                 message:@"Could not logout from server"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    isAdmin = NO;
     
     // Create prompt that shows submission success
     alert = [[UIAlertView alloc]
