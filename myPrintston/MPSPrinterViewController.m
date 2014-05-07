@@ -105,10 +105,19 @@ GMSMapView *mapView_;
 - (IBAction)fix {
     UIAlertView *alert;
     
+    if (!isAdmin) {
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Error"
+                 message:@"Please log in as an administrator first."
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     NSString *urlstring = [NSString stringWithFormat:@"%@/checklogin", IP];
     NSURL *url = [NSURL URLWithString:urlstring];
     NSData *data = [NSData dataWithContentsOfURL:url];
-    
+
     if (!data) {
         alert = [[UIAlertView alloc]
                  initWithTitle:@"Error"
@@ -120,30 +129,23 @@ GMSMapView *mapView_;
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
-    NSLog(@"%d", [jsonArray[0] boolValue]);
-    
     if (![jsonArray[0] boolValue]) {
-        if (!isAdmin) {
-            alert = [[UIAlertView alloc]
-                     initWithTitle:@"Error"
-                     message:@"Please log in as an administrator first."
-                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
-            [alert show];
-            return;
-        } else {
-            alert = [[UIAlertView alloc]
-                     initWithTitle:@"Error"
-                     message:@"Your admin session has timed out. Please log in again."
-                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
-            [alert show];
-            isAdmin = NO;
-            return;
-        }
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Error"
+                 message:@"Your admin session has timed out. Please log in again."
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        isAdmin = NO;
+        return;
     }
+    
+    urlstring = [NSString stringWithFormat:@"%@/fixprinter/%d", IP, self.printer.printerid];
+    url = [NSURL URLWithString:urlstring];
+    data = [NSData dataWithContentsOfURL:url];
     
     alert = [[UIAlertView alloc]
              initWithTitle:@"Fixed"
-             message:@"Fixed!"
+             message:[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding]
              delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
     [alert show];
 }
