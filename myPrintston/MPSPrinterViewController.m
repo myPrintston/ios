@@ -37,36 +37,46 @@ GMSMapView *mapView_;
 {
     [super viewDidLoad];
     
-    // get position
-    double userLat = self.locationManager.location.coordinate.latitude;
-    double userLong = self.locationManager.location.coordinate.longitude;
-    
     // center on user
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:userLat
-                                                            longitude:userLong
-                                                                 zoom:18];
+//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:userLat
+//                                                            longitude:userLong
+//                                                                 zoom:16];
     
-    GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
-    [self.mapView moveCamera:update];
+//    GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
+//    [self.mapView moveCamera:update];
     
     // setup
     self.mapView.myLocationEnabled = YES;
     
     // get current printer location / add marker
     MPSPrinter *printer = self.printer;
-    
-    double currLong = printer.longitude;
-    double currLat = printer.latitude;
-    
-    NSString *currName = printer.building;
-    NSString *currSnippet =  printer.room;
+
+    double prLat = printer.latitude;
+    double prLong = printer.longitude;
+
+    NSString *prName = printer.building;
+    NSString *prSnippet =  printer.room;
     
     GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(currLat, currLong);
+    marker.position = CLLocationCoordinate2DMake(prLat, prLong);
     
-    marker.title = currName;
-    marker.snippet = currSnippet;
+    
+    marker.title = prName;
+    marker.snippet = prSnippet;
+    
     marker.map = self.mapView;
+    
+    // get position
+    double userLat = self.locationManager.location.coordinate.latitude;
+    double userLong = self.locationManager.location.coordinate.longitude;
+    
+    
+    CLLocationCoordinate2D myLocation = CLLocationCoordinate2DMake(userLat, userLong);
+    CLLocationCoordinate2D prLocation = CLLocationCoordinate2DMake(prLat, prLong);
+    
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:myLocation coordinate:prLocation];
+    
+    [self.mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds withPadding:10.0f]];
     
     
     self.statusMsg.text = [NSString stringWithFormat:@"Status: %@", self.printer.statusMsg];
