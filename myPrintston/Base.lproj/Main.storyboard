@@ -537,6 +537,7 @@
                     <navigationItem key="navigationItem" id="w3z-lh-UdG"/>
                     <connections>
                         <outlet property="comment" destination="MsG-vA-OYh" id="erO-tv-2tA"/>
+                        <outlet property="errorList" destination="q7o-Db-ME6" id="f0Z-ps-WOf"/>
                         <outlet property="netid" destination="qaE-D3-u2v" id="p0d-YA-x0b"/>
                         <segue destination="8YX-ce-x5E" kind="modal" identifier="Submitted" modalTransitionStyle="flipHorizontal" id="Gf1-Hd-gcY"/>
                     </connections>
@@ -600,7 +601,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9NE-1f-JfA"/>
+        <segue reference="Gf1-Hd-gcY"/>
         <segue reference="rFU-dH-dJ7"/>
     </inferredMetricsTieBreakers>
 </document>
