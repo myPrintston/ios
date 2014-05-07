@@ -41,33 +41,31 @@ GMSMapView *mapView_;
     double userLat = self.locationManager.location.coordinate.latitude;
     double userLong = self.locationManager.location.coordinate.longitude;
     
-    // center on user
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:userLat
-                                                            longitude:userLong
-                                                                 zoom:18];
-    
-    GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
-    [self.mapView moveCamera:update];
-    
-    // setup
-    self.mapView.myLocationEnabled = YES;
-    
     // get current printer location / add marker
     MPSPrinter *printer = self.printer;
     
-    double currLong = printer.longitude;
-    double currLat = printer.latitude;
+    double prLong = printer.longitude;
+    double prLat = printer.latitude;
     
-    NSString *currName = printer.building;
-    NSString *currSnippet =  printer.room;
+    NSString *prName = printer.building;
+    NSString *prSnippet =  printer.room;
     
     GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(currLat, currLong);
+    marker.position = CLLocationCoordinate2DMake(prLat, prLong);
     
-    marker.title = currName;
-    marker.snippet = currSnippet;
+    marker.title = prName;
+    marker.snippet = prSnippet;
     marker.map = self.mapView;
     
+    // get map zoom
+    CLLocationCoordinate2D myLocation = CLLocationCoordinate2DMake(userLat, userLong);
+    CLLocationCoordinate2D prLocation = CLLocationCoordinate2DMake(prLat, prLong);
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:myLocation coordinate:prLocation];
+
+    [self.mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds withPadding:10.0f]];
+    
+    // setup
+    self.mapView.myLocationEnabled = YES;
     
     self.statusMsg.text = [NSString stringWithFormat:@"Status: %@", self.printer.statusMsg];
     // Do any additional setup after loading the view.
