@@ -386,19 +386,11 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="tkV-A3-Wja">
-                        <barButtonItem key="rightBarButtonItem" title="Fix" id="R4z-bA-Nce">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="x7o-Nh-v1E">
-                                <rect key="frame" x="261" y="5" width="43" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Fix">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="fix" destination="s46-Mj-Y5b" eventType="touchUpInside" id="7YQ-WN-3zM"/>
-                                </connections>
-                            </button>
+                    <navigationItem key="navigationItem" id="wXd-Lz-ahD">
+                        <barButtonItem key="rightBarButtonItem" title="Fix" id="aW4-vg-Cgw">
+                            <connections>
+                                <action selector="fix" destination="s46-Mj-Y5b" id="Rv5-a1-f3D"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
