@@ -53,21 +53,6 @@ extern NSString *IP;
     mapController.printers = self->printers;
     listController.locationManager = self->locationManager;
     mapController.locationManager = self->locationManager;
-    
-    UIAlertView *alert;
-    NSString *urlstring = [NSString stringWithFormat:@"%@/logout/", IP];
-    NSURL *url = [NSURL URLWithString:urlstring];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    
-    if (!data) {
-        alert = [[UIAlertView alloc]
-                 initWithTitle:@"Error"
-                 message:@"Could not connect to the server"
-                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    
 }
 
 - (void)didReceiveMemoryWarning
