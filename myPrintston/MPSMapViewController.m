@@ -34,7 +34,7 @@
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:posLat
                                                             longitude:posLong
-                                                                 zoom:18];
+                                                                 zoom:17];
 
     GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
     [self.mapView moveCamera:update];

@@ -41,14 +41,18 @@ GMSMapView *mapView_;
     double userLat = self.locationManager.location.coordinate.latitude;
     double userLong = self.locationManager.location.coordinate.longitude;
     
+    // setup
+    self.mapView.myLocationEnabled = YES;
+    
     // get current printer location / add marker
     MPSPrinter *printer = self.printer;
-    
-    double prLong = printer.longitude;
+
     double prLat = printer.latitude;
-    
+    double prLong = printer.longitude;
+
     NSString *prName = printer.building;
     NSString *prSnippet =  printer.room;
+    
     
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(prLat, prLong);
@@ -63,9 +67,7 @@ GMSMapView *mapView_;
     GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:myLocation coordinate:prLocation];
 
     [self.mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds withPadding:10.0f]];
-    
-    // setup
-    self.mapView.myLocationEnabled = YES;
+
     
     self.statusMsg.text = [NSString stringWithFormat:@"Status: %@", self.printer.statusMsg];
     // Do any additional setup after loading the view.

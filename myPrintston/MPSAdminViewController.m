@@ -36,9 +36,11 @@ extern NSString *IP;
 {
     UIAlertView *alert;
     
-    if (!isAdmin)
+    if (!isAdmin) {
         [self performSegueWithIdentifier:@"LogIn" sender:nil];
-        
+        return;
+    }
+    
 
     NSString *urlstring = [NSString stringWithFormat:@"%@/checklogin", IP];
     NSURL *url = [NSURL URLWithString:urlstring];
@@ -52,6 +54,7 @@ extern NSString *IP;
                  delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
         [alert show];
         [self performSegueWithIdentifier:@"LogIn" sender:nil];
+        return;
     }
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -64,6 +67,7 @@ extern NSString *IP;
                  delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
         [alert show];
         [self performSegueWithIdentifier:@"LogIn" sender:nil];
+        return;
     }
     
     [self performSegueWithIdentifier:@"LogOut" sender:nil];
