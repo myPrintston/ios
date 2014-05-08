@@ -54,10 +54,6 @@ extern NSString *IP;
     NSURL *url = [NSURL URLWithString:urlString];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
-    NSLog(@"%@", urlString);
-    NSLog(@"%@", url);
-    NSLog(@"%@", data);
-    
     if (!data) {
         UIAlertView *alert;
         alert = [[UIAlertView alloc]
@@ -69,9 +65,6 @@ extern NSString *IP;
     }
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    NSLog(@"HI");
-    NSLog(@"%@", jsonArray);
     
     NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
     MPSErrorType *other;
@@ -146,4 +139,5 @@ extern NSString *IP;
 
 - (IBAction)submit:(UIBarButtonItem *)sender {
 }
+
 @end
