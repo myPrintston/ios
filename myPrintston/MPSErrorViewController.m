@@ -202,6 +202,24 @@ extern BOOL isAdmin;
     }
     
     if (YES) {
+        NSString *urlstring = [NSString stringWithFormat:@"%@/checklogin/", IP];
+        NSURL *url = [NSURL URLWithString:urlstring];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        
+        if (!data) {
+            alert = [[UIAlertView alloc]
+                     initWithTitle:@"Login Failure"
+                     message:@"Could not connect to the server"
+                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
+        
+        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        isAdmin = [jsonArray[0] boolValue];
+    }
+    
+    if (YES) {
         // Prepare the JSON to send as NSData
         NSMutableDictionary *json = [self prepareJSON: errorids];
         NSError *error = NULL;
