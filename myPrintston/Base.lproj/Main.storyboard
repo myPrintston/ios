@@ -573,7 +573,13 @@
                             <outlet property="delegate" destination="194-dS-qo7" id="Dhu-DW-Ibd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="zMc-6v-OHF"/>
+                    <navigationItem key="navigationItem" id="zMc-6v-OHF">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="1TH-Ls-AxR">
+                            <connections>
+                                <action selector="submit:" destination="194-dS-qo7" id="iOM-qZ-7df"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFd-8M-KrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

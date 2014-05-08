@@ -13,4 +13,5 @@
 
 @property (nonatomic) MPSPrinter *printer;
 
+- (IBAction)submit:(UIBarButtonItem *)sender;
 @end
