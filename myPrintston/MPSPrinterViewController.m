@@ -75,7 +75,7 @@ GMSMapView *mapView_;
     CLLocationCoordinate2D prLocation = CLLocationCoordinate2DMake(prLat, prLong);
     GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:myLocation coordinate:prLocation];
 
-    [self.mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds withPadding:50.0f]];
+    [self.mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds withPadding:20.0f]];
 
     
     self.statusMsg.text = [NSString stringWithFormat:@"Status: %@", self.printer.statusMsg];
