@@ -195,7 +195,6 @@ extern BOOL isAdmin;
         }
     }
     
-    
     // Message prompt if no errors are selected
     if ([errorids count] == 0) {
         alert = [[UIAlertView alloc]
@@ -222,6 +221,14 @@ extern BOOL isAdmin;
             [alert show];
         }
         return;
+    }
+    
+    if (!isAdmin) {
+        NSString *urlstring = [NSString stringWithFormat:@"%@/logout/", IP];
+        NSURL *url = [NSURL URLWithString:urlstring];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        if (!data)
+            urlstring = @"";
     }
     
     if (YES) {
