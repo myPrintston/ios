@@ -9,6 +9,7 @@
 #import "MPSListNavController.h"
 #import "MPSPrinterViewController.h"
 #import "MPSErrorViewController.h"
+#import "MPSFixErrorController.h"
 #import "MPSPrinter.h"
 
 extern BOOL isAdmin;
@@ -105,13 +106,28 @@ GMSMapView *mapView_;
 // Modify the prepareForSegue method by
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    MPSErrorViewController *detailController = segue.destinationViewController;
-    detailController.printer = self.printer;
-    detailController.title = [self.printer name];
+    if ([segue.destinationViewController class] == [MPSErrorViewController class]) {
+        MPSErrorViewController *detailController = segue.destinationViewController;
+        detailController.printer = self.printer;
+        detailController.title = [self.printer name];
+    } else {
+        MPSFixErrorController *detailController = segue.destinationViewController;
+        detailController.printer = self.printer;
+        detailController.title = [self.printer name];
+    }
 }
 
 - (IBAction)fix {
     UIAlertView *alert;
+    
+    if (self.printer.status == 0) {
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Error"
+                 message:@"There is nothing to fix for this printer!"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     
     if (!isAdmin) {
         alert = [[UIAlertView alloc]
@@ -147,25 +163,8 @@ GMSMapView *mapView_;
         return;
     }
     
-    urlstring = [NSString stringWithFormat:@"%@/fixprinter/%d", IP, self.printer.printerid];
-    url = [NSURL URLWithString:urlstring];
-    data = [NSData dataWithContentsOfURL:url];
-    
-    jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-    if (![jsonArray[0] boolValue]) {
-        alert = [[UIAlertView alloc]
-                 initWithTitle:@"Error"
-                 message:jsonArray[1]
-                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
-        [alert show];
-    }
-    
-    alert = [[UIAlertView alloc]
-             initWithTitle:@"Fixed"
-             message:jsonArray[1]
-             delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
-    [alert show];
+    [self performSegueWithIdentifier:@"FixError" sender:nil];
+    return;
 }
 
 @end

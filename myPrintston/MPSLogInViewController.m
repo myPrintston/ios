@@ -131,7 +131,7 @@ extern BOOL isAdmin;
     if (![jsonArray[0] boolValue]) {
         alert = [[UIAlertView alloc]
                  initWithTitle:@"Login Failure"
-                 message:@"Not a valid ID/PW pair"
+                 message:@"Not a valid Username/Password pair"
                  delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
         [alert show];
         return;

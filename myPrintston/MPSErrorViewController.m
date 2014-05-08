@@ -45,6 +45,14 @@ extern BOOL isAdmin;
     self.errorList.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.errorList.scrollEnabled = NO;
     
+    if (!isAdmin) {
+        NSString *urlstring = [NSString stringWithFormat:@"%@/logout/", IP];
+        NSURL *url = [NSURL URLWithString:urlstring];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        if (!data)
+            urlstring = @"";
+    }
+    
     self->possibleErrors = self.loadPossibleErrors;
     self.netid.delegate = self;
     self.comment.delegate = self;
@@ -73,13 +81,28 @@ extern BOOL isAdmin;
 // Query server and get the error types
 - (NSMutableArray*) loadPossibleErrors
 {
-    NSURL *url = [NSURL URLWithString:@"http://54.186.188.121:2016/etypes/"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/checklogin/", IP]];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
-    if (!data)
+    if (!data) {
+        UIAlertView *alert;
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Error"
+                 message:@"Could not connect to the server"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
         return [[NSMutableArray alloc] init];
+    }
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    if ([jsonArray[0] boolValue])
+        isAdmin = YES;
+    
+    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/etypes/", IP]];
+    data = [NSData dataWithContentsOfURL:url];
+    
+    jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
     NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
     MPSErrorType *other;
@@ -199,6 +222,24 @@ extern BOOL isAdmin;
             [alert show];
         }
         return;
+    }
+    
+    if (YES) {
+        NSString *urlstring = [NSString stringWithFormat:@"%@/checklogin/", IP];
+        NSURL *url = [NSURL URLWithString:urlstring];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        
+        if (!data) {
+            alert = [[UIAlertView alloc]
+                     initWithTitle:@"Login Failure"
+                     message:@"Could not connect to the server"
+                     delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
+        
+        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        isAdmin = [jsonArray[0] boolValue];
     }
     
     if (YES) {

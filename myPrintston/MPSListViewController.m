@@ -55,6 +55,8 @@ extern NSString *IP;
             printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
         }
     }
+    
+    [self sortPrinters];
 }
 
 - (void) updatePrinters:(UIRefreshControl *)refresh
@@ -65,7 +67,7 @@ extern NSString *IP;
         [printerids addObject:[NSNumber numberWithInt:printer.printerid]];
     
     NSString *urlstring = [[NSString stringWithFormat:@"%@/pids/", IP] stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
-    
+
     NSURL *url = [NSURL URLWithString:urlstring];
     NSData *data = [NSData dataWithContentsOfURL:url];
     if (data == nil)
@@ -84,9 +86,22 @@ extern NSString *IP;
             printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
         }
     }
+
+    [self sortPrinters];
     
 //    [self.tableView reloadData];
     [self.refreshControl endRefreshing];
+}
+
+- (void) sortPrinters
+{
+    CLLocation *userLocation = self.locationManager.location;
+    [self.printers sortUsingComparator:^(id p1, id p2) {
+        if ([p1 distCL:userLocation] > [p2 distCL:userLocation])
+            return (NSComparisonResult) NSOrderedDescending;
+        else
+            return (NSComparisonResult) NSOrderedAscending;
+    }];
 }
 
 - (void)viewDidLoad

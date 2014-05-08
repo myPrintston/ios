@@ -347,7 +347,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="3eS-uH-UYn" kind="push" identifier="PrinterSegue" id="VfU-dI-hZH"/>
+                                            <segue destination="3eS-uH-UYn" kind="push" identifier="ReportSegue" id="VfU-dI-hZH"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yK-ds-RRJ">
@@ -401,6 +401,7 @@
                         <outlet property="errorButton" destination="ros-SG-h4e" id="SVG-ih-ItR"/>
                         <outlet property="mapView" destination="jLi-qF-yxh" id="m4P-l7-L8z"/>
                         <outlet property="statusMsg" destination="6yK-ds-RRJ" id="wBH-hV-VF0"/>
+                        <segue destination="194-dS-qo7" kind="push" identifier="FixError" id="8Xi-Vv-1bg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGK-ri-8FL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -547,7 +548,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4c-4c-nml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1986" y="391"/>
+            <point key="canvasLocation" x="1968" y="91"/>
+        </scene>
+        <!--Fix Error Controller-->
+        <scene sceneID="9m4-QD-APv">
+            <objects>
+                <tableViewController id="194-dS-qo7" customClass="MPSFixErrorController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vkz-bh-doO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Error" id="EL5-Uu-pQn">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EL5-Uu-pQn" id="fRN-0r-ePL">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="194-dS-qo7" id="Bxo-yv-STf"/>
+                            <outlet property="delegate" destination="194-dS-qo7" id="Dhu-DW-Ibd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="zMc-6v-OHF">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="1TH-Ls-AxR">
+                            <connections>
+                                <action selector="submit:" destination="194-dS-qo7" id="iOM-qZ-7df"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GFd-8M-KrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1968" y="710"/>
         </scene>
         <!--Tab Controller-->
         <scene sceneID="Vex-rW-GRa">
