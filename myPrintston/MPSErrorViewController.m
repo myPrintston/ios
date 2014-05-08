@@ -45,6 +45,14 @@ extern BOOL isAdmin;
     self.errorList.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.errorList.scrollEnabled = NO;
     
+    if (!isAdmin) {
+        NSString *urlstring = [NSString stringWithFormat:@"%@/logout/", IP];
+        NSURL *url = [NSURL URLWithString:urlstring];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        if (!data)
+            urlstring = @"";
+    }
+    
     self->possibleErrors = self.loadPossibleErrors;
     self.netid.delegate = self;
     self.comment.delegate = self;

@@ -25,6 +25,14 @@ extern BOOL isAdmin;
         self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
     }
     */
+    
+    NSString *urlstring = [NSString stringWithFormat:@"%@/logout/", IP];
+    NSURL *url = [NSURL URLWithString:urlstring];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    if (!data)
+        return YES;
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -34,15 +42,6 @@ extern BOOL isAdmin;
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     
-    NSString *urlstring = [NSString stringWithFormat:@"%@/checklogin/", IP];
-    NSURL *url = [NSURL URLWithString:urlstring];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    
-    if (!data)
-        return;
-    
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    isAdmin = [jsonArray[0] boolValue];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
