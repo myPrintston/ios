@@ -7,8 +7,13 @@
 //
 
 #import "MPSFixErrorController.h"
+#import "MPSErrorType.h"
 
-@interface MPSFixErrorController ()
+extern NSString *IP;
+
+@interface MPSFixErrorController () {
+    NSMutableArray *possibleErrors;
+}
 
 @end
 
@@ -32,12 +37,58 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    possibleErrors = [self loadPossibleErrors];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// Query server and get the error types
+- (NSMutableArray*) loadPossibleErrors
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@/geterrors/%d", IP, self.printer.printerid];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    NSLog(@"%@", urlString);
+    NSLog(@"%@", url);
+    NSLog(@"%@", data);
+    
+    if (!data) {
+        UIAlertView *alert;
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Error"
+                 message:@"Could not connect to the server"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return [[NSMutableArray alloc] init];
+    }
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSLog(@"HI");
+    NSLog(@"%@", jsonArray);
+    
+    NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
+    MPSErrorType *other;
+    
+    for (NSDictionary *errorInfo in jsonArray) {
+        MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
+        
+        if ([errorInfo[@"fields"][@"eMsg"] isEqualToString:@"Other"])
+            other = error;
+        else
+            [urlerrors addObject:error];
+    }
+    
+    if (other)
+        [urlerrors addObject:other];
+    
+    return urlerrors;
 }
 
 #pragma mark - Table view data source
@@ -50,21 +101,28 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [possibleErrors count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
     // Configure the cell...
+    static NSString *CellIdentifier = @"Error";
+    
+    MPSErrorType *currentError = [self->possibleErrors objectAtIndex:indexPath.row];
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (!cell)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    
+    cell.textLabel.text = currentError.eMsg;
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -103,6 +161,16 @@
     return YES;
 }
 */
+
+- (void)tableView:(UITableView *)errorList didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [errorList cellForRowAtIndexPath:indexPath];
+    if (cell.accessoryType == UITableViewCellAccessoryNone)
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    else
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    [errorList deselectRowAtIndexPath:indexPath animated:NO];
+}
 
 /*
 #pragma mark - Navigation
