@@ -97,9 +97,12 @@ GMSMapView *mapView_;
 // Modify the prepareForSegue method by
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    MPSErrorViewController *detailController = segue.destinationViewController;
-    detailController.printer = self.printer;
-    detailController.title = [self.printer name];
+    if ([segue.destinationViewController class] == [MPSErrorViewController class]) {
+        MPSErrorViewController *detailController = segue.destinationViewController;
+        detailController.printer = self.printer;
+        detailController.title = [self.printer name];
+    }
+    
 }
 
 - (IBAction)fix {
