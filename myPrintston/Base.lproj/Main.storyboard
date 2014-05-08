@@ -393,7 +393,6 @@
                         <barButtonItem key="rightBarButtonItem" title="Fix" id="aW4-vg-Cgw">
                             <connections>
                                 <action selector="fix" destination="s46-Mj-Y5b" id="Rv5-a1-f3D"/>
-                                <segue destination="194-dS-qo7" kind="push" id="SHp-rE-C8R"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -402,6 +401,7 @@
                         <outlet property="errorButton" destination="ros-SG-h4e" id="SVG-ih-ItR"/>
                         <outlet property="mapView" destination="jLi-qF-yxh" id="m4P-l7-L8z"/>
                         <outlet property="statusMsg" destination="6yK-ds-RRJ" id="wBH-hV-VF0"/>
+                        <segue destination="194-dS-qo7" kind="push" identifier="FixError" id="8Xi-Vv-1bg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGK-ri-8FL" userLabel="First Responder" sceneMemberID="firstResponder"/>
