@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Razeware. All rights reserved.
 //
 
-#import "CoolButton.h"
+#import "CoolButtonRed.h"
 #import "Common.h"
 
-@implementation CoolButton
+@implementation CoolButtonRed
 
 -(id) initWithCoder:(NSCoder *)aDecoder
 {

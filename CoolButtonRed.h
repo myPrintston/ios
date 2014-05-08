@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CoolButton : UIButton
+@interface CoolButtonRed : UIButton
 
 @property  (nonatomic, assign) CGFloat hue;
 @property  (nonatomic, assign) CGFloat saturation;

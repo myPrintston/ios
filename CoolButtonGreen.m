@@ -6,19 +6,19 @@
 //  Copyright (c) 2013 Razeware. All rights reserved.
 //
 
-#import "CoolButtonRed.h"
+#import "CoolButtonGreen.h"
 #import "Common.h"
 
-@implementation CoolButtonRed
+@implementation CoolButtonGreen
 
 -(id) initWithCoder:(NSCoder *)aDecoder
 {
     if ((self = [super initWithCoder:aDecoder])) {
         self.opaque = NO;
         self.backgroundColor = [UIColor clearColor];
-        _hue = 1.0;
+        _hue = 0.378661;
         _saturation = 1.0;
-        _brightness = 1.0;
+        _brightness = 0.983264;
     }
     return self;
 }
@@ -43,17 +43,17 @@
     UIColor * innerTop = [UIColor colorWithHue:self.hue saturation:self.saturation brightness:0.95*actualBrightness alpha:1.0];
     UIColor * innerBottom = [UIColor colorWithHue:self.hue saturation:self.saturation brightness:0.80*actualBrightness alpha:1.0];
     
-    CGFloat outerMargin = 5.0f;
+    CGFloat outerMargin = 0.0f;
     CGRect outerRect = CGRectInset(self.bounds, outerMargin, outerMargin);
-    CGMutablePathRef outerPath = createRoundedRectForRect(outerRect, 6.0);
+    CGMutablePathRef outerPath = createRoundedRectForRect(outerRect, 4.0);
     
-    CGFloat innerMargin = 3.0f;
+    CGFloat innerMargin = 0.0f;
     CGRect innerRect = CGRectInset(outerRect, innerMargin, innerMargin);
-    CGMutablePathRef innerPath = createRoundedRectForRect(innerRect, 6.0);
+    CGMutablePathRef innerPath = createRoundedRectForRect(innerRect, 4.0);
     
-    CGFloat highlightMargin = 2.0f;
+    CGFloat highlightMargin = 0.0f;
     CGRect highlightRect = CGRectInset(outerRect, highlightMargin, highlightMargin);
-    CGMutablePathRef highlightPath = createRoundedRectForRect(highlightRect, 6.0);
+    CGMutablePathRef highlightPath = createRoundedRectForRect(highlightRect, 4.0);
     
     if (self.state != UIControlStateHighlighted) {
         CGContextSaveGState(context);
