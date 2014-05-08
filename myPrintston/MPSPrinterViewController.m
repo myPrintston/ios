@@ -148,26 +148,6 @@ GMSMapView *mapView_;
     
     [self performSegueWithIdentifier:@"FixError" sender:nil];
     return;
-    
-//    urlstring = [NSString stringWithFormat:@"%@/fixprinter/%d", IP, self.printer.printerid];
-//    url = [NSURL URLWithString:urlstring];
-//    data = [NSData dataWithContentsOfURL:url];
-//    
-//    jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//
-//    if (![jsonArray[0] boolValue]) {
-//        alert = [[UIAlertView alloc]
-//                 initWithTitle:@"Error"
-//                 message:jsonArray[1]
-//                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
-//        [alert show];
-//    }
-//    
-//    alert = [[UIAlertView alloc]
-//             initWithTitle:@"Fixed"
-//             message:jsonArray[1]
-//             delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
-//    [alert show];
 }
 
 @end

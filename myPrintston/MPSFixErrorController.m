@@ -138,6 +138,55 @@ extern NSString *IP;
 */
 
 - (IBAction)submit:(UIBarButtonItem *)sender {
+    UIAlertView *alert;
+    
+    NSMutableArray *errorids = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [possibleErrors count]; i++) {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark)
+            [errorids addObject:[NSNumber numberWithInt:[self->possibleErrors[i] errorid]]];
+    }
+    
+    if ([errorids count] == 0) {
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Submit Failure"
+                 message:@"Please select at least one error"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    NSString *urlstring = [NSString stringWithFormat:@"%@/fixerrors/%d/%@", IP, self.printer.printerid, [errorids componentsJoinedByString:@"/"]];
+    NSURL *url = [NSURL URLWithString:urlstring];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    if (!data) {
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Error"
+                 message:@"Could not connect to the server"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    if (![jsonArray[0] boolValue]) {
+        alert = [[UIAlertView alloc]
+                initWithTitle:@"Submit Failure"
+                message:@"Server Error"
+                delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    alert = [[UIAlertView alloc]
+             initWithTitle:@"Fixed"
+             message:jsonArray[1]
+             delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+    [alert show];
+
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end
