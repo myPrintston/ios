@@ -41,8 +41,6 @@ extern BOOL isAdmin;
     self.errorList.dataSource = self;
     
     [self.errorList registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Error"];
-    self.errorList.separatorColor = [UIColor clearColor];
-    self.errorList.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.errorList.scrollEnabled = NO;
     
     self->possibleErrors = self.loadPossibleErrors;
