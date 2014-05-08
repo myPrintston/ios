@@ -59,6 +59,14 @@ GMSMapView *mapView_;
     
     marker.title = prName;
     marker.snippet = prSnippet;
+    
+    if (printer.status == 0)
+        marker.icon = [GMSMarker markerImageWithColor:[UIColor greenColor]];
+    else if (printer.status == 1)
+        marker.icon = [GMSMarker markerImageWithColor:[UIColor orangeColor]];
+    else
+        marker.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
+    
     marker.map = self.mapView;
     
     // get map zoom
