@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		12273F9D1906D7F300EFD4AE /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12273F9C1906D7F300EFD4AE /* GoogleMaps.framework */; };
 		124F951D19081F7200DC8736 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 124F951C19081F7200DC8736 /* GoogleMaps.bundle */; };
+		12E12C08191B3B3E007EBD46 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E12C05191B3B3E007EBD46 /* Common.m */; };
+		12E12C09191B3B3E007EBD46 /* CoolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E12C07191B3B3E007EBD46 /* CoolButton.m */; };
 		C105C3DA18F1CDDC005F7821 /* MPSErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */; };
 		C1268CBA1918886E00986D9D /* princeton.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C1268CB91918886E00986D9D /* princeton.gpx */; };
 		C1268CC11918ABC200986D9D /* MPSAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1268CC01918ABC200986D9D /* MPSAdminViewController.m */; };
@@ -63,6 +65,10 @@
 /* Begin PBXFileReference section */
 		12273F9C1906D7F300EFD4AE /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		124F951C19081F7200DC8736 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		12E12C04191B3B3E007EBD46 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		12E12C05191B3B3E007EBD46 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
+		12E12C06191B3B3E007EBD46 /* CoolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoolButton.h; sourceTree = "<group>"; };
+		12E12C07191B3B3E007EBD46 /* CoolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoolButton.m; sourceTree = "<group>"; };
 		C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSErrorViewController.h; sourceTree = "<group>"; };
 		C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSErrorViewController.m; sourceTree = "<group>"; };
 		C1268CB91918886E00986D9D /* princeton.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = princeton.gpx; path = ../princeton.gpx; sourceTree = "<group>"; };
@@ -174,6 +180,10 @@
 		C13168C218DA75290034F142 = {
 			isa = PBXGroup;
 			children = (
+				12E12C04191B3B3E007EBD46 /* Common.h */,
+				12E12C05191B3B3E007EBD46 /* Common.m */,
+				12E12C06191B3B3E007EBD46 /* CoolButton.h */,
+				12E12C07191B3B3E007EBD46 /* CoolButton.m */,
 				C13168D418DA75290034F142 /* myPrintston */,
 				C13168F618DA75290034F142 /* myPrintstonTests */,
 				C13168CD18DA75290034F142 /* Frameworks */,
@@ -411,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12E12C09191B3B3E007EBD46 /* CoolButton.m in Sources */,
 				C13168DB18DA75290034F142 /* main.m in Sources */,
 				C1268CC41918ACF300986D9D /* MPSLogInViewController.m in Sources */,
 				C144413C190448B20009C104 /* MPSMapViewController.m in Sources */,
@@ -423,6 +434,7 @@
 				C1444131190242190009C104 /* MPSTabController.m in Sources */,
 				C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */,
 				C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */,
+				12E12C08191B3B3E007EBD46 /* Common.m in Sources */,
 				C1FB68EF18E6216000376EBC /* MPSPrinter.m in Sources */,
 				C1444137190447EC0009C104 /* MPSMapNavController.m in Sources */,
 			);
