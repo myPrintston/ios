@@ -112,6 +112,15 @@ GMSMapView *mapView_;
 - (IBAction)fix {
     UIAlertView *alert;
     
+    if (self.printer.status == 0) {
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Error"
+                 message:@"There is nothing to fix for this printer!"
+                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     if (!isAdmin) {
         alert = [[UIAlertView alloc]
                  initWithTitle:@"Error"
