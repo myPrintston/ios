@@ -9,6 +9,7 @@
 #import "MPSListNavController.h"
 #import "MPSPrinterViewController.h"
 #import "MPSErrorViewController.h"
+#import "MPSFixErrorController.h"
 #import "MPSPrinter.h"
 
 extern BOOL isAdmin;
@@ -101,8 +102,11 @@ GMSMapView *mapView_;
         MPSErrorViewController *detailController = segue.destinationViewController;
         detailController.printer = self.printer;
         detailController.title = [self.printer name];
+    } else {
+        MPSFixErrorController *detailController = segue.destinationViewController;
+        detailController.printer = self.printer;
+        detailController.title = [self.printer name];
     }
-    
 }
 
 - (IBAction)fix {

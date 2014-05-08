@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MPSPrinter.h"
 
 @interface MPSFixErrorController : UITableViewController
+
+@property (nonatomic) MPSPrinter *printer;
 
 @end
