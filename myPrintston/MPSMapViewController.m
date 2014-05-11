@@ -31,16 +31,6 @@ extern NSString *IP;
 {
     [super viewDidLoad];
     
-//    double posLat  = self.locationManager.location.coordinate.latitude;
-//    double posLong = self.locationManager.location.coordinate.longitude;
-//    
-//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:posLat
-//                                                            longitude:posLong
-//                                                                 zoom:18];
-//
-//    GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
-//    [self.mapView moveCamera:update];
-    
     self.mapView.myLocationEnabled = YES;
     self.mapView.delegate = self;
     
