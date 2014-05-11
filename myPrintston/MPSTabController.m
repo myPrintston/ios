@@ -134,7 +134,6 @@ extern NSString *IP;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-//    [MPSPrinter incrementUserLongitude];
     [self sortPrinters];
     [[[[[self.childViewControllers objectAtIndex:0] childViewControllers] objectAtIndex:0] tableView] reloadData];
 }

@@ -25,12 +25,6 @@
 
 - (NSString*)name;
 
-+ (void) incrementUserLongitude;
-+ (void) setUserLongitude:(double)newUserLongitude;
-+ (void) setUserLatitude: (double)newUserLatitude;
-
-- (double) dist;
-- (double) dist2;
 - (double) distCL:(CLLocation *)userLocation;
 
 - (void) updateStatus;
