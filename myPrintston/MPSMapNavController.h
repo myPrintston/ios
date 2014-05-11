@@ -13,7 +13,6 @@
 @interface MPSMapNavController : UINavigationController
 
 @property (nonatomic) MPSPrinterList *printerList;
-@property (nonatomic) NSMutableArray *printers;
 @property (nonatomic) CLLocationManager *locationManager;
 
 @end

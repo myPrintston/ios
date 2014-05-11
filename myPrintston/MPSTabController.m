@@ -39,6 +39,10 @@ extern NSString *IP;
     locationManager = [[CLLocationManager alloc] init];
     [self getCurrentLocation];
     
+    self.printerList = [MPSPrinterList initWithLocationManager:locationManager];
+    [self.printerList load];
+    [self.printerList sort];
+    
     self->printers = self.loadPrinters;
     [self sortPrinters];
     
@@ -46,8 +50,6 @@ extern NSString *IP;
     MPSListNavController *listController = self.viewControllers[0];
     MPSMapNavController  *mapController = self.viewControllers[1];
     
-    listController.printers = self->printers;
-    mapController.printers = self->printers;
     listController.printerList = self.printerList;
     mapController.printerList = self.printerList;
     listController.locationManager = self->locationManager;
@@ -131,7 +133,7 @@ extern NSString *IP;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    [self sortPrinters];
+    [self.printerList sort];
     [[[[[self.childViewControllers objectAtIndex:0] childViewControllers] objectAtIndex:0] tableView] reloadData];
 }
 

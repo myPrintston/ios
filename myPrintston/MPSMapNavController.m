@@ -29,8 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    MPSMapViewController *controller = self.viewControllers[0];
-    controller.printers = self.printers;
+    MPSListViewController *controller = self.childViewControllers[0];
     controller.printerList = self.printerList;
     controller.locationManager = self.locationManager;
 }
@@ -50,7 +49,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     MPSMapViewController *controller = segue.destinationViewController;
-    controller.printers = self.printers;
+    controller.printerList = self.printerList;
+    controller.locationManager = self.locationManager;
 }
 
 

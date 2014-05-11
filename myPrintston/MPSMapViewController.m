@@ -38,7 +38,7 @@ extern NSString *IP;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    [self updatePrinters];
+    [self.printerList update];
     [self.mapView clear];
     
     double posLat = self.locationManager.location.coordinate.latitude;
@@ -50,7 +50,7 @@ extern NSString *IP;
     GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
     [self.mapView moveCamera:update];
     
-    for (MPSPrinter *printer in self.printers)
+    for (MPSPrinter *printer in self.printerList.printers)
     {
         double currLong = printer.longitude;
         double currLat = printer.latitude;
@@ -72,50 +72,6 @@ extern NSString *IP;
         marker.snippet = currSnippet;
         marker.map = self.mapView;
         marker.userData = printer;
-    }
-}
-
-- (NSMutableArray*) loadPrinters
-{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/pall/", IP]];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    
-    if (data == nil)
-        return [NSMutableArray arrayWithObjects: nil];
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    NSMutableArray *urlprinters = [[NSMutableArray alloc] init];
-    for (NSDictionary *printerInfo in jsonArray) {
-        MPSPrinter *printer = [[MPSPrinter alloc] initWithDictionary:printerInfo];
-        [urlprinters addObject:printer];
-    }
-    
-    return urlprinters;
-}
-
-- (void) updatePrinters {
-    NSMutableArray *printerids = [[NSMutableArray alloc] init];
-    for (MPSPrinter *printer in self.printers)
-        [printerids addObject:[NSNumber numberWithInt:printer.printerid]];
-    
-    NSString *urlstring = [[NSString stringWithFormat:@"%@/pids/", IP] stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
-    
-    NSURL *url = [NSURL URLWithString:urlstring];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    if (data == nil)
-        return;
-    
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    if ([jsonArray count] == 0) {
-        self.printers = [self loadPrinters];
-    } else {
-        for (int i = 0; i < [printerids count]; i++)
-        {
-            MPSPrinter *printer = [self.printers objectAtIndex:i];
-            printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
-            printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
-        }
     }
 }
 

@@ -16,7 +16,6 @@
 @interface MPSMapViewController : UIViewController<GMSMapViewDelegate>
 
 @property (nonatomic) MPSPrinterList *printerList;
-@property (nonatomic) NSMutableArray *printers;
 @property (nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 

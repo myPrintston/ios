@@ -30,80 +30,6 @@ extern NSString *IP;
     return self;
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    NSMutableArray *printerids = [[NSMutableArray alloc] init];
-    for (MPSPrinter *printer in self.printers)
-        [printerids addObject:[NSNumber numberWithInt:printer.printerid]];
-    
-    NSString *urlstring = [[NSString stringWithFormat:@"%@/pids/", IP] stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
-    
-    NSURL *url = [NSURL URLWithString:urlstring];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    if (data == nil)
-        return;
-    
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    if ([jsonArray count] == 0) {
-        self.printers = [self loadPrinters];
-        [self.tableView reloadData];
-    } else {
-        for (int i = 0; i < [printerids count]; i++)
-        {
-            MPSPrinter *printer = [self.printers objectAtIndex:i];
-            printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
-            printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
-        }
-    }
-    
-    [self sortPrinters];
-}
-
-- (void) updatePrinters:(UIRefreshControl *)refresh
-{
-    [self.tableView reloadData];
-    NSMutableArray *printerids = [[NSMutableArray alloc] init];
-    for (MPSPrinter *printer in self.printers)
-        [printerids addObject:[NSNumber numberWithInt:printer.printerid]];
-    
-    NSString *urlstring = [[NSString stringWithFormat:@"%@/pids/", IP] stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
-
-    NSURL *url = [NSURL URLWithString:urlstring];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    if (data == nil)
-        return;
-    
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    if ([jsonArray count] == 0) {
-        self.printers = [self loadPrinters];
-        [self.tableView reloadData];
-    } else {
-        for (int i = 0; i < [printerids count]; i++)
-        {
-            MPSPrinter *printer = [self.printers objectAtIndex:i];
-            printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
-            printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
-        }
-    }
-
-    [self sortPrinters];
-    
-//    [self.tableView reloadData];
-    [self.refreshControl endRefreshing];
-}
-
-- (void) sortPrinters
-{
-    CLLocation *userLocation = self.locationManager.location;
-    [self.printers sortUsingComparator:^(id p1, id p2) {
-        if ([p1 distCL:userLocation] > [p2 distCL:userLocation])
-            return (NSComparisonResult) NSOrderedDescending;
-        else
-            return (NSComparisonResult) NSOrderedAscending;
-    }];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -118,28 +44,25 @@ extern NSString *IP;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [self.printerList update];
+    [self.printerList sort];
+    [self.tableView reloadData];
+}
+
+- (void) updatePrinters:(UIRefreshControl *)refresh
+{
+    [self.printerList update];
+    [self.printerList sort];
+    [self.tableView reloadData];
+    
+    [self.refreshControl endRefreshing];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (NSMutableArray*) loadPrinters
-{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/pall/", IP]];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    
-    if (data == nil)
-        return [NSMutableArray arrayWithObjects: nil];
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    NSMutableArray *urlprinters = [[NSMutableArray alloc] init];
-    for (NSDictionary *printerInfo in jsonArray) {
-        MPSPrinter *printer = [[MPSPrinter alloc] initWithDictionary:printerInfo];
-        [urlprinters addObject:printer];
-    }
-    
-    return urlprinters;
 }
 
 -(void)didMoveToParentViewController:(UIViewController *)parent{
@@ -157,7 +80,7 @@ extern NSString *IP;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.printers count];
+    return [self.printerList count];
 }
 
 
@@ -166,7 +89,7 @@ extern NSString *IP;
     // Configure the cell...
     static NSString *CellIdentifier = @"PrinterCell";
     
-    MPSPrinter *currentPrinter = [self.printers objectAtIndex:indexPath.row];
+    MPSPrinter *currentPrinter = [self.printerList.printers objectAtIndex:indexPath.row];
       
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
@@ -189,7 +112,7 @@ extern NSString *IP;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     MPSPrinterViewController *detailController = segue.destinationViewController;
-    MPSPrinter *printer = [self.printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    MPSPrinter *printer = [self.printerList.printers objectAtIndex:self.tableView.indexPathForSelectedRow.row];
     detailController.printer = printer;
     detailController.locationManager = self.locationManager;
     detailController.title = [printer name];

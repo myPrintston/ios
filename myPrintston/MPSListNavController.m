@@ -29,10 +29,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    MPSListViewController *controller = self.viewControllers[0];
-    controller.printers = self.printers;
+    MPSListViewController *controller = self.childViewControllers[0];
     controller.printerList = self.printerList;
     controller.locationManager = self.locationManager;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,7 +50,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     MPSListViewController *controller = segue.destinationViewController;
-    controller.printers = self.printers;
+    controller.printerList = self.printerList;
+    controller.locationManager = self.locationManager;
 }
 
 @end

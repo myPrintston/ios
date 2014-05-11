@@ -39,6 +39,8 @@ extern NSString *IP;
     if (data == nil)
         return;
     
+    [self.printers removeAllObjects];
+    
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
     for (NSDictionary *printerInfo in jsonArray) {
@@ -62,14 +64,18 @@ extern NSString *IP;
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
-    for (int i = 0; i < [printerids count]; i++)
-    {
-        MPSPrinter *printer = [self.printers objectAtIndex:i];
-        printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
-        printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
+    if ([jsonArray count] == 0) {
+        [self load];
+    } else {
+        for (int i = 0; i < [printerids count]; i++)
+        {
+            MPSPrinter *printer = [self.printers objectAtIndex:i];
+            printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
+            printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
+        }
     }
     
-//    [self sort];
+    [self sort];
 }
 
 - (void) sort {
