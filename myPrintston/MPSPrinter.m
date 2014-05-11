@@ -84,21 +84,6 @@ static double userLatitude;
     return [self.location distanceFromLocation:userLocation];
 }
 
-- (double) angle {
-//    double dlong = 111200 * fabs((self.longitude - userLongitude));
-//    double dlat  = 101400 * fabs((self.latitude  - userLatitude));
-    
-//    double dlong = (userLongitude - self.longitude) * M_PI / 180.0;
-//    double dlat  = (userLatitude  - self.latitude)  * M_PI / 180.0;
-    
-    double fLng = userLongitude  * M_PI / 180.0;
-    double fLat = userLatitude   * M_PI / 180.0;
-    double tLng = self.longitude * M_PI / 180.0;
-    double tLat = self.latitude  * M_PI / 180.0;
-    
-    return atan2(sin(fLng-tLng)*cos(tLat), cos(fLat)*sin(tLat)-sin(fLat)*cos(tLat)*cos(fLng-tLng));
-}
-
 - (NSString*) name {
     return [NSString stringWithFormat:@"%@ - %@", self.building, self.room];
 }

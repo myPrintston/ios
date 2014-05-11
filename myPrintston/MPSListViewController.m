@@ -184,17 +184,6 @@ extern NSString *IP;
     
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter distCL:self.locationManager.location], currentPrinter.room];
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"(%f) %@", ([currentPrinter angle] * 180 / M_PI), currentPrinter.room];
-    
-    // Show border for better debugging
-//    [cell.imageView.layer setBorderColor: [[UIColor blackColor] CGColor]];
-//    [cell.imageView.layer setBorderWidth: 0.5];
-//    cell.imageView.contentMode = UIViewContentModeCenter;
-//    
-//    if (indexPath.row == 0)
-//        cell.imageView.transform = CGAffineTransformMakeRotation(-[currentPrinter angle]);
-    
-//    NSLog(@"%f", [currentPrinter angle]);
     
     return cell;
 }
