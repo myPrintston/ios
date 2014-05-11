@@ -38,32 +38,22 @@ GMSMapView *mapView_;
 {
     [super viewDidLoad];
     
-    // get position
-    double userLat = self.locationManager.location.coordinate.latitude;
-    double userLong = self.locationManager.location.coordinate.longitude;
-    
     // setup
     self.mapView.myLocationEnabled = YES;
     
     // get current printer location / add marker
-    MPSPrinter *printer = self.printer;
-
-    double prLat = printer.latitude;
-    double prLong = printer.longitude;
-
-    NSString *prName = printer.building;
-    NSString *prSnippet =  printer.room;
-    
+    double prLat = self.printer.latitude;
+    double prLong = self.printer.longitude;
     
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(prLat, prLong);
     
-    marker.title = prName;
-    marker.snippet = prSnippet;
+    marker.title = self.printer.building;
+    marker.snippet = self.printer.room;
     
-    if (printer.status == 0)
+    if (self.printer.status == 0)
         marker.icon = [GMSMarker markerImageWithColor:[UIColor greenColor]];
-    else if (printer.status == 1)
+    else if (self.printer.status == 1)
         marker.icon = [GMSMarker markerImageWithColor:[UIColor orangeColor]];
     else
         marker.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
@@ -71,7 +61,7 @@ GMSMapView *mapView_;
     marker.map = self.mapView;
     
     // get map zoom
-    CLLocationCoordinate2D myLocation = CLLocationCoordinate2DMake(userLat, userLong);
+    CLLocationCoordinate2D myLocation = self.locationManager.location.coordinate;
     CLLocationCoordinate2D prLocation = CLLocationCoordinate2DMake(prLat, prLong);
     GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:myLocation coordinate:prLocation];
 
