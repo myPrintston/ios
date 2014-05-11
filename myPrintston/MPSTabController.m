@@ -36,9 +36,6 @@ extern NSString *IP;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [MPSPrinter setUserLongitude: -74.6552];
-    [MPSPrinter setUserLatitude:   40.345];
-    
     locationManager = [[CLLocationManager alloc] init];
     [self getCurrentLocation];
     
