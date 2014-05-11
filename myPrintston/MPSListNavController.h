@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/Corelocation.h>
+#import "MPSPrinterList.h"
 
 @interface MPSListNavController : UINavigationController
 
+@property (nonatomic) MPSPrinterList *printerList;
 @property (nonatomic) NSMutableArray *printers;
 @property (nonatomic) CLLocationManager *locationManager;
 

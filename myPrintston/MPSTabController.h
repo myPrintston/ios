@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/Corelocation.h>
+#import "MPSPrinterList.h"
 
 @interface MPSTabController : UITabBarController <CLLocationManagerDelegate>
 
