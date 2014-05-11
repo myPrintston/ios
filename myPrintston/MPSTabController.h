@@ -13,5 +13,6 @@
 @interface MPSTabController : UITabBarController <CLLocationManagerDelegate>
 
 @property (nonatomic) MPSPrinterList *printerList;
+@property (nonatomic) CLLocationManager *locationManager;
 
 @end

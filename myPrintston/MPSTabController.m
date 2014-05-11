@@ -13,9 +13,7 @@
 
 extern NSString *IP;
 
-@interface MPSTabController () {
-    CLLocationManager *locationManager;
-}
+@interface MPSTabController ()
 
 @end
 
@@ -35,10 +33,10 @@ extern NSString *IP;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    locationManager = [[CLLocationManager alloc] init];
+    self.locationManager = [[CLLocationManager alloc] init];
     [self getCurrentLocation];
     
-    self.printerList = [MPSPrinterList initWithLocationManager:locationManager];
+    self.printerList = [MPSPrinterList initWithLocationManager:self.locationManager];
     [self.printerList load];
     [self.printerList sort];
     
@@ -47,8 +45,8 @@ extern NSString *IP;
     
     listController.printerList = self.printerList;
     mapController.printerList = self.printerList;
-    listController.locationManager = self->locationManager;
-    mapController.locationManager = self->locationManager;
+    listController.locationManager = self.locationManager;
+    mapController.locationManager = self.locationManager;
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,9 +56,9 @@ extern NSString *IP;
 }
 
 - (void)getCurrentLocation {
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
 }
 
 #pragma mark - CLLocationManagerDelegate
