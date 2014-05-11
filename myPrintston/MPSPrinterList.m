@@ -25,7 +25,7 @@ extern NSString *IP;
 }
 
 - (int) count {
-    return [self.printers count];
+    return (int) [self.printers count];
 }
 
 - (MPSPrinter*) printer:(int) index {
