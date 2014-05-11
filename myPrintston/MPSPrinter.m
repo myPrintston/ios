@@ -57,7 +57,7 @@
 }
 
 - (void) updateStatus {
-    NSString *url_string = [NSString stringWithFormat:@"http://54.186.188.121:2016/?pid=%d", self.printerid];
+    NSString *url_string = [NSString stringWithFormat:@"http://54.186.188.121:2016/pid/%d/", self.printerid];
     NSURL *url = [NSURL URLWithString:url_string];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
