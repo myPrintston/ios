@@ -49,9 +49,6 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    MPSListViewController *controller = segue.destinationViewController;
-    controller.printerList = self.printerList;
-    controller.locationManager = self.locationManager;
 }
 
 @end

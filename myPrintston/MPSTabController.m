@@ -14,7 +14,6 @@
 extern NSString *IP;
 
 @interface MPSTabController () {
-    NSMutableArray *printers;
     CLLocationManager *locationManager;
 }
 
@@ -43,10 +42,6 @@ extern NSString *IP;
     [self.printerList load];
     [self.printerList sort];
     
-    self->printers = self.loadPrinters;
-    [self sortPrinters];
-    
-    
     MPSListNavController *listController = self.viewControllers[0];
     MPSMapNavController  *mapController = self.viewControllers[1];
     
@@ -61,59 +56,6 @@ extern NSString *IP;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (NSMutableArray*) loadPrinters
-{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/pall/", IP]];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    
-    if (data == nil)
-        return [NSMutableArray arrayWithObjects: nil];
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    NSMutableArray *urlprinters = [[NSMutableArray alloc] init];
-    for (NSDictionary *printerInfo in jsonArray) {
-        MPSPrinter *printer = [[MPSPrinter alloc] initWithDictionary:printerInfo];
-        [urlprinters addObject:printer];
-    }
-    
-    return urlprinters;
-}
-
-- (void) updatePrinters
-{
-    NSMutableArray *printerids = [[NSMutableArray alloc] init];
-    for (MPSPrinter *printer in printers)
-        [printerids addObject:[NSNumber numberWithInt:printer.printerid]];
-    
-    NSString *urlstring = [[NSString stringWithFormat:@"%@/pids/", IP] stringByAppendingString:[printerids componentsJoinedByString:@"/"]];
-    
-    NSURL *url = [NSURL URLWithString:urlstring];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    if (data == nil)
-        return;
-    
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    for (int i = 0; i < [printerids count]; i++)
-    {
-        MPSPrinter *printer = [printers objectAtIndex:i];
-        printer.status    = [[jsonArray objectAtIndex:i][@"fields"][@"status"] intValue];
-        printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
-    }
-}
-
-- (void) sortPrinters
-{
-    CLLocation *userLocation = locationManager.location;
-    [self->printers sortUsingComparator:^(id p1, id p2) {
-        if ([p1 distCL:userLocation] > [p2 distCL:userLocation])
-            return (NSComparisonResult) NSOrderedDescending;
-        else
-            return (NSComparisonResult) NSOrderedAscending;
-    }];
-}
-
 
 - (void)getCurrentLocation {
     locationManager.delegate = self;

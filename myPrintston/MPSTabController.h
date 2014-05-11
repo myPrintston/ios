@@ -14,7 +14,4 @@
 
 @property (nonatomic) MPSPrinterList *printerList;
 
-- (NSMutableArray*) loadPrinters;
-- (void) updatePrinters;
-
 @end
