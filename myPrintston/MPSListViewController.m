@@ -108,12 +108,6 @@ extern NSString *IP;
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self
                 action:@selector(updatePrinters:)

@@ -58,8 +58,6 @@ extern NSString *IP;
     // Dispose of any resources that can be recreated.
 }
 
-
-
 - (NSMutableArray*) loadPrinters
 {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/pall/", IP]];
