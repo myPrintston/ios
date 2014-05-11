@@ -7,11 +7,16 @@
 //
 
 #import "MPSPrinterList.h"
-#import "MPSPrinter.h"
 
 extern NSString *IP;
 
 @implementation MPSPrinterList
+
++ (id) initWithLocationManager:(CLLocationManager*) locationManager {
+    MPSPrinterList *printerList = [[MPSPrinterList alloc] init];
+    printerList.locationManager = locationManager;
+    return printerList;
+}
 
 - (id) init {
     self.printers = [[NSMutableArray alloc] init];
@@ -21,6 +26,10 @@ extern NSString *IP;
 
 - (int) count {
     return [self.printers count];
+}
+
+- (MPSPrinter*) printer:(int) index {
+    return [self.printers objectAtIndex:index];
 }
 
 - (void) load {
@@ -60,7 +69,7 @@ extern NSString *IP;
         printer.statusMsg = [jsonArray objectAtIndex:i][@"fields"][@"statusMsg"];
     }
     
-    [self sort];
+//    [self sort];
 }
 
 - (void) sort {
