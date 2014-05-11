@@ -16,7 +16,6 @@ extern NSString *IP;
 @interface MPSTabController () {
     NSMutableArray *printers;
     CLLocationManager *locationManager;
-    MPSPrinterList *printerList;
 }
 
 @end
@@ -49,6 +48,8 @@ extern NSString *IP;
     
     listController.printers = self->printers;
     mapController.printers = self->printers;
+    listController.printerList = self.printerList;
+    mapController.printerList = self.printerList;
     listController.locationManager = self->locationManager;
     mapController.locationManager = self->locationManager;
 }

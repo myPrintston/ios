@@ -31,6 +31,7 @@
     
     MPSListViewController *controller = self.viewControllers[0];
     controller.printers = self.printers;
+    controller.printerList = self.printerList;
     controller.locationManager = self.locationManager;
 }
 
