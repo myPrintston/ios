@@ -7,8 +7,6 @@
 //
 
 #import "MPSTabController.h"
-#import "MPSListNavController.h"
-#import "MPSMapNavController.h"
 #import "MPSPrinter.h"
 
 extern NSString *IP;
