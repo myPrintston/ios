@@ -32,8 +32,6 @@
 		C13168FD18DA75290034F142 /* myPrintstonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C13168FC18DA75290034F142 /* myPrintstonTests.m */; };
 		C144412E1900A0960009C104 /* MPSErrorType.m in Sources */ = {isa = PBXBuildFile; fileRef = C144412D1900A0960009C104 /* MPSErrorType.m */; };
 		C1444131190242190009C104 /* MPSTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1444130190242190009C104 /* MPSTabController.m */; };
-		C144413419024A2F0009C104 /* MPSListNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = C144413319024A2F0009C104 /* MPSListNavController.m */; };
-		C1444137190447EC0009C104 /* MPSMapNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1444136190447EC0009C104 /* MPSMapNavController.m */; };
 		C144413C190448B20009C104 /* MPSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C144413B190448B20009C104 /* MPSMapViewController.m */; };
 		C144413E1904512E0009C104 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C144413D1904512E0009C104 /* AVFoundation.framework */; };
 		C1444140190451370009C104 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C144413F190451370009C104 /* CoreData.framework */; };
@@ -104,10 +102,6 @@
 		C144412D1900A0960009C104 /* MPSErrorType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSErrorType.m; sourceTree = "<group>"; };
 		C144412F190242190009C104 /* MPSTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSTabController.h; sourceTree = "<group>"; };
 		C1444130190242190009C104 /* MPSTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSTabController.m; sourceTree = "<group>"; };
-		C144413219024A2F0009C104 /* MPSListNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSListNavController.h; sourceTree = "<group>"; };
-		C144413319024A2F0009C104 /* MPSListNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSListNavController.m; sourceTree = "<group>"; };
-		C1444135190447EC0009C104 /* MPSMapNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSMapNavController.h; sourceTree = "<group>"; };
-		C1444136190447EC0009C104 /* MPSMapNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSMapNavController.m; sourceTree = "<group>"; };
 		C144413A190448B20009C104 /* MPSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSMapViewController.h; sourceTree = "<group>"; };
 		C144413B190448B20009C104 /* MPSMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSMapViewController.m; sourceTree = "<group>"; };
 		C144413D1904512E0009C104 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -286,8 +280,6 @@
 		C1444138190448690009C104 /* ListView */ = {
 			isa = PBXGroup;
 			children = (
-				C144413219024A2F0009C104 /* MPSListNavController.h */,
-				C144413319024A2F0009C104 /* MPSListNavController.m */,
 				C1633A2518E66E1700419AA1 /* MPSListViewController.h */,
 				C1633A2618E66E1700419AA1 /* MPSListViewController.m */,
 			);
@@ -297,8 +289,6 @@
 		C1444139190448830009C104 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				C1444135190447EC0009C104 /* MPSMapNavController.h */,
-				C1444136190447EC0009C104 /* MPSMapNavController.m */,
 				C144413A190448B20009C104 /* MPSMapViewController.h */,
 				C144413B190448B20009C104 /* MPSMapViewController.m */,
 			);
@@ -448,13 +438,11 @@
 				12B72E46191B461B00FF4326 /* CoolButtonGreen.m in Sources */,
 				C1FA8687191B02A500177BBA /* MPSFixErrorController.m in Sources */,
 				C1268CC71918AD0300986D9D /* MPSLogOutViewController.m in Sources */,
-				C144413419024A2F0009C104 /* MPSListNavController.m in Sources */,
 				C1444131190242190009C104 /* MPSTabController.m in Sources */,
 				C13168DF18DA75290034F142 /* MPSAppDelegate.m in Sources */,
 				C1A5F63418EDB67F00FA1DFC /* MPSPrinterViewController.m in Sources */,
 				12E12C08191B3B3E007EBD46 /* Common.m in Sources */,
 				C1FB68EF18E6216000376EBC /* MPSPrinter.m in Sources */,
-				C1444137190447EC0009C104 /* MPSMapNavController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,6 @@
 #import "MPSListViewController.h"
 #import "MPSPrinterViewController.h"
 #import "MPSTabController.h"
-#import "MPSListNavController.h"
 #import "MPSPrinter.h"
 
 extern NSString *IP;
