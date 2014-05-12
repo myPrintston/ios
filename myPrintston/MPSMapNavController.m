@@ -28,10 +28,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-//    MPSListViewController *controller = self.childViewControllers[0];
-//    controller.printerList = self.printerList;
-//    controller.locationManager = self.locationManager;
 }
 
 - (void)didReceiveMemoryWarning
