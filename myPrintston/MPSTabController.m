@@ -40,13 +40,13 @@ extern NSString *IP;
     [self.printerList load];
     [self.printerList sort];
     
-    MPSListNavController *listController = self.viewControllers[0];
-    MPSMapNavController  *mapController = self.viewControllers[1];
-    
-    listController.printerList = self.printerList;
-    mapController.printerList = self.printerList;
-    listController.locationManager = self.locationManager;
-    mapController.locationManager = self.locationManager;
+//    MPSListNavController *listController = self.viewControllers[0];
+//    MPSMapNavController  *mapController = self.viewControllers[1];
+//    
+//    listController.printerList = self.printerList;
+//    mapController.printerList = self.printerList;
+//    listController.locationManager = self.locationManager;
+//    mapController.locationManager = self.locationManager;
 }
 
 - (void)didReceiveMemoryWarning

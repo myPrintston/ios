@@ -34,6 +34,10 @@ extern NSString *IP;
 {
     [super viewDidLoad];
     
+    MPSTabController *tabController = (MPSTabController *) self.tabBarController;
+    self.printerList = tabController.printerList;
+    self.locationManager = tabController.locationManager;
+    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self
                 action:@selector(updatePrinters:)

@@ -9,6 +9,7 @@
 #import "MPSMapViewController.h"
 #import "MPSPrinterViewController.h"
 #import "MPSListNavController.h"
+#import "MPSTabController.h"
 
 extern NSString *IP;
 
@@ -30,6 +31,10 @@ extern NSString *IP;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    MPSTabController *tabController = (MPSTabController *) self.tabBarController;
+    self.printerList = tabController.printerList;
+    self.locationManager = tabController.locationManager;
     
     self.mapView.myLocationEnabled = YES;
     self.mapView.delegate = self;
