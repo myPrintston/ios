@@ -26,6 +26,8 @@ extern NSString *IP;
     return self;
 }
 
+// Initialize the locationManager and printerList. Load and sort information into the
+//   printerList.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,6 +47,7 @@ extern NSString *IP;
     // Dispose of any resources that can be recreated.
 }
 
+// For initially configuring the locationManager
 - (void)getCurrentLocation {
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -53,6 +56,7 @@ extern NSString *IP;
 
 #pragma mark - CLLocationManagerDelegate
 
+// Alert user if the user's location could not be retrieved
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"didFailWithError: %@", error);
@@ -61,6 +65,7 @@ extern NSString *IP;
     [errorAlert show];
 }
 
+// Every time we update the user's position, we sort and reload the data in the listView.
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     [self.printerList sort];
