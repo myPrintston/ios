@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// Defines an error object that a user could report
 @interface MPSErrorType : NSObject
 
 @property(nonatomic) int errorid;

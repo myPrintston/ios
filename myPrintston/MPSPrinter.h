@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+// Represents a Printer object
 @interface MPSPrinter : NSObject
 
 @property (nonatomic) int printerid;

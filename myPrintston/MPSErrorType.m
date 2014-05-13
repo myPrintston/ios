@@ -14,6 +14,7 @@
     return self;
 }
 
+// Method to initialize with a JSON entry given by the server
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     NSDictionary *fields = dictionary[@"fields"];
     

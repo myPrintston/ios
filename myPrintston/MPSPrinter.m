@@ -8,6 +8,8 @@
 
 #import "MPSPrinter.h"
 
+extern NSString* IP;
+
 @implementation MPSPrinter
 
 - (id) init {
@@ -26,6 +28,7 @@
     return self;
 }
 
+// Initialize a Printer object with a JSON entry provided from the server
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     NSDictionary *fields = [dictionary objectForKey:@"fields"];
     
@@ -48,16 +51,20 @@
 }
 
 
+// Calculates the distance from the printer to the user
 - (double) distCL:(CLLocation*)userLocation {
     return [self.location distanceFromLocation:userLocation];
 }
 
+
+// Form the name of a printer based on the buildling name and room number
 - (NSString*) name {
     return [NSString stringWithFormat:@"%@ - %@", self.building, self.room];
 }
 
+// Update the status of the printer by querying the server
 - (void) updateStatus {
-    NSString *url_string = [NSString stringWithFormat:@"http://54.186.188.121:2016/pid/%d/", self.printerid];
+    NSString *url_string = [NSString stringWithFormat:@"%@/pid/%d/", IP, self.printerid];
     NSURL *url = [NSURL URLWithString:url_string];
     NSData *data = [NSData dataWithContentsOfURL:url];
     

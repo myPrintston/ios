@@ -10,6 +10,7 @@
 #import <CoreLocation/Corelocation.h>
 #import "MPSPrinter.h"
 
+// An object that contains a list of printers with useful instance methods
 @interface MPSPrinterList : NSObject
 
 @property (nonatomic) NSMutableArray *printers;

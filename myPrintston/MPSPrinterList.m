@@ -12,6 +12,7 @@ extern NSString *IP;
 
 @implementation MPSPrinterList
 
+// Create a MPSPrinterList Object with a locationManager to sort by distances
 + (id) initWithLocationManager:(CLLocationManager*) locationManager {
     MPSPrinterList *printerList = [[MPSPrinterList alloc] init];
     printerList.locationManager = locationManager;
@@ -24,14 +25,17 @@ extern NSString *IP;
     return self;
 }
 
+// Count the number of printers in the MPSPrinterList object
 - (int) count {
     return (int) [self.printers count];
 }
 
+// Return the printer at the index
 - (MPSPrinter*) printer:(int) index {
     return [self.printers objectAtIndex:index];
 }
 
+// Load all printers that the server gives
 - (void) load {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/pall/", IP]];
     NSData *data = [NSData dataWithContentsOfURL:url];
@@ -49,6 +53,7 @@ extern NSString *IP;
     }
 }
 
+// Update the statuses of all the pritners stored in the printer list.
 - (void) update {
     NSMutableArray *printerids = [[NSMutableArray alloc] init];
     for (MPSPrinter *printer in self.printers)
@@ -78,6 +83,7 @@ extern NSString *IP;
     [self sort];
 }
 
+// Sort the printers by distance to the user.
 - (void) sort {
     CLLocation *userLocation = self.locationManager.location;
     [self.printers sortUsingComparator:^(id p1, id p2) {
