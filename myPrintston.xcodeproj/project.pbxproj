@@ -324,10 +324,10 @@
 				C1268CBB1918918100986D9D /* AdminView */,
 				C144412F190242190009C104 /* MPSTabController.h */,
 				C1444130190242190009C104 /* MPSTabController.m */,
-				C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */,
-				C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */,
 				C1A5F63218EDB67F00FA1DFC /* MPSPrinterViewController.h */,
 				C1A5F63318EDB67F00FA1DFC /* MPSPrinterViewController.m */,
+				C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */,
+				C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
