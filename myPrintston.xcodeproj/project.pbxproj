@@ -319,8 +319,8 @@
 		C1E3635118F46D8F00A6486B /* views */ = {
 			isa = PBXGroup;
 			children = (
-				C1444139190448830009C104 /* MapView */,
 				C1444138190448690009C104 /* ListView */,
+				C1444139190448830009C104 /* MapView */,
 				C1268CBB1918918100986D9D /* AdminView */,
 				C144412F190242190009C104 /* MPSTabController.h */,
 				C1444130190242190009C104 /* MPSTabController.m */,
