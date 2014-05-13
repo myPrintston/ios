@@ -29,6 +29,7 @@ extern NSString *IP;
     return self;
 }
 
+// Get some information from the MPSTabController and set the code for the pull down refresh.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -47,12 +48,14 @@ extern NSString *IP;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 }
 
+// Update the printer information every time we come to this view
 - (void) viewWillAppear:(BOOL)animated {
     [self.printerList update];
     [self.printerList sort];
     [self.tableView reloadData];
 }
 
+// Method to call to update printers when pull down refresh is triggered
 - (void) updatePrinters:(UIRefreshControl *)refresh
 {
     [self.printerList update];
@@ -74,44 +77,46 @@ extern NSString *IP;
 
 #pragma mark - Table view data source
 
+// Return the number of sections. In this case we only have 1.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
+// Return the number of rows in the section. In this case it's the number of printers.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [self.printerList count];
 }
 
-
+// Configure each cell. We give it a title, subtitle, and color based on the printer
+//   and its status.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Configure the cell...
-    static NSString *CellIdentifier = @"PrinterCell";
-    
     MPSPrinter *currentPrinter = [self.printerList.printers objectAtIndex:indexPath.row];
       
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PrinterCell" forIndexPath:indexPath];
     
+    // Title and subtitle
     cell.textLabel.text = currentPrinter.building;
-    
-    if (currentPrinter.status == 0) cell.textLabel.textColor = [UIColor colorWithRed:0/255.0f green:134/255.0f blue:37/255.0f alpha:1.0f];
-    if (currentPrinter.status == 1) cell.textLabel.textColor = [UIColor colorWithRed:231/255.0f green:162/255.0f blue:76/255.0f alpha:1.0f];
-    if (currentPrinter.status == 2) cell.textLabel.textColor = [UIColor colorWithRed:231/255.0f green:56/255.0f blue:28/255.0f alpha:1.0f];
-    
-    
     cell.detailTextLabel.text = [NSString stringWithFormat:@"(%dm) %@", (int)[currentPrinter distCL:self.locationManager.location], currentPrinter.room];
+    
+    // Configure the color
+    if (currentPrinter.status == 0)
+        cell.textLabel.textColor = [UIColor colorWithRed:0/255.0f green:134/255.0f blue:37/255.0f alpha:1.0f];
+    else if (currentPrinter.status == 1)
+        cell.textLabel.textColor = [UIColor colorWithRed:231/255.0f green:162/255.0f blue:76/255.0f alpha:1.0f];
+    else if (currentPrinter.status == 2)
+        cell.textLabel.textColor = [UIColor colorWithRed:231/255.0f green:56/255.0f blue:28/255.0f alpha:1.0f];
+    
     
     return cell;
 }
 
 
 #pragma mark - Navigation
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-// Modify the prepareForSegue method by
+
+// Pass on information to MPSPrinterViewController before we segue to it.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     MPSPrinterViewController *detailController = segue.destinationViewController;
