@@ -28,10 +28,12 @@ extern NSString *IP;
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    // Load the possible errors of this printer
     possibleErrors = [self loadPossibleErrors];
 }
 
@@ -48,6 +50,7 @@ extern NSString *IP;
     NSURL *url = [NSURL URLWithString:urlString];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
+    // Tell user if connection to the server cannot be established.
     if (!data) {
         UIAlertView *alert;
         alert = [[UIAlertView alloc]
@@ -63,6 +66,7 @@ extern NSString *IP;
     NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
     MPSErrorType *other;
     
+    // Load the errors, and make the the "other" error is at the bottom if it's there.
     for (NSDictionary *errorInfo in jsonArray) {
         MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
         
@@ -80,19 +84,19 @@ extern NSString *IP;
 
 #pragma mark - Table view data source
 
+// Return the number of sections. In this case there is always only 1 sections.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
+// Return the number of rows in the section. In this case it is the number of possible Errors.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [possibleErrors count];
 }
 
-
+// Configure each cell.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Configure the cell...
@@ -110,6 +114,7 @@ extern NSString *IP;
     return cell;
 }
 
+//
 - (void)tableView:(UITableView *)errorList didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [errorList cellForRowAtIndexPath:indexPath];
     if (cell.accessoryType == UITableViewCellAccessoryNone)
@@ -120,9 +125,11 @@ extern NSString *IP;
     [errorList deselectRowAtIndexPath:indexPath animated:NO];
 }
 
+// Method that gets called when the admin hits the submit button.
 - (IBAction)submit:(UIBarButtonItem *)sender {
     UIAlertView *alert;
     
+    // Get the selected error ids.
     NSMutableArray *errorids = [[NSMutableArray alloc] init];
     for (int i = 0; i < [possibleErrors count]; i++) {
         NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
@@ -131,6 +138,7 @@ extern NSString *IP;
             [errorids addObject:[NSNumber numberWithInt:[self->possibleErrors[i] errorid]]];
     }
     
+    // Can't fix an error if you didn't fix anything.
     if ([errorids count] == 0) {
         alert = [[UIAlertView alloc]
                  initWithTitle:@"Submit Failure"
@@ -144,6 +152,7 @@ extern NSString *IP;
     NSURL *url = [NSURL URLWithString:urlstring];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
+    // Alert user if cannot connect to server.
     if (!data) {
         alert = [[UIAlertView alloc]
                  initWithTitle:@"Error"
@@ -155,20 +164,24 @@ extern NSString *IP;
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
+    // Tell user if server rejected the fix.
     if (![jsonArray[0] boolValue]) {
         alert = [[UIAlertView alloc]
                 initWithTitle:@"Submit Failure"
                 message:@"Server Error"
                 delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
         [alert show];
+        return;
     }
     
+    // Tell the user the the submit was successful.
     alert = [[UIAlertView alloc]
              initWithTitle:@"Fixed"
              message:jsonArray[1]
              delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
     [alert show];
 
+    // Since the submit was successful, return to the root view.
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
