@@ -35,30 +35,30 @@ extern BOOL isAdmin;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    // Initialize settings for the list of possible errors.
     self.errorList.delegate = self;
     self.errorList.dataSource = self;
-    
     [self.errorList registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Error"];
     self.errorList.scrollEnabled = NO;
-    
     self->possibleErrors = self.loadPossibleErrors;
+    
+    // Initialize settings for the textField and textView
     self.netid.delegate = self;
     self.comment.delegate = self;
     self.comment.enablesReturnKeyAutomatically = NO;
     
-
+    // Initialize the style for the textView
     [self.comment.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
     [self.comment.layer setBorderWidth:2.0];
     self.comment.layer.cornerRadius = 1;
     self.comment.clipsToBounds = YES;
     
-    keyboardHeight = 0;
-    
+    // Set up the tap recognizer for when the user needs to dismiss the keyboard.
     tap = [[UITapGestureRecognizer alloc]
             initWithTarget:self action:@selector(dismissKeyboard)];
     
+    // Register for KeyboardNotifications
     [self registerForKeyboardNotifications];
 }
 
@@ -71,9 +71,10 @@ extern BOOL isAdmin;
 // Query server and get the error types
 - (NSMutableArray*) loadPossibleErrors
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/checklogin/", IP]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/etypes/", IP]];
     NSData *data = [NSData dataWithContentsOfURL:url];
     
+    // If the server can't be reached, tell the user and stop loading.
     if (!data) {
         UIAlertView *alert;
         alert = [[UIAlertView alloc]
@@ -86,17 +87,11 @@ extern BOOL isAdmin;
     
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
-    if ([jsonArray[0] boolValue])
-        isAdmin = YES;
-    
-    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/etypes/", IP]];
-    data = [NSData dataWithContentsOfURL:url];
-    
-    jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
     NSMutableArray *urlerrors = [[NSMutableArray alloc] init];
     MPSErrorType *other;
     
+    // Add the error types to the array. Pluck out the "other" error to ensure
+    //   it's the last in the list.
     for (NSDictionary *errorInfo in jsonArray) {
         if (isAdmin || ![errorInfo[@"fields"][@"admin"] boolValue]) {
             MPSErrorType *error = [[MPSErrorType alloc] initWithDictionary:errorInfo];
@@ -108,20 +103,21 @@ extern BOOL isAdmin;
         }
     }
     
+    // Put the "other" error at the end of the list.
     if (other)
         [urlerrors addObject:other];
     
     return urlerrors;
 }
 
-// Number of sections of errors = 1
+// Return the number of sections. In this case, there is always only 1 section.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
-
+// Return the number of rows in the section. This is the number of entries in the
+//   errorList array.
 - (NSInteger)tableView:(UITableView *)errorList numberOfRowsInSection:(NSInteger)section
 {
     if (!self.errorList)
@@ -131,9 +127,9 @@ extern BOOL isAdmin;
     return [self->possibleErrors count];
 }
 
+// Configure each error type cell.
 - (UITableViewCell *)tableView:(UITableView *)errorList cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Configure the cell...
     static NSString *CellIdentifier = @"Error";
     
     MPSErrorType *currentError = [self->possibleErrors objectAtIndex:indexPath.row];
@@ -142,11 +138,13 @@ extern BOOL isAdmin;
     if (!cell)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     
+    // Name the cell with the error's name.
     cell.textLabel.text = currentError.eMsg;
     
     return cell;
 }
 
+// Method that checks or unchecks each cell on touch.
 - (void)tableView:(UITableView *)errorList didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [errorList cellForRowAtIndexPath:indexPath];
     if (cell.accessoryType == UITableViewCellAccessoryNone)
@@ -157,13 +155,15 @@ extern BOOL isAdmin;
     [errorList deselectRowAtIndexPath:indexPath animated:NO];
 }
 
+// The method that gets called when the user hits the submit button.
 - (IBAction)submit {
     
     UIAlertView *alert;
     NSMutableArray *errorids = [[NSMutableArray alloc] init];
     BOOL needComment = NO;
     
-    
+    // First go through the table and collect the errorids. Also check if any of
+    //   the checked errors require a comment and note that.
     for (int i = 0; i < [possibleErrors count]; i++) {
         NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:0];
         UITableViewCell *cell = [self.errorList cellForRowAtIndexPath:path];
@@ -202,6 +202,7 @@ extern BOOL isAdmin;
         return;
     }
     
+    // Check the connection to the server.
     if (YES) {
         NSString *urlstring = [NSString stringWithFormat:@"%@/checklogin/", IP];
         NSURL *url = [NSURL URLWithString:urlstring];
@@ -209,7 +210,7 @@ extern BOOL isAdmin;
         
         if (!data) {
             alert = [[UIAlertView alloc]
-                     initWithTitle:@"Login Failure"
+                     initWithTitle:@"Error"
                      message:@"Could not connect to the server"
                      delegate:nil cancelButtonTitle:@"Got it"  otherButtonTitles:nil];
             [alert show];
@@ -220,6 +221,7 @@ extern BOOL isAdmin;
         isAdmin = [jsonArray[0] boolValue];
     }
     
+    // Send the user reported errors to the server
     if (YES) {
         // Prepare the JSON to send as NSData
         NSMutableDictionary *json = [self prepareJSON: errorids];
@@ -263,6 +265,7 @@ extern BOOL isAdmin;
     }
 }
 
+// Method that creates a JSON object with the current error ids.
 - (NSMutableDictionary *) prepareJSON:(NSMutableArray*) errorids{
     NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
     
@@ -276,25 +279,30 @@ extern BOOL isAdmin;
     return json;
 }
 
+// Dismisses the keyboard when called.
 -(void)dismissKeyboard {
     [self.netid resignFirstResponder];
     [self.comment resignFirstResponder];
 }
 
+// If the keyboard appears add the tap recognizer that would dismiss the keyboard.
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self.view addGestureRecognizer:tap];
 }
 
+// If the keyboard appears add the tap recognizer that would dismiss the keyboard.
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [self.view removeGestureRecognizer:tap];
 }
 
+// Dismiss the keyboard if the user hits the Return button.
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
 
+// Dismiss the keyboard if the user hits the Return button.
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
     if([text isEqualToString:@"\n"]) {
@@ -305,6 +313,7 @@ extern BOOL isAdmin;
     return YES;
 }
 
+// Make the keboard appear when the user starts editing.
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     [self.view addGestureRecognizer:tap];
     [UIView beginAnimations:nil context:NULL];
@@ -314,6 +323,7 @@ extern BOOL isAdmin;
     [UIView commitAnimations];
 }
 
+// Make the keyboard disappear when the user is done editing.
 - (void)textViewDidEndEditing:(UITextView *)textView {
     [self.view removeGestureRecognizer:tap];
     [UIView beginAnimations:nil context:NULL];
@@ -325,13 +335,15 @@ extern BOOL isAdmin;
     [self.comment resignFirstResponder];
 }
 
+// Register for a notification when the keyboard will appear.
 - (void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)
         name:UIKeyboardWillShowNotification object:nil];
 }
 
-// Called when the UIKeyboardDidShowNotification is sent.
+// Called when the UIKeyboardDidShowNotification is sent. Sets the keyboard's height
+//   when it appears.
 - (void)keyboardWillShow:(NSNotification*)aNotification
 {
     NSDictionary* info = [aNotification userInfo];
