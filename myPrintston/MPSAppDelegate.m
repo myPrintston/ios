@@ -14,11 +14,13 @@ extern BOOL isAdmin;
 
 @implementation MPSAppDelegate
 
+// Called when the application starts
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    // Give the Google Maps Framework an API key.
     [GMSServices provideAPIKey:@"AIzaSyDVjVMdjZ5bzV_Qs3HSHUwU2GOONDtR3rw"];
     
+    // Log out of any previsious admin session.
     NSString *urlstring = [NSString stringWithFormat:@"%@/logout/", IP];
     NSURL *url = [NSURL URLWithString:urlstring];
     NSData *data = [NSData dataWithContentsOfURL:url];
