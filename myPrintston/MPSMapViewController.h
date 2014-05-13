@@ -9,7 +9,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/Corelocation.h>
-#import "MPSListViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "MPSPrinterList.h"
 
