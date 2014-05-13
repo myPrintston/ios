@@ -1,11 +1,10 @@
 //
-//  CoolButton.m
-//  CoolButton
+//  CoolButtonRed.m
+//  CoolButtonRed
 //
-//  Created by Brian Moakley on 2/21/13.
-//  Copyright (c) 2013 Razeware. All rights reserved.
+//  Derived from this tutorial:
+//    http://www.raywenderlich.com/33330/core-graphics-tutorial-glossy-buttons
 //
-
 #import "CoolButtonRed.h"
 #import "Common.h"
 

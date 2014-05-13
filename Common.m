@@ -1,3 +1,11 @@
+//
+//  Common.m
+//  Common
+//
+//  Derived from this tutorial:
+//    http://www.raywenderlich.com/33330/core-graphics-tutorial-glossy-buttons
+//
+
 #import <Foundation/Foundation.h>
 
 #import "Common.h"

@@ -1,3 +1,11 @@
+//
+//  Common.h
+//  Common
+//
+//  Derived from this tutorial:
+//    http://www.raywenderlich.com/33330/core-graphics-tutorial-glossy-buttons
+//
+
 #import <Foundation/Foundation.h>
 
 void drawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef endColor);
