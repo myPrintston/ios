@@ -66,12 +66,12 @@
 /* Begin PBXFileReference section */
 		12273F9C1906D7F300EFD4AE /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		124F951C19081F7200DC8736 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
-		12B72E44191B461B00FF4326 /* CoolButtonGreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoolButtonGreen.h; sourceTree = "<group>"; };
-		12B72E45191B461B00FF4326 /* CoolButtonGreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoolButtonGreen.m; sourceTree = "<group>"; };
-		12E12C04191B3B3E007EBD46 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
-		12E12C05191B3B3E007EBD46 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
-		12E12C06191B3B3E007EBD46 /* CoolButtonRed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoolButtonRed.h; sourceTree = "<group>"; };
-		12E12C07191B3B3E007EBD46 /* CoolButtonRed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoolButtonRed.m; sourceTree = "<group>"; };
+		12B72E44191B461B00FF4326 /* CoolButtonGreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoolButtonGreen.h; path = ../CoolButtonGreen.h; sourceTree = "<group>"; };
+		12B72E45191B461B00FF4326 /* CoolButtonGreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoolButtonGreen.m; path = ../CoolButtonGreen.m; sourceTree = "<group>"; };
+		12E12C04191B3B3E007EBD46 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../Common.h; sourceTree = "<group>"; };
+		12E12C05191B3B3E007EBD46 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = ../Common.m; sourceTree = "<group>"; };
+		12E12C06191B3B3E007EBD46 /* CoolButtonRed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoolButtonRed.h; path = ../CoolButtonRed.h; sourceTree = "<group>"; };
+		12E12C07191B3B3E007EBD46 /* CoolButtonRed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoolButtonRed.m; path = ../CoolButtonRed.m; sourceTree = "<group>"; };
 		C105C3D818F1CDDC005F7821 /* MPSErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSErrorViewController.h; sourceTree = "<group>"; };
 		C105C3D918F1CDDC005F7821 /* MPSErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSErrorViewController.m; sourceTree = "<group>"; };
 		C1268CB91918886E00986D9D /* princeton.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = princeton.gpx; path = ../princeton.gpx; sourceTree = "<group>"; };
@@ -185,12 +185,6 @@
 		C13168C218DA75290034F142 = {
 			isa = PBXGroup;
 			children = (
-				12B72E44191B461B00FF4326 /* CoolButtonGreen.h */,
-				12B72E45191B461B00FF4326 /* CoolButtonGreen.m */,
-				12E12C04191B3B3E007EBD46 /* Common.h */,
-				12E12C05191B3B3E007EBD46 /* Common.m */,
-				12E12C06191B3B3E007EBD46 /* CoolButtonRed.h */,
-				12E12C07191B3B3E007EBD46 /* CoolButtonRed.m */,
 				C13168D418DA75290034F142 /* myPrintston */,
 				C13168F618DA75290034F142 /* myPrintstonTests */,
 				C13168CD18DA75290034F142 /* Frameworks */,
@@ -236,7 +230,8 @@
 		C13168D418DA75290034F142 /* myPrintston */ = {
 			isa = PBXGroup;
 			children = (
-				C1E3635018F46D2000A6486B /* model */,
+				C1B4CD9C1921CD73003EEF82 /* buttons */,
+				C1E3635018F46D2000A6486B /* models */,
 				C1E3635118F46D8F00A6486B /* views */,
 				C13168E018DA75290034F142 /* Main.storyboard */,
 				C13168DD18DA75290034F142 /* MPSAppDelegate.h */,
@@ -295,17 +290,30 @@
 			name = MapView;
 			sourceTree = "<group>";
 		};
-		C1E3635018F46D2000A6486B /* model */ = {
+		C1B4CD9C1921CD73003EEF82 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
-				C144412C1900A0960009C104 /* MPSErrorType.h */,
-				C144412D1900A0960009C104 /* MPSErrorType.m */,
+				12E12C04191B3B3E007EBD46 /* Common.h */,
+				12E12C05191B3B3E007EBD46 /* Common.m */,
+				12E12C06191B3B3E007EBD46 /* CoolButtonRed.h */,
+				12E12C07191B3B3E007EBD46 /* CoolButtonRed.m */,
+				12B72E44191B461B00FF4326 /* CoolButtonGreen.h */,
+				12B72E45191B461B00FF4326 /* CoolButtonGreen.m */,
+			);
+			name = buttons;
+			sourceTree = "<group>";
+		};
+		C1E3635018F46D2000A6486B /* models */ = {
+			isa = PBXGroup;
+			children = (
 				C1FB68ED18E6216000376EBC /* MPSPrinter.h */,
 				C1FB68EE18E6216000376EBC /* MPSPrinter.m */,
 				C1B4CD99191F3A30003EEF82 /* MPSPrinterList.h */,
 				C1B4CD9A191F3A30003EEF82 /* MPSPrinterList.m */,
+				C144412C1900A0960009C104 /* MPSErrorType.h */,
+				C144412D1900A0960009C104 /* MPSErrorType.m */,
 			);
-			name = model;
+			name = models;
 			sourceTree = "<group>";
 		};
 		C1E3635118F46D8F00A6486B /* views */ = {
